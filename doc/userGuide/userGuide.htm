@@ -1,0 +1,2009 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<title>RebeccaAIML</title>
+<meta http-equiv="content-type" content="application/xhtml+xml; charset=iso-8859-1" />
+<meta name="author" content="Frank Hassanabad" />
+<meta name="description" content="RebeccaAIML is a Windows/Linux Object Oriented C++ chatter bot api/interpreter for AIML (Artificial Intelligence Markup Language) from the ALICE project." />
+<meta name="keywords" content="aiml,C++,bot,chatterbot,interpreter" />
+<link rel="stylesheet" href="mike02.css" type="text/css" />
+</head>
+
+<body>
+<div id="container" >
+		<div id="headerWrap">
+			<div id="header">
+				<h1><a href="index.htm">RebeccaAIML</a></h1>
+				<ul id="navigation">
+					<li><a href="contact.htm">Contact</a></li>
+					<li><a href="links.htm">Links</a></li>
+					<li><a href="lists.htm">Lists</a></li>
+					<li><a href="development.htm">Development</a></li>
+					<li><a href="users.htm">Users</a></li>
+					<li><a href="documentation.htm">Documentation</a></li>
+					<li><a href="download.htm">Download</a></li>
+					<li><a href="index.htm">Home</a></li>
+				</ul>
+			</div>
+		</div>
+		<div id="content">
+			<div id="documentHeader">
+				 <div id="siteDescription"><p>The User Guide for RebeccaAIML.<br/>  Here you should
+                 be able to learn about how to use <br/>RebeccaAIML to her fullest potential.<br/></p>
+                 </div> 
+			</div>
+                <!--
+				<div id="secondary">
+                    <h2>Documentation Bundled with Downloads</h2>
+					<p>
+                    This documentation is also bundled in the <a href="download.htm">downloads</a> 
+					with both the prebuilt Windows and Linux rpm.
+                    </p>
+					<h2>SourceForge</h2>
+					<a href="http://sourceforge.net/">
+					    <img src="home_files/sflogo.png" alt="SourceForge Logo"/>
+					</a>
+				</div> -->
+			<div id="main">
+                <div class="post">
+			    <h2><a id="TOC"></a>Table of contents</h2>
+                <ul>
+                <li><a href="#key_features">Feature Overview</a></li>
+                <li><a href="#embedded_database">The Embedded Database</a></li>
+                <li><a href="#multi_user">Multi-User, Multi-Bot, Multi-EndUser Concepts</a></li>
+                <li><a href="#installing">Installing from the RebeccaAIML.exe installer</a></li>
+                <li><a href="#upgrading">Upgrading to a new install of RebeccaAIML</a></li>
+                <li><a href="#menuitem_windows">RebeccaAIML's Menus in Windows</a></li>
+                <li><a href="#included_server">RebeccaAIML's Included Server</a></li>
+                <li><a href="#rs_admin">rs-admin Command Line Tool</a></li>
+                <li><a href="#cpp_programming">How to use C++ for programming with RebeccAIML</a></li>
+                <li><a href="#java_programming">How to use Java for programming with RebeccAIML</a></li>
+                <li><a href="#csharp_programming">How to use C# for programming with RebeccAIML</a></li>
+                <li><a href="#python_programming">How to use Python for programming with RebeccAIML</a></li>
+                <li><a href="#any_programming">How to use <b><i>any</i></b> programming language or 
+                seperate process with RebeccAIML</a></li>
+                <li><a href="#install_eclipse">Installing the Eclipse Plugin for AIML editing with RebeccaAIML</a></li>
+                <li><a href="#use_eclipse">Using Eclipse with RebeccaAIML for AIML editing</a></li>
+                </ul>
+			    </div>
+                
+                <div class="post">
+			    <h2><a id="key_features"></a>Feature Overview</h2>
+                <p>
+                At a glance these are RebeccaAIML's distinguishing features
+                </p>
+                <ul>
+                <li>A windows installer</li>
+                <li>An Eclipse plugin for using Eclipse as an AIML editor</li>
+                <li>An embedded database engine for all AIML processing</li>
+                <li>Support for a multitude of programming languages such as 
+                    C++, C#, Java, and Python</li>
+                <li>Excellent, fully documented, and easy to use 
+                    APIs for various programming languages</li>
+                <li>Support for safe and concurrent multi-process access to AIML</li>
+                <li>Support for safe and concurrent multi-threading access to AIML</li>
+                <li>Includes command line tools to access and manipulate the AIML 
+                    embedded database</li>
+                <li>Support for multiple users, multiple bots the users
+                    can have, and multiple end users accessing the users' bots</li>
+                <li>Scalability.  RebeccaAIML can support an infinite number of users,
+                    bots, and, end users as long as you have hard drive space for 
+                    more.</li>
+                <li>Near zero start times.  Regardless of your number of users,
+                    bots, end users, RebeccAIML will restart in ~ 1 second.</li>
+                <li>A configurable amount of memory.  Utilizing the embedded database 
+                    tools you can configure how much memory RebeccaAIML will use for 
+                    caching as well as fine tune her from a small machine to a large 
+                    rack server.</li>
+                <li>Server and client model included.  RebeccaAIML starts as a service
+                    and runs as a server in the background waiting for queries</li>
+                </ul>
+			    </div>
+				
+			    <div class="post">
+			    <h2><a id="embedded_database"></a>The Embedded Database</h2>
+                <p>
+                RebeccaAIML utilizes <a href="http://www.oracle.com/technology/products/berkeley-db/index.html">
+                Oracle's berkeley db</a> for her embedded database 
+                for all AIML processing.
+                AIML processing is whenever you add a new file to the "brain", remove
+                a file from the "brain", or query the brain for a response.  
+                <br/><br/></p>
+                <p>
+                The first time RebeccaAIML is started she creates her database in 
+                %ALLUSERSPROFILE%\.RebeccaAIML underneath Windows.  Typically this is:
+                </p>
+<blockquote><pre>                
+C:\Documents and Settings\All Users\.RebeccaAIML
+</pre></blockquote>
+                <p>
+                on a standard windows installed system.  If you de-install RebeccaAIML 
+                she will delete that entire directory so you don't have left over "brains"
+                on your system.  Also, at any given time, you can shut down RebeccaAIML's 
+                server and any other processes that are accessing the embedded database and delete
+                the above .RebeccaAIML directory.  The next time you restart any process 
+                written using RebeccaAIML the above directory will be recreated again.
+                Just remeber, though, if you do delete the above directory you are effectevly erasing 
+                all users, bots, and end users that might exist in the database.  They will 
+                all have to be re-added again.
+                <br/><br/></p>
+                
+                RebeccaAIML uses the most common defaults of the embedded datbase.  However,
+                with the Oracle berkeley db it is possible to do a range of extra options such as 
+                hot backing it up, restoring it, utilizing redudancy, improving throughput, etc...
+                So many options that I cannot list them all here (I'd hurt my hand).  You can cruise to 
+                <a href="http://www.oracle.com/technology/products/berkeley-db/index.html">
+                Oracle's  berkeley db web site</a> 
+                if you ever need to use these more advanced features of the db.
+			    </div>
+
+			    <div class="post">
+			    <h2><a id="multi_user"></a>Multi-User, Multi-Bot, Multi-EndUser Concepts</h2>
+                <p>
+                RebeccaAIML supports multi-user, multi-bot, and multi-enduser.  
+                Using the same embedded database "brain" multiple users of the brain can co-exist.  A user
+                is someone or something which wants one or more bots for their use.  Multi-bot means that 
+                a user can have one or more bots.  Multi-EndUser means multiple end users can query users' 
+                bots.
+                <br/><br/></p>
+                <p>
+                For each programming language and for any of the admin tools such as rs-admin, there exists
+                a mechanism for setting the user id, bot id, and end user id.  Use this mechansim for setting
+                your user, bot, and end user id before adding, deleting, or querying AIML files.  By default
+                if you do not set any of the id's RebeccaAIML will use the id of "default" for the user, bot,
+                and end user id.
+                <br/><br/></p>
+                <p>
+                When would you want to set or use a different user id?  If you were writing a web application
+                which utilizes RebeccaAIML and you wanted to allow different users of your site to create, 
+                access, and see their bots but not yours.  Another scenario would be if you were writing seperate
+                applications and you wanted to keep the bots of one application completely seperate from the 
+                other application.  By using different users, different applications can use the same bot ids and 
+                not have to worry about stomping on the each other's bots.
+                <br/><br/></p>
+                <p>
+                When would you want to set or use a different bot id?  If you were writing a web application 
+                which utilizes RebeccaAIML and you wanted to allow different users of your site to create multiple
+                bots.  Another scenario would be if you were writing an application and you wanted to have more than 
+                one bot.  Each bot has its own set of AIML files you load and is unique if they load different AIML 
+                files.
+                <br/><br/></p>
+                <p>
+                When would you want to set or use a different end user id?  Any time you have a different end user
+                accessing a user's bot you would set the end user id to a new value.  If you don't do this, then 
+                whenever one end user sets a predicate such as their name, all the other end users' names would have
+                their name set to this same value.
+                </p>
+			    </div>
+                
+			    <div class="post">
+			    <h2><a id="installing"></a>Installing from the RebeccaAIML.exe installer</h2>
+                <p>
+                Go to the <a href="download.htm">download site</a> and download the latest windows installer.  Double 
+                click on the installer executable.  When it first comes up you will see the welcome splash screen.  
+                Click next to begin the installation.
+                <br/><br/></p>
+                <p>
+                <img src="home_files/installer_1.png" alt="installer_1"/>
+                </p>
+                <br/><p>
+                The next screen is the license screen.  RebeccaAIML is distributed under the 
+                <a href="http://www.gnu.org/licenses/gpl-3.0.txt">GPLv3 license</a>.  You must 
+                accept that license.  If you are looking for commercial development with RebeccaAIML please contact 
+                <a href="mailto:foreverlinux@yahoo.com">me</a> for a commercial license. 
+                </p>
+                <br/><p>
+                <img src="home_files/installer_2.png" alt="installer_2"/>
+                </p>
+                <br/><p>
+                The next step allows you to define which parts of RebeccaAIML to install.  She is broken up into
+                3 main parts.  Networking, embedded, and documentation.  I suggest to install everything.  Why not?
+                </p>
+                <br/><p>
+                <img src="home_files/installer_3.png" alt="installer_3"/>
+                </p>
+                <br/><p>
+                Networking consists of the standalone server which installs as a Windows service.  The networking
+                section also contains the programming languages supported for network programming with RebeccaAIML.
+                </p>
+                <br/><p>
+                <img src="home_files/installer_4.png" alt="installer_4"/>
+                </p>
+                <br/><p>
+                Networking also consists of several programming samples which showcase how to use the given programming
+                languages to easily program RebeccaAIML to do what you would want her to do.  One sample I <i>highly</i> recommend
+                installing is the <a href="#rs_admin">rs-admin</a> sample.  Although it is labeled a sample, it is a powerful command line 
+                utility mentioned in this user guide which allows manipulation of RebeccaAIML from the command line.
+                </p>
+                <br/><p>
+                <img src="home_files/installer_5.png" alt="installer_5"/>
+                </p>
+                <br/><p>
+                The embedded section lists the programming languages that are supported for direct manipulation of RebeccaAIML.
+                Although the list is shorter than the networking section, don't let that discourage your usage.  Most of the time 
+                you would want to use the networking language support and RebeccaAIML's server and not the embedded 
+                language support.
+                </p>
+                <br/><p>
+                <img src="home_files/installer_6.png" alt="installer_6"/>
+                </p>
+                <br/><p>
+                The documentation section lists the documentation to install.  The programming language documentation is the api 
+                documentation for each of those languages.  The user guide is this document you are reading here.
+                </p>
+                <br/><p>
+                <img src="home_files/installer_7.png" alt="installer_7"/>
+                </p>
+                <br/><p>
+                After deciding which parts you want installed and having clicked next you will see the 
+                default location of where RebeccaAIML wants to install to.  Change this if you want to or 
+                keep it the default.  Click next.
+                </p>
+                <br/><p>
+                <img src="home_files/installer_8.png" alt="installer_8"/>
+                </p>
+                <br/><p>
+                Change the Start Menu Folder if you really want to.  Send me an email if you actually do because 
+                you'd probably be the first ;-).  Click next (final time I promise) 
+                </p>
+                <br/><p>
+                <img src="home_files/installer_9.png" alt="installer_9"/>
+                </p>
+                <br/><p>
+                At the begining of the installation you will see RebeccaAIML install the C++ 2005 redistributable.
+                This is because RebeccaAIML's C++ is built with VS 2005 and needs to install the side by side 2005 .dll's.
+                This part takes a minute or two so be patient.
+                </p>
+                <br/><p>
+                <img src="home_files/installer_10.png" alt="installer_10"/>
+                </p>
+                <br/><p>
+                Almost there.  The installation should show the progress like below getting towards the end
+                </p>
+                <br/><p>
+                <img src="home_files/installer_11.png" alt="installer_11"/>
+                </p>
+                <br/><p>
+                If everything went well you will see this final screen.  Click finish and you're done.
+                </p>
+                <br/><p>
+                <img src="home_files/installer_12.png" alt="installer_12"/>
+                </p>
+			    </div>
+                
+			    <div class="post">
+			    <h2><a id="upgrading"></a>Upgrading to a new install of RebeccaAIML</h2>
+                <p>
+                If you do not care about the contents of your embedded database you can 
+                simply uninstall the previous version and then install the new version.
+                You can always re-add any AIML files you had stored in the embedded 
+                database from before using the <a href="#rs_admin">rs-admin tool</a>.<br/><br/></p>
+                <p>
+                However, if you do care about the contents of the embedded database 
+                and do not want to go through the trouble of re-adding everything you 
+                will have to backup the database before uninstalling the older version 
+                of RebeccaAIML and then restore the backup after installing the 
+                new version.<br/><br/></p>
+                <p>
+                To backup before uninstalling the older version of 
+                RebeccaAIML go to your cpp\bin directory in your installation.  In a 
+                normal windows install this would be
+                </p>
+<blockquote><pre>                
+C:\Program Files\RebeccaAIML\bin\cpp
+</pre></blockquote>
+                <p>
+                Open a dos prompt and make the above cpp\bin your current working directory.  
+                Use the shipped db_hotbackup executable to make your backup.  Here I am 
+                going to create a directory called backup at my root file system and then 
+                create the backup. The "\" means to put everything on one line without the "\"</p>
+<blockquote><pre>                
+mkdir c:\backup
+
+cd "C:\Program Files\RebeccaAIML\cpp\bin"
+
+db_hotbackup -v -h \
+    "%ALLUSERSPROFILE%\Application Data\.RebeccaAIMLDB" \
+    -d "%ALLUSERSPROFILE%\Application Data\.RebeccaAIMLDB" \
+    -b c:\backup
+</pre></blockquote>
+                <p>
+                See the homepage of <a href="http://www.oracle.com/technology/documentation/berkeley-db/db/utility/db_hotbackup.html">db_hotbackup</a>
+                for more information on usages of it.<br/><br/></p>
+                <p>
+                After creating the backup, remove your current install of RebeccaAIML through 
+                Start-> Programs-> RebeccaAIML-> Uninstall
+                </p>
+                <br/><p>
+                <img src="home_files/shortcuts_1.png" alt="shortcuts_1"/>
+                </p>
+                <br/><p>
+                Install your new version like you <a href="#installing">normally</a> would.  
+                After your new installation is done installing, shut down the running 
+                server through Start-> Programs-> RebeccaAIML-> Server->Stop
+                </p>
+                <br/><p>
+                <img src="home_files/shortcuts_4.png" alt="shortcuts_4"/>
+                </p><br/>
+                <p>
+                Delete any initial embedded database files the server created upon 
+                startup at %ALLUSERSPROFILE%\Application Data\.RebeccaAIML. Underneath
+                windows this is typically
+                </p>
+<blockquote><pre>                
+C:\Documents and Settings\All Users\.RebeccaAIML
+</pre></blockquote>
+                <p>
+                After you delete those files, copy your backup files (c:\backup) to 
+                the above directory.<br/><br/>
+                </p>
+                <p>
+                You will need to recover the database files so they will work 
+                with any upgrades to the berkeley db that might be in this new 
+                release of RebeccaAIML.  Go to your newly installed RebeccaAIML cpp\bin
+                directory and use the db_recover executable to recover the database</p>
+<blockquote><pre>                
+cd "C:\Program Files\RebeccaAIML\cpp\bin"
+
+db_recover -h "%ALLUSERSPROFILE%\Application Data\.RebeccaAIMLDB
+</pre></blockquote>
+                <p>
+                See the <a href="http://www.oracle.com/technology/documentation/berkeley-db/db/utility/db_recover.html">
+                db_recover</a> homepage for more usages of it.<br/><br/>
+                </p>
+                <p>
+                Finally, restart the server through Start-> 
+                Programs-> RebeccaAIML-> Server->Start
+                </p>
+                </div>
+                
+			    <div class="post">
+			    <h2><a id="menuitem_windows"></a>RebeccaAIML's Menus in Windows</h2>
+                </div>
+                <p>
+                After an installation underneath Windows you should now have various 
+                menus in the main Start Menu of RebeccaAIML.  Click the README file to 
+                see which versions of the programming languages are supported.  Click the 
+                ReleaseNotes to see what has changed from the last version of RebeccaAIML.
+                If you no longer want RebeccaAIML on your system feel free to click the 
+                uninstall option to completely remove her and any remnants of her from your
+                system.
+                </p>
+                <br/><p>
+                <img src="home_files/shortcuts_1.png" alt="shortcuts_1"/>
+                </p>
+                <br/><p>
+                Cruise furthur in the menu items and you should stumble upon the documentation
+                for each language if you have installed that feature.  Click any of the documentation
+                web pages for any of the languages when you want to learn RebeccaAIML api's 
+                for that particular langauage.
+                </p>
+                <br/><p>
+                <img src="home_files/shortcuts_2.png" alt="shortcuts_2"/>
+                </p>
+                <br/><p>
+                The quickest way to learn how to program with RebeccaAIML is to find the samples 
+                section.  You can launch each sample in turn if you would like to see each run.  You
+                can also open or launch their respective build mechansims if you make changes to them
+                and rebuild them with your changes.  See the README in the main menu for information on 
+                which versions of the programming languages are supported.
+                </p>
+                <br/><p>
+                <img src="home_files/shortcuts_3.png" alt="shortcuts_3"/>
+                </p>
+                <br/><p>
+                The final section of the menu items you'll find is the server section.  The server by 
+                default should already be installed as a service under Windows and will restart each time 
+                Windows is restarted.  However, if you want to manually start, stop, remove, or re-add 
+                the server, this is the place to do it.                
+                </p>
+                <br/><p>
+                <img src="home_files/shortcuts_4.png" alt="shortcuts_4"/>
+                </p>
+
+			    <div class="post">
+			    <h2><a id="included_server"></a>RebeccaAIML's Included Server</h2>
+                <p>
+                RebeccaAIML utilizes the 
+                <a href="http://www.zeroc.com/ice.html">Internet Communications Engine</a>
+                to provide an included server which allows network programming.  Network programming
+                allows various programming languages and command line tools to contact RebeccaAIML's 
+                embedded database "brain" without having to directly contact the embedded database.
+                This allows client applications to be on seperate computers if desired.
+                <br/><br/></p>
+                <p>
+                Some programming languages only provide network support but don't let this discourage 
+                you.  Going through the server is the preferred mechanism when programming with 
+                RebeccaAIML.
+                <br/><br/>
+                See <a href="#menuitem_windows">RebeccaAIML's Menus in Windows</a> on how to 
+                start, stop, uninstall, and re-install the server.  By default, RebeccaAIML's installer will
+                install the server as a Windows service and set it to start each time your computer is 
+                started.
+                <br/><br/></p>
+                <p>
+                RebeccaAIML uses the most common defaults of the Internet Communications Engine.  However,
+                with the Internet Communications Engine it is possible to do a range of extra options such as 
+                setting thread pool size, improving throughput, etc...
+                So many options that I cannot list them all here (Man! would my hand hurt).  You can cruise to 
+                <a href="http://www.zeroc.com/ice.html">
+                Internet Communications Engine</a> 
+                if you ever need to use these more advanced features of the server.
+                </p>
+                </div>
+                
+			    <div class="post">
+			    <h2><a id="rs_admin"></a>rs-admin Command Line Tool</h2>
+                <p>
+                Within the C++ samples I provide one called rs-admin.  This command line tool can do just about 
+                anything that any programming language api can do save for receiving callbacks.  What this means
+                is that you can query different bots, add/remove AIML files, switch user,bot,enduser id's, and 
+                query various AIML statistics all without having to write a single line of code.
+                <br/><br/></p>
+                <p>
+                To get to the proper directory where rs-admin lives use the following menu below.  Notice 
+                that you can optionally launch the VS 2005 solution and change rs-admin's code and recompile 
+                it if you really wanted to.  The code is fairly simple for the power it provides.  Hench the 
+                reason I provide it as a sample.  For now let's just play with the prebuilt rs-admin.  So click the rs-admin
+                console menu option.
+                </p>
+                <br/><p>
+                <img src="home_files/rs_admin_1.png" alt="rs_admin_1"/>
+                </p>
+                <br/>
+                <p>
+                You should now see the following dos console box pop up
+                </p>
+                <br/><p>
+                <img src="home_files/rs_admin_2.png" alt="rs_admin_2"/>
+                </p>
+                <br/><p>
+                Type rs-admin and press enter.  You should see about 5 screen full pages of text scroll past 
+                and finally end up seeing this end message
+                </p>
+<blockquote><pre>                
+Scroll up to see any individual usages of any 
+commands. You can use any of the commands in 
+conjuntion with either local connect 
+(-lc, --localConnection) or set ids 
+(-sids, --setIds) or with both
+
+
+Here are some examples
+Query server for a response
+rs-admin --getResponse "hi"
+
+Query the embedded database without
+going through the server
+rs-admin --localConnection --getResponse "hi"
+
+Query the server for a response
+using the user id of myUser, bot id of myBot
+and the end user of myEndUser
+rs-admin --setIds "myUser" "myBot" "myEndUser" --getResponse "hi"
+
+Query the server for a response
+using the user id of myUser, bot id of myBot
+and the end user of myEndUser using the embedded
+database without going through the server
+rs-admin -lc -sids "myUser" "myBot" "myEndUser" -gr "hi"
+</pre></blockquote>
+                <p>
+                The 5 screen full pages of text that scrolled past earlier were all 
+                commands that rs-admin supports.  You can scroll up to see all those 
+                commands using your dos box or you can "redirect" them to a text file 
+                for reading like so 
+                </p>
+<blockquote><pre>                   
+rs-admin > command_text.txt
+</pre></blockquote>
+                <p>
+                You can open that text file with your favorite text editor to see 
+                the full list of commands that rs-admin supports
+                <br/><br/></p>
+                <p>
+                Let me show you some of the basic funtions of rs-admin and the power
+                it can deliver as a command line administration tool.  First, let us 
+                see if there are any AIML files loaded with the "default" user, bot, 
+                and end user id:
+                </p>
+<blockquote><pre>                   
+rs-admin --getAIMLFileListSize
+</pre></blockquote>
+                <p>
+                If you see a 0, then no files are loaded yet.  We can remedy that pretty 
+                quick using the rs-admin command --addDirectoryUnlessAlreadyAdded.
+                I will use the shortened version of the command which is -aduaa.  
+                Every command line option has a long version prefixed with a "--" 
+                and a short version prefixed with a "-".
+                </p>
+<blockquote><pre>                   
+rs-admin -aduaa "C:\Program Files\RebeccaAIML\aiml\annotated_alice"
+</pre></blockquote>
+                <p>
+                The command prompt should come back pretty quick.  If you try the 
+                above command "--getAIMLFileListSize" again you'll still see a 0.
+                But why!?  The reason is that the action of adding AIML files/directories
+                to the internal queue for processing and the action of actually parsing 
+                them is seperate.  So we will have to execute one more command, the 
+                --createGraph, to process the files into the AIML bot brain now that we 
+                have added them to the internal queue.
+                </p>
+                </div>
+<blockquote><pre>                   
+rs-admin --createGraph
+</pre></blockquote>
+                <p>
+                Now you should see the command prompt take a few seconds to return and your computer's
+                CPU should be spiking to almost 100% while the files are loading.  At this point RebeccaAIML is processing 
+                the AIML files into the embedded database.  After you get the command prompt back, 
+                issue a "--getAIMLFileListSize" and you should see 50.  That's how many AIML files 
+                are now loaded under the default user, bot, and end user id.  If want to see which files
+                are loaded into a particular user's bot you can issue the following command of 
+                </p>
+<blockquote><pre>                   
+rs-admin --getAIMLFileList
+</pre></blockquote>
+                <p>
+                If you issue that command now you should get this output
+                </p>
+<blockquote><pre>                   
+
+C:\Program Files\RebeccaAIML\bin\cpp>rs-admin --getAIMLFileList
+C:\Program Files\RebeccaAIML\aiml\annotated_alice\AI.aiml
+C:\Program Files\RebeccaAIML\aiml\annotated_alice\ALICE.aiml
+C:\Program Files\RebeccaAIML\aiml\annotated_alice\Adverbs.aiml
+C:\Program Files\RebeccaAIML\aiml\annotated_alice\Astrology.aiml
+C:\Program Files\RebeccaAIML\aiml\annotated_alice\Atomic.aiml
+C:\Program Files\RebeccaAIML\aiml\annotated_alice\Biography.aiml
+C:\Program Files\RebeccaAIML\aiml\annotated_alice\Bot.aiml
+C:\Program Files\RebeccaAIML\aiml\annotated_alice\Botmaster.aiml
+C:\Program Files\RebeccaAIML\aiml\annotated_alice\Client.aiml
+C:\Program Files\RebeccaAIML\aiml\annotated_alice\Computers.aiml
+C:\Program Files\RebeccaAIML\aiml\annotated_alice\Date.aiml
+C:\Program Files\RebeccaAIML\aiml\annotated_alice\Default.aiml
+C:\Program Files\RebeccaAIML\aiml\annotated_alice\Drugs.aiml
+C:\Program Files\RebeccaAIML\aiml\annotated_alice\Emotion.aiml
+C:\Program Files\RebeccaAIML\aiml\annotated_alice\Food.aiml
+C:\Program Files\RebeccaAIML\aiml\annotated_alice\Geography.aiml
+C:\Program Files\RebeccaAIML\aiml\annotated_alice\Gossip.aiml
+C:\Program Files\RebeccaAIML\aiml\annotated_alice\History.aiml
+C:\Program Files\RebeccaAIML\aiml\annotated_alice\Humor.aiml
+C:\Program Files\RebeccaAIML\aiml\annotated_alice\IU.aiml
+C:\Program Files\RebeccaAIML\aiml\annotated_alice\Inquiry.aiml
+C:\Program Files\RebeccaAIML\aiml\annotated_alice\Interjection.aiml
+C:\Program Files\RebeccaAIML\aiml\annotated_alice\Knowledge.aiml
+C:\Program Files\RebeccaAIML\aiml\annotated_alice\Literature.aiml
+C:\Program Files\RebeccaAIML\aiml\annotated_alice\Money.aiml
+C:\Program Files\RebeccaAIML\aiml\annotated_alice\Movies.aiml
+C:\Program Files\RebeccaAIML\aiml\annotated_alice\Music.aiml
+C:\Program Files\RebeccaAIML\aiml\annotated_alice\Parts.aiml
+C:\Program Files\RebeccaAIML\aiml\annotated_alice\Personality.aiml
+C:\Program Files\RebeccaAIML\aiml\annotated_alice\Philosophy.aiml
+C:\Program Files\RebeccaAIML\aiml\annotated_alice\Pickup.aiml
+C:\Program Files\RebeccaAIML\aiml\annotated_alice\Politics.aiml
+C:\Program Files\RebeccaAIML\aiml\annotated_alice\Predicates.aiml
+C:\Program Files\RebeccaAIML\aiml\annotated_alice\Psychology.aiml
+C:\Program Files\RebeccaAIML\aiml\annotated_alice\Reduce.aiml
+C:\Program Files\RebeccaAIML\aiml\annotated_alice\Reducer.aiml
+C:\Program Files\RebeccaAIML\aiml\annotated_alice\Reductions.aiml
+C:\Program Files\RebeccaAIML\aiml\annotated_alice\Religion.aiml
+C:\Program Files\RebeccaAIML\aiml\annotated_alice\Salutations.aiml
+C:\Program Files\RebeccaAIML\aiml\annotated_alice\Science.aiml
+C:\Program Files\RebeccaAIML\aiml\annotated_alice\Sex.aiml
+C:\Program Files\RebeccaAIML\aiml\annotated_alice\Spam.aiml
+C:\Program Files\RebeccaAIML\aiml\annotated_alice\Sports.aiml
+C:\Program Files\RebeccaAIML\aiml\annotated_alice\Stack.aiml
+C:\Program Files\RebeccaAIML\aiml\annotated_alice\Stories.aiml
+C:\Program Files\RebeccaAIML\aiml\annotated_alice\That.aiml
+C:\Program Files\RebeccaAIML\aiml\annotated_alice\Utilities.aiml
+C:\Program Files\RebeccaAIML\aiml\annotated_alice\Wallace.aiml
+C:\Program Files\RebeccaAIML\aiml\annotated_alice\Xfind.aiml
+C:\Program Files\RebeccaAIML\aiml\annotated_alice\update.aiml
+</pre></blockquote>
+            <p>
+            Now let us query the AIML for a response.  Issue the --getResponse command saying
+            "hi"
+            </p>
+<blockquote><pre>                   
+rs-admin --getResponse "hi"
+</pre></blockquote>
+            <p>
+            And you should see something along the lines of this in your terminal
+            </p>
+<blockquote><pre>                   
+rs-admin --getResponse "hi"
+Hello there.
+</pre></blockquote>
+            <p> 
+            That's the bot's response to you!  It is talking to you now that it has AIML 
+            files loaded.  Let us see how many predicates and how many bot predicates 
+            are loaded.  Bot predicates are variables that associate given things such as 
+            a bot's name, emotions, age, etc... with a particular bot.  Regular predicates 
+            are variables that associate given things such as a end user's name, emotions, 
+            age, etc... with a particular end user.  Let us retrieve all the bot predicates
+            for the default user's default bot.
+            </p>
+<blockquote><pre>                   
+rs-admin --getBotPredicates
+</pre></blockquote>
+            <p>
+            We should see this long list of bot predicates that are already associated with 
+            our default bot for our default user.
+            </p>
+<blockquote><pre>                   
+AGE
+BASEBALLTEAM
+BIRTHDAY
+BIRTHPLACE
+BOYFRIEND
+BUILD
+CELEBRITIES
+CELEBRITY
+CLASS
+EMAIL
+EMOTIONS
+ETHICS
+ETYPE
+FAMILY
+FAVORITEACTO
+FAVORITEACTR
+FAVORITEARTI
+FAVORITEAUTH
+FAVORITEBAND
+FAVORITEBOOK
+FAVORITECOLO
+FAVORITEFOOD
+FAVORITEMOVI
+FAVORITESONG
+FAVORITESPOR
+FEELINGS
+FOOTBALLTEAM
+FORFUN
+FRIEND
+FRIENDS
+GENDER
+GENUS
+GIRLFRIEND
+HOCKEYTEAM
+IP
+KINDMUSIC
+KINGDOM
+LANGUAGE
+LOCATION
+LOOKLIKE
+MASTER
+NAME
+NATIONALITY
+ORDER
+ORIENTATION
+PARTY
+PHYLUM
+PRESIDENT
+QUESTION
+RELIGION
+SIGN
+SIZE
+SPECIES
+TALKABOUT
+VERSION
+VOCABULARY
+WEAR
+WEBSITE            
+</pre></blockquote>
+            <p>
+            Each of these bot predicates should have a value of at least an empty string.
+            Most will have a real value since whenever the RebeccaAIML server starts she 
+            initializes the default user and default bot with particular values.  Let us 
+            get the value of one of the bot predicates in the list above.  Issue the 
+            command --getBotPredicate followed by one of the predicates in the list above.
+            I'll get the bot predicate "name" which defines the bot's name.
+            </p>            
+<blockquote><pre>
+rs-admin --getBotPredicate name
+</pre></blockquote>            
+           <p>
+           I should see 
+           </p>
+<blockquote><pre>
+Rebecca
+</pre></blockquote>            
+           <p>           
+           outputted to me.  Let me test this also by 
+           directly asking my bot what its name is by the --getResponse.  Notice I 
+           use double quotes to make my question count as one argument to the rs-admin tool.
+           </p>
+<blockquote><pre>
+rs-admin --getResponse "What is your name?"
+</pre></blockquote>            
+            <p>
+            And the bot replies
+            </p>            
+<blockquote><pre>
+My name is Rebecca.            
+</pre></blockquote>            
+            <p>
+            Let me change the name and gender of my bot.  I'll use the "--setBotPredicate" to
+            change both bot predicates
+            </p>
+<blockquote><pre>
+rs-admin --setBotPredicate "name" "John"
+rs-admin --setBotPredicate "gender" "Male"
+</pre></blockquote>            
+            <p>
+            Now if you do a query asking the bot what its name or gender is you should see it 
+            tell you that its name is john and its gender is that of a male.  Let us try it.
+            </p>
+<blockquote><pre>
+rs-admin --getResponse "What is your name? What is your gender?"
+</pre></blockquote>            
+           <p>
+           You should see it respond back
+           </p>
+<blockquote><pre>
+My name is John. I am a Male. Are you a man or a woman?
+</pre></blockquote>            
+          <p>
+          I'll answer it and tell it I am a male
+          </p>
+<blockquote><pre>
+rs-admin --getResponse "I am a man"
+</pre></blockquote>            
+         <p>
+         It should now thank me for the information
+         </p>
+<blockquote><pre>
+Thanks for telling me your gender, . You are a "he".         
+</pre></blockquote>            
+         <p>
+         Wait a second though.  It seems to not know my name?  Let me see exactly what it 
+         knows about me, the end user, by querying for end user predicates.
+         </p>         
+<blockquote><pre>
+rs-admin --getPredicates
+</pre></blockquote>     
+         <p>
+         We should see a very short list at this point.  Topic is a built in predicate 
+         for AIML processing and GENDER is what the bot has its self created.          
+         </p>
+<blockquote><pre>
+TOPIC
+GENDER
+</pre></blockquote>     
+        <p>
+        Since I told the bot my gender was male I bet if I query that predicate it will 
+        return that I am a male.
+        </p>
+<blockquote><pre>
+rs-admin --getPredicate GENDER
+he
+</pre></blockquote>     
+        <p>
+        Yep, it returns that I am a "he".  Now what about my name?  I could do a "--getResponse"
+        telling the bot directly my name.  I could also set it directly through the command 
+        "--setPredicate" too.  One more option is to setup the most common predicates of the 
+        annotated alice AIML files.  To do this you call "--getResponse connect".  Whenever the 
+        annotated alice AIML bot sees the word connect the annotated alice AIML will create 
+        user predicates with default values.  I am going to use the connect key word to set 
+        the predicates.
+        </p> 
+<blockquote><pre>
+rs-admin --getResponse "connect"
+</pre></blockquote>     
+        <p>
+        I should see the bot say hi or some sort of greeting.  Connect is programmed through AIML
+        and is specific to the annotated alice AIML set.  Now if I do a "--getPredicates" I should
+        see a more extensive set of user predicates set with default values
+        </p>
+<blockquote><pre>
+rs-admin --getPredicates
+AGE
+BIRTHDAY
+BOYFRIEND
+BROTHER
+CAT
+DOES
+DOG
+EINDEX
+EMAIL
+ETYPE
+FATHER
+FAVCOLOR
+FAVMOVIE
+FIRSTNAME
+FRIEND
+FULLNAME
+GENDER
+GIRLFRIEND
+HAS
+HE
+HEARD
+HER
+HIM
+HUSBAND
+IS
+IT
+JOB
+LASTNAME
+LIKE
+LOCATION
+LOOKLIKE
+MEMORY
+META
+MIDDLENAME
+MOTHER
+NAME
+NICKNAME
+PASSWORD
+PERSONALITY
+PHONE
+RELIGION
+SHE
+SIGN
+SISTER
+THEM
+THEY
+THOUGHT
+TOP
+TOPIC
+WANT
+WE
+WIFE
+</pre></blockquote>     
+            <p>
+            Some other document I will probably talk more about the annotated_alice 
+            AIML set that I ship with RebeccaAIML.  For this user guide it falls out 
+            of the scope.  But be aware that if you call "connect" in your programming code
+            or through rs-admin with a particular end user, that end user's predicates 
+            will be reset to default values.
+            <br/><br/></p>
+            <p>
+            Everything I've done up to this point has been direct manipulation of the 
+            "default" user id, bot id, and end user id.  What about if we want to use 
+            the rs-admin tool to manipulate other users, bots, or end user ids?  Simple, 
+            you prefix any commands with the --setIds command.  Say, for example, you 
+            want to find out how many AIML files the bot "JohnsBot" which belongs to 
+            the user "John" has and you want to find out through the end user also
+            called john.
+            </p>
+<blockquote><pre>            
+rs-admin --setIds "John" "JohnsBot" "John" --getAIMLFileListSize
+</pre></blockquote>
+            <p>
+            If you were to issue that command now you should get back a 0 since we 
+            haven't loaded any aiml files for that user's bot.  To add the files I can use 
+            the command we used earlier of --addDirectoryUnlessAlreadyAdded and the 
+            command --createGraph to add files for that user and bot.  I will use 
+            the shorter "-" versions for all of them this time.  The "\" here means 
+            to put the line below "-aduaa" all together on the same line.
+            </p>
+<blockquote><pre>            
+rs-admin -sids "John" "JohnsBot" "John" -aduaa \
+"C:\Program Files\RebeccaAIML\aiml\annotated_alice"
+
+rs-admin -sids "John" "JohnsBot" "John" -cg
+</pre></blockquote>
+            <p>
+            Notice that all commands to manipulate John and his bot have to have 
+            the --setIds or -sids command prefixed.  If you don't prefix it or forget to
+            you're manipulating the "default" user, bot, and end user.  We can query 
+            John's bot through any end user to get back the response from his bot.  I'll
+            use the shortened version of --getResponse to say hi to his bot.
+            </p>
+<blockquote><pre>            
+rs-admin -sids "John" "JohnsBot" "John" -gr "hi"
+</pre></blockquote>
+            <p>
+            If I were to ask John's bot what its name is it should return back an empty
+            string since it is a seperate bot and its name has never been assigned to it.
+            </p>
+<blockquote><pre>            
+rs-admin -sids "John" "JohnsBot" "John" -gr "what is your name"
+My name is .
+</pre></blockquote>
+            <p>
+            That's okay we can assign John's bot a name pretty easily using "--setBotPredicate"
+            if we wanted to.  We could also parse a properties XML file to set the 
+            bot predicate names too.  Let us have John's bot parse all the same bot predicates
+            that the normal "default" bot parses. The "\" here means 
+            to put the line below it all together on the same line.
+            </p>
+<blockquote><pre>            
+rs-admin -sids "John" "JohnsBot" "John" \
+--parsePropertiesFile \
+"C:\Program Files\RebeccaAIML\conf\properties.xml"
+</pre></blockquote>
+            <p>
+            Now if you ask it for its name or gender or any other bot predicate it should give
+            the same respsones as that of the "default" user and "default" bot.
+            <br/><br/></p>
+            <p>
+            So far we have been querying John's bot with the end user of "John".  What if another
+            end user wants to query John's bot?  If "John" tells the bot that his name is "John" and 
+            "Kim" now queries the bot we don't want the bot thinking that Kim's name is 
+            John.  No problem.  Each end user has their own set of predicates stored.  For example
+            if John tells the bot that his name is John and Kim tells the bot that her name is
+            Kim
+            </p>
+<blockquote><pre>            
+rs-admin -sids "John" "JohnsBot" "John" -gr "My name is John"
+
+rs-admin -sids "John" "JohnsBot" "Kim" -gr "My name is Kim"
+</pre></blockquote>
+            <p> We should see the bot greet each in turn with a "hi how are you doing John" for John
+            and "hi how are you doing Kim" for Kim.  But if we do a query of predictes 
+            for the end user "John" and the end user "Kim" we should see that the predicates are indeed 
+            set different for each one.
+            </p>
+<blockquote><pre>            
+rs-admin -sids "John" "JohnsBot" "John" -gp "name"
+John
+
+rs-admin -sids "John" "JohnsBot" "Kim" -gp "name"
+Kim
+</pre></blockquote>
+            <p>
+            Okay, now I'm through with John's bot so let's remove the user John which will in turn remove 
+            all of John's bots and end users.  rs-admin has the capability to remove users, 
+            bots, and end users.  Here I'm going to remove John's entire user which will remove all 
+            of his bots and end users.
+            </p>
+<blockquote><pre>            
+rs-admin --removeUser "John"
+</pre></blockquote>
+            <br/><p>
+            This entire time we have been using rs-admin to connect to RebeccaAIML's
+            running server to do its queries.  However, we can give it a switch to connect directly
+            to the embedded database and bypass the server altogether.  This will be slower
+            than going through the server and will only work on the local machine running 
+            the embedded database but I provide it none the less in case you cannot get the 
+            server running or do not wish to run it.  The switch to give it is the "--localConnection"
+            or "-lc" switch.  Quick example to get a local response without going through
+            the server
+            </p>
+<blockquote><pre>            
+rs-admin --localConnection --getResponse "hi"
+</pre></blockquote>
+            <p>
+            The rs-admin is a powerful tool and I hope you find it as useful as I did for 
+            debugging my code when I wrote it.
+            </p>
+            <div class="post">
+            <h2><a id="cpp_programming"></a>How to use C++ for programming with RebeccAIML</h2>
+            <p>
+            With C++ you can either program using the embedded or networking api for C++.  I 
+            recommend using the networking api since its far simpler and requires less boiler 
+            plate.  I will present two simple examples below and explain them.  The first will 
+            be using the networking api and the other will be using the embedded programming
+            api.  These might be slightly different from the samples shipped with RebeccaAIML 
+            but only because I want to make them as clear as possible here.  The ones shipped 
+            with RebeccaAIML have more comments and are more robust.
+            <br/><br/></p>
+            <p>
+            Let us start with a fully functional C++ bot application with 
+            just a few lines of C++ code.
+            </p>
+<blockquote><pre>
+#include &lt;rebecca/network_all.h&gt;
+using namespace rebecca;
+
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+int main (int argc, char* args[]) 
+{
+try
+{		
+NetworkAimlFacade aiml(argc, args);
+NetworkGraphBuilder &amp;builder = 
+    aiml.getNetworkGraphBuilder();
+cout &lt;&lt; "[Type /exit to exit]" 
+     &lt;&lt; endl &lt;&lt; endl &lt;&lt; endl;
+string botName = 
+    builder.getBotPredicate("name").c_str();
+StringPimpl response = 
+    builder.getResponse("connect");		
+
+//Send the initial opening line of the bot
+cout &lt;&lt; botName &lt;&lt; " says: " 
+     &lt;&lt; response.c_str() &lt;&lt; endl;
+
+while(true)
+{
+    string input;
+    cout &lt;&lt; "You say> ";
+
+    //Get input from the user from the keyboard
+    getline(cin, input); 
+			
+    if(input == "/exit")
+    {
+        break;
+    }
+    else //The user gave an input to the bot
+    {
+        StringPimpl response = 
+            builder.getResponse(input.c_str());
+        cout &lt;&lt; "=====================" 
+             &lt;&lt; endl &lt;&lt; endl;
+        //Print out what Rebecca says.
+        cout &lt;&lt; botName &lt;&lt; " says: " 
+             &lt;&lt; response.c_str() &lt;&lt; endl;
+     }
+} //end of while
+} //end of try
+catch(NetworkException &amp;e)
+{
+    cout &lt;&lt; "[NetworkException Found Terminating]" 
+         &lt;&lt; endl;
+    cout &lt;&lt; "[" &lt;&lt; e.what() &lt;&lt; "]" &lt;&lt; endl;
+    return 1;
+}
+catch(Exception &amp;e)
+{
+    cout &lt;&lt; "[An uknown exception occured, "
+                  "Terminating program]" &lt;&lt; endl;
+    cout &lt;&lt; "[" &lt;&lt; e.what() &lt;&lt; "]";
+    return 1;
+}
+//Everything smooth.  Exit normally.
+return 0;
+</pre></blockquote>
+            <p>
+            Here is a break down of how the code above works.  First include
+            all the RebeccaAIML networking header files and include her 
+            namespace as well as some Standard Library header files for outputing
+            to your screen.
+            </p>
+<blockquote><pre>
+#include &lt;rebecca/network_all.h&gt;
+using namespace rebecca;
+
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+</pre></blockquote>
+           <p>
+           Next, create an instace of the NetworkAimlFacade feeding it your arguments from
+           your main.  From that facade we get a handle to the GraphBuilder.  The GraphBuilder 
+           is where all your manipulations of AIML will occur.  Once you have a handle to 
+           the GraphBuilder you can pretty much do any manipulations like you would do with 
+           the command line tool rs-admin.
+           </p>
+<blockquote><pre>
+NetworkAimlFacade aiml(argc, args);
+NetworkGraphBuilder &amp;builder = 
+    aiml.getNetworkGraphBuilder();
+</pre></blockquote>
+          <p>
+          Now, lets get the bot name and our first response from the bot.  I tell the bot
+          "connect" and get its response back.  The first thing I say to the bot is 
+          "connect" because I'm using the annotated alice AIML set.  Whenever you say 
+          "connect" to the annotated alice AIML data set it will initialize 
+          all of the end user predicates.
+          </p>
+<blockquote><pre>
+string botName = 
+    builder.getBotPredicate("name").c_str();
+StringPimpl response = 
+    builder.getResponse("connect");		
+</pre></blockquote>
+         <p>
+         Finally, let us start a while loop where we read a line from the user of our
+         program.  If the input is "/exit" we will break from our loop and return.  If 
+         it is not, we will feed the input into the bot and get back our response.
+         </p>
+<blockquote><pre>
+while(true)
+{
+    string input;
+    cout &lt;&lt; "You say> ";
+
+    //Get input from the user from the keyboard
+    getline(cin, input); 
+			
+    if(input == "/exit")
+    {
+        break;
+    }
+    else //The user gave an input to the bot
+    {
+        StringPimpl response = 
+            builder.getResponse(input.c_str());
+        cout &lt;&lt; "=====================" 
+             &lt;&lt; endl &lt;&lt; endl;
+        //Print out what Rebecca says.
+        cout &lt;&lt; botName &lt;&lt; " says: " 
+             &lt;&lt; response.c_str() &lt;&lt; endl;
+     }
+} //end of while
+</pre></blockquote>
+         <p>
+         One thing you should notice is that I never fed any AIML files in the above 
+         example to our bot.  I just assumed that the AIML files were already added 
+         from some other mechanism.  If you want to add a directory you would use 
+         the GraphBuilder and call "addDirectoryUnlessAlreadyAdded" or 
+         "addFileUnlessAlreadyAdded" and then "createGraph".  
+         For example, before your while loop, you could add
+         </p>
+<blockquote><pre>
+builder.addDirectoryUnlessAlreadyAdded
+(
+  "C:\\Program Files\\RebeccaAIML\\aiml\\annotated_alice"
+);
+builder.createGraph();
+</pre></blockquote>
+         <p>
+         Now I will show below a short example of the embedded C++ version.  This version
+         is going to be more involved since you have to do more setting up compared to the 
+         networking example.  The networking sample is easier to write since the server 
+         on startup handles a lot of the boiler plate code. 
+        </p>
+<blockquote><pre>
+#include &lt;rebecca/all.h&gt;
+using namespace rebecca;
+
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+int main (int argc, char* args[]) 
+{
+try
+{
+
+//Get the GraphBuilder
+AimlFacade aiml;
+GraphBuilder &amp;builder = aiml.getGraphBuilder();
+
+//set schema locations
+builder.setAIMLSchema
+(
+"C:\\Program\ Files\\RebeccaAIML\\resources\\schema\\AIML.xsd"
+);
+builder.setCommonTypesSchema
+(
+"C:\\Program\ Files\\RebeccaAIML\\resources\\schema\\common-types.xsd"
+);
+builder.setBotConfigurationSchema
+(
+"C:\\Program\ Files\\RebeccaAIML\\resources\\schema\\bot-configuration.xsd"
+);
+
+//set to true that we want to do XML validation    
+builder.setAIMLValidation();
+builder.setBotConfigurationValidation();
+
+//parse the substitutions file
+builder.parseSubstitutionFile
+(
+"C:\\Program\ Files\\RebeccaAIML\\conf\\substitutions.xml"
+);
+    
+//parse sentence splitters
+builder.parseSentenceSplitterFile
+(
+"C:\\Program\ Files\\RebeccaAIML\\conf\\sentence-splitters.xml"
+);
+
+//parse bot properties    
+builder.parsePropertiesFile
+(
+"C:\\Program\ Files\\RebeccaAIML\\conf\\properties.xml"
+);
+
+//add the AIML directory unless its already added    
+builder.addDirectoryUnlessAlreadyAdded
+(
+"C:\\Program\ Files\\RebeccaAIML\\aiml\\annotated_alice"
+);
+builder.createGraph();
+
+cout &lt;&lt; "[Type /exit to exit]" 
+     &lt;&lt; endl &lt;&lt; endl &lt;&lt; endl;
+string botName = 
+    builder.getBotPredicate("name").c_str();
+StringPimpl response = 
+    builder.getResponse("connect");		
+
+//Send the initial opening line of the bot
+cout &lt;&lt; botName 
+     &lt;&lt; " says: " 
+     &lt;&lt; response.c_str() 
+     &lt;&lt; endl;
+
+while(true)
+{
+    string input;
+    cout &lt;&lt; "You say> ";
+
+    //Get input from the user from the keyboard
+    getline(cin, input); 
+			
+    if(input == "/exit")
+    {
+        break;
+    }
+    else //The user gave an input to the bot
+    {
+        cout &lt;&lt; endl
+        StringPimpl response = 
+            builder.getResponse(input.c_str());
+        //output lines
+        cout &lt;&lt; "=====================" 
+             &lt;&lt; endl &lt;&lt; endl;
+        //Print out what Rebecca says.
+        cout &lt;&lt; botName &lt;&lt; " says: " 
+             &lt;&lt; response.c_str() 
+             &lt;&lt; endl;
+    }
+} //end of while
+} //end of try
+catch(Exception &amp;e)
+{
+    cout &lt;&lt; "[An uknown exception occured,"
+                  " Terminating program]" 
+         &lt;&lt; endl;
+    cout &lt;&lt; "[" &lt;&lt; e.what() &lt;&lt; "]";
+    return 1;
+}
+return 0;
+</pre></blockquote>            
+            <p>
+            Here is a break down of how the code above works.  First include
+            all the RebeccaAIML header files and include her 
+            namespace as well as some Standard Library header files for outputing
+            to your screen.
+            </p>
+<blockquote><pre>
+//Rebecca includes
+#include &lt;rebecca/all.h&gt;
+using namespace rebecca;
+
+//Std includes
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+</pre></blockquote>
+           <p>
+           Next, create an instace of the AimlFacade.  From that facade we get a handle 
+           to the GraphBuilder.  The GraphBuilder is where all your manipulations 
+           of AIML will occur.  Once you have a handle to the GraphBuilder you can 
+           pretty much do any manipulations like you would do with the command 
+           line tool rs-admin.
+           </p>
+<blockquote><pre>
+AimlFacade aiml;
+GraphBuilder &amp;builder = aiml.getGraphBuilder();
+</pre></blockquote>
+            <p>
+            Now we'll inform RebeccaAIML of the locations of where our various 
+            xsd's are.  Xsd's are files which RebeccaAIML uses to figure out if 
+            the XML she parses is valid or not.  There's a few XML files 
+            we'll have to load after this step. 
+            </p>
+<blockquote><pre>
+//set schema locations
+builder.setAIMLSchema
+(
+"C:\\Program\ Files\\RebeccaAIML\\resources\\schema\\AIML.xsd"
+);
+builder.setCommonTypesSchema
+(
+"C:\\Program\ Files\\RebeccaAIML\\resources\\schema\\common-types.xsd"
+);
+builder.setBotConfigurationSchema
+(
+"C:\\Program\ Files\\RebeccaAIML\\resources\\schema\\bot-configuration.xsd"
+);
+</pre></blockquote>
+            <p>
+            Now since we have gone through the trouble of loading xsd's we might
+            as well inform RebeccaAIML that, <i>yes</i>, we want to do XML validation.  
+            XML validation is the process of validating whether or not XML files 
+            we are processing are correct.  Without XML validation if we were 
+            to get a malformed XML file we would crash.  With XML validation 
+            we have a chance of not crashing and a chance of reporting what the 
+            error within the file is.
+            </p>
+<blockquote><pre>
+builder.setAIMLValidation();
+builder.setBotConfigurationValidation();
+</pre></blockquote>
+            <p>
+            Almost done!  We just have to load in our substitutions, 
+            sentence splitters, and our bot properties.  We load them through
+            XML files we have in our installation.  Substitutions are words we 
+            substitute for other words from the end user querying our 
+            bots.  For example, we might substitute commonly 
+            mispelled words for their correct spelling.  Sentence splitters 
+            are what we use to determine what the end of a sentence is.  For
+            example, a period "." would be a sentence splitter.  Bot 
+            properties are bot predicates that we want set on our bot.
+            </p>
+<blockquote><pre>
+//parse the substitutions file
+builder.parseSubstitutionFile
+(
+"C:\\Program\ Files\\RebeccaAIML\\conf\\substitutions.xml"
+);
+    
+//parse sentence splitters
+builder.parseSentenceSplitterFile
+(
+"C:\\Program\ Files\\RebeccaAIML\\conf\\sentence-splitters.xml"
+);
+
+//parse bot properties    
+builder.parsePropertiesFile
+(
+"C:\\Program\ Files\\RebeccaAIML\\conf\\properties.xml"
+);
+</pre></blockquote>
+            <p>
+            Our final step is to add our AIML directory into 
+            the embedded database "brain" (unless they've already 
+            been added of course).
+            </p>
+<blockquote><pre>
+//add the AIML directory unless its already added    
+builder.addDirectoryUnlessAlreadyAdded
+(
+"C:\\Program\ Files\\RebeccaAIML\\aiml\\annotated_alice"
+);
+builder.createGraph();
+</pre></blockquote>
+         <p>
+         Finally, let us start a while loop where we read a line from the user of our
+         program.  If the input is "/exit" we will break from our loop and return.  If 
+         it is not, we will feed the input into the bot and get back our response.
+         </p>
+<blockquote><pre>
+while(true)
+{
+    string input;
+    cout &lt;&lt; "You say> ";
+
+    //Get input from the user from the keyboard
+    getline(cin, input); 
+			
+    if(input == "/exit")
+    {
+        break;
+    }
+    else //The user gave an input to the bot
+    {
+        StringPimpl response = 
+            builder.getResponse(input.c_str());
+        cout &lt;&lt; "=====================" 
+             &lt;&lt; endl &lt;&lt; endl;
+        //Print out what Rebecca says.
+        cout &lt;&lt; botName &lt;&lt; " says: " 
+             &lt;&lt; response.c_str() &lt;&lt; endl;
+     }
+} //end of while
+</pre></blockquote>
+                </div>
+			    <div class="post">
+			    <h2><a id="java_programming"></a>How to use Java for programming with RebeccAIML</h2>
+                <p>
+                With Java you can program RebeccaAIML applications using the networking api.  
+                I will present a simple example below and explain it.  
+                This might be slightly different from the sample shipped with RebeccaAIML 
+                but only because I want to make it as clear as possible here.  
+                The one shipped with RebeccaAIML has more comments and is more robust.
+                <br/><br/></p>
+                <p>
+                Let us start with a fully functional Java bot application with 
+                just a few lines of Java code.
+                </p>
+<blockquote><pre>
+import rebecca.NetworkAimlFacade;
+import rebecca.GraphBuilder;
+import rebecca.NetworkException;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
+public class Console {
+  public static void main(String args[]) {
+  NetworkAimlFacade aiml = null;
+  int status = 0;
+  try {
+    aiml = new NetworkAimlFacade(args);
+    GraphBuilder builder = 
+        aiml.getNetworkGraphBuilder();
+    String botName = 
+        builder.getBotPredicate("name");
+    String initialResponse = 
+        builder.getResponse("connect");
+    System.out.println(botName + " says: " + 
+        initialResponse);
+    while(true) {
+      System.out.print("You say> ");
+      BufferedReader br = 
+        new BufferedReader(new 
+            InputStreamReader(System.in));
+      String input = br.readLine();
+      if(input.equals("/exit")) {
+        break;
+      } else {
+        String response = 
+            builder.getResponse(input);
+        System.out.println("=====================");
+        //Print out what Rebecca says.
+        System.out.println(botName + " says: " + 
+            response);
+        }
+    }
+    aiml.destroy();
+    } catch(NetworkException e) {
+      e.printStackTrace();
+      status = 1;
+    } catch (Exception e) {
+      e.printStackTrace();
+      status = 1;
+    }
+    System.exit(status);
+  }
+}
+</pre></blockquote>
+            <p>
+            Here is a break down of how the code above works.  First 
+            import the RebeccaAIML packages as well as some 
+            java.io packages for outputing to your screen.
+            </p>
+<blockquote><pre>
+import rebecca.NetworkAimlFacade;
+import rebecca.GraphBuilder;
+import rebecca.NetworkException;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+</pre></blockquote>
+           <p>
+           Next, create an instace of the NetworkAimlFacade feeding it your arguments from
+           your main.  From that facade we get a handle to the GraphBuilder.  The GraphBuilder 
+           is where all your manipulations of AIML will occur.  Once you have a handle to 
+           the GraphBuilder you can pretty much do any manipulations like you would do with 
+           the command line tool rs-admin.
+           </p>
+<blockquote><pre>
+aiml = new NetworkAimlFacade(args);
+GraphBuilder builder = 
+    aiml.getNetworkGraphBuilder();
+</pre></blockquote>
+          <p>
+          Now, lets get the bot name and our first response from the bot.  I tell the bot
+          "connect" and get its response back.  The first thing I say to the bot is 
+          "connect" because I'm using the annotated alice AIML set.  Whenever you say 
+          "connect" to the annotated alice AIML data set it will initialize 
+          all of the end user predicates.
+          </p>
+<blockquote><pre>
+String botName = 
+    builder.getBotPredicate("name");
+String initialResponse = 
+    builder.getResponse("connect");
+System.out.println(botName + " says: " + 
+    initialResponse);
+</pre></blockquote>
+         <p>
+         Finally, let us start a while loop where we read a line from the user of our
+         program.  If the input is "/exit" we will break from our loop and return.  If 
+         it is not, we will feed the input into the bot and get back our response.
+         </p>
+<blockquote><pre>
+while(true) {
+  System.out.print("You say> ");
+  BufferedReader br = 
+    new BufferedReader(new 
+        InputStreamReader(System.in));
+  String input = br.readLine();
+  if(input.equals("/exit")) {
+    break;
+  } else {
+    String response = 
+    builder.getResponse(input);
+    System.out.println("=====================");
+    //Print out what Rebecca says.
+    System.out.println(botName + " says: " + 
+        response);
+  }
+} 
+</pre></blockquote>
+         <p>
+         One thing you should notice is that I never fed any AIML files in the above 
+         example to our bot.  I just assumed that the AIML files were already added 
+         from some other mechanism.  If you want to add a directory you would use 
+         the GraphBuilder and call "addDirectoryUnlessAlreadyAdded" or 
+         "addFileUnlessAlreadyAdded" and then "createGraph".  
+         For example, before your while loop, you could add
+         </p>
+<blockquote><pre>
+builder.addDirectoryUnlessAlreadyAdded
+(
+  "C:\\Program\ Files\\RebeccaAIML\\aiml\\annotated_alice"
+);
+builder.createGraph();
+</pre></blockquote>
+                </div>
+			    <div class="post">
+			    <h2><a id="csharp_programming"></a>How to use C# for programming with RebeccAIML</h2>
+                <p>
+                With C# you can program RebeccaAIML applications using the networking api.  
+                I will present a simple example below and explain it.  This might be 
+                slightly different from the sample shipped with RebeccaAIML but only 
+                because I want to make it as clear as possible here.  The one shipped with 
+                RebeccaAIML has more comments and is more robust.
+                <br/><br/></p>
+                <p>
+                Let us start with a fully functional C# bot application with 
+                just a few lines of C# code.
+                </p>
+<blockquote><pre>
+using System;
+
+using rebecca;
+using rebecca.impl;
+
+namespace console
+{
+class Console
+{
+static void Main(string[] args)
+{
+  NetworkAimlFacade aiml = null;
+  int status = 0;
+  try
+  {
+    aiml = new NetworkAimlFacade(args);
+    GraphBuilder builder = 
+        aiml.GetNetworkGraphBuilder();
+    string botName = 
+        builder.GetBotPredicate("name");
+    string initialResponse = 
+        builder.GetResponse("connect");
+    System.Console.WriteLine(botName + " says: " + 
+        initialResponse);
+    while (true)
+    {
+      System.Console.Write("You say> ");
+      string input = System.Console.ReadLine();
+      if (input.Equals("/exit"))
+      {
+        break;
+      }
+      else
+      {
+        string response = builder.GetResponse(input);
+        //Print out what Rebecca says.
+        System.Console.WriteLine(botName + 
+        " says: " + response);
+      }
+    }
+  }
+  catch (NetworkException e)
+  {
+    System.Console.WriteLine(e.ToString());
+    System.Console.Write(Environment.StackTrace);
+  }
+  catch (Exception e)
+  {
+    System.Console.WriteLine(e.ToString());
+    System.Console.Write(Environment.StackTrace);
+  }
+  finally
+  {
+    if (aiml != null)
+    {
+      aiml.Destroy();
+    }
+  }
+
+  System.Environment.Exit(status);
+} //end of Main
+} //end of Console
+} //end of console
+</pre></blockquote>
+            <p>
+            Here is a break down of how the code above works.  First 
+            import the RebeccaAIML packages as well as some 
+            System packages for outputing to your screen.
+            </p>
+<blockquote><pre>
+using System;
+
+using rebecca;
+using rebecca.impl;
+</pre></blockquote>
+           <p>
+           Next, create an instace of the NetworkAimlFacade feeding it your arguments from
+           your main.  From that facade we get a handle to the GraphBuilder.  The GraphBuilder 
+           is where all your manipulations of AIML will occur.  Once you have a handle to 
+           the GraphBuilder you can pretty much do any manipulations like you would do with 
+           the command line tool rs-admin.
+           </p>
+<blockquote><pre>
+aiml = new NetworkAimlFacade(args);
+GraphBuilder builder = 
+    aiml.GetNetworkGraphBuilder();
+</pre></blockquote>
+          <p>
+          Now, lets get the bot name and our first response from the bot.  I tell the bot
+          "connect" and get its response back.  The first thing I say to the bot is 
+          "connect" because I'm using the annotated alice AIML set.  Whenever you say 
+          "connect" to the annotated alice AIML data set it will initialize 
+          all of the end user predicates.
+          </p>
+<blockquote><pre>
+string botName = 
+    builder.GetBotPredicate("name");
+string initialResponse = 
+    builder.GetResponse("connect");
+System.Console.WriteLine(botName + " says: " + 
+    initialResponse);
+</pre></blockquote>
+         <p>
+         Finally, let us start a while loop where we read a line from the user of our
+         program.  If the input is "/exit" we will break from our loop and return.  If 
+         it is not, we will feed the input into the bot and get back our response.
+         </p>
+<blockquote><pre>
+while (true)
+{
+  System.Console.Write("You say> ");
+  string input = System.Console.ReadLine();
+  if (input.Equals("/exit"))
+  {
+    break;
+  }
+  else
+  {
+    string response = builder.GetResponse(input);
+    //Print out what Rebecca says.
+    System.Console.WriteLine(botName + 
+    " says: " + response);
+  }
+}
+</pre></blockquote>
+         <p>
+         One thing you should notice is that I never fed any AIML files in the above 
+         example to our bot.  I just assumed that the AIML files were already added 
+         from some other mechanism.  If you want to add a directory you would use 
+         the GraphBuilder and call "addDirectoryUnlessAlreadyAdded" or 
+         "addFileUnlessAlreadyAdded" and then "createGraph".  
+         For example, before your while loop, you could add
+         </p>
+<blockquote><pre>
+builder.AddDirectoryUnlessAlreadyAdded
+(
+  "C:\\Program\ Files\\RebeccaAIML\\aiml\\annotated_alice"
+);
+builder.CreateGraph();
+</pre></blockquote>
+			    <div class="post">
+			    <h2><a id="python_programming"></a>How to use Python for programming with RebeccAIML</h2>
+                <p>
+                With Python you can program RebeccaAIML applications using the networking api.  
+                I will present a simple example below and explain it.  
+                This might be slightly different from the sample shipped with RebeccaAIML 
+                but only because I want to make it as clear as possible here.  The one 
+                shipped with RebeccaAIML has more comments and is more robust.
+                <br/><br/></p>
+                <p>
+                Let us start with a fully functional Python bot application with 
+                just a few lines of Python code.
+                </p>
+<blockquote><pre>
+from NetworkException import *
+from NetworkAimlFacade import *
+import sys
+import traceback
+
+status = 0
+aiml = None
+try:
+    aiml = NetworkAimlFacade(sys.argv)
+    builder = aiml.getNetworkGraphBuilder()
+    print '[Type /exit to exit]\n\n'
+    botName = builder.getBotPredicate('name')
+    response = builder.getResponse('connect')
+    print botName + ' says: ' + response
+    while 1:
+        input = raw_input('You say> ')
+        if input == '/exit':
+            break
+        else:
+            response = builder.getResponse(input)
+            print "=====================\n"
+            print botName + " says: " + response
+except NetworkException, e:
+    print '[NetworkException Found Terminating]'
+    print '[' + str(e.what()) + ']'
+    traceback.print_exc()
+    status = 1
+except Exception, e:
+    print '[An uknown exception occured,' +
+          Terminating program]'
+    print '[' + str(e.what()) + ']'
+    traceback.print_exc()
+    status = 1
+
+if aiml:
+    aiml.destroy()
+
+sys.exit(status)
+</pre></blockquote>
+            <p>
+            Here is a break down of how the code above works.  First 
+            import the RebeccaAIML packages as well as some 
+            sys packages for outputing to your screen.
+            </p>
+<blockquote><pre>
+from NetworkException import *
+from NetworkAimlFacade import *
+import sys
+import traceback
+</pre></blockquote>
+           <p>
+           Next, create an instace of the NetworkAimlFacade feeding it your arguments from
+           your main.  From that facade we get a handle to the GraphBuilder.  The GraphBuilder 
+           is where all your manipulations of AIML will occur.  Once you have a handle to 
+           the GraphBuilder you can pretty much do any manipulations like you would do with 
+           the command line tool rs-admin.
+           </p>
+<blockquote><pre>
+aiml = NetworkAimlFacade(sys.argv)
+builder = aiml.getNetworkGraphBuilder()
+</pre></blockquote>
+          <p>
+          Now, lets get the bot name and our first response from the bot.  I tell the bot
+          "connect" and get its response back.  The first thing I say to the bot is 
+          "connect" because I'm using the annotated alice AIML set.  Whenever you say 
+          "connect" to the annotated alice AIML data set it will initialize 
+          all of the end user predicates.
+          </p>
+<blockquote><pre>
+botName = builder.getBotPredicate('name')
+response = builder.getResponse('connect')
+print botName + ' says: ' + response
+</pre></blockquote>
+         <p>
+         Finally, let us start a while loop where we read a line from the user of our
+         program.  If the input is "/exit" we will break from our loop and return.  If 
+         it is not, we will feed the input into the bot and get back our response.
+         </p>
+<blockquote><pre>
+while 1:
+    input = raw_input('You say> ')
+    if input == '/exit':
+        break
+    else:
+        response = builder.getResponse(input)
+        print "=====================\n"
+        print botName + " says: " + response
+</pre></blockquote>
+         <p>
+         One thing you should notice is that I never fed any AIML files in the above 
+         example to our bot.  I just assumed that the AIML files were already added 
+         from some other mechanism.  If you want to add a directory you would use 
+         the GraphBuilder and call "addDirectoryUnlessAlreadyAdded" or 
+         "addFileUnlessAlreadyAdded" and then "createGraph".  
+         For example, before your while loop, you could add
+         </p>
+<blockquote><pre>
+builder.addDirectoryUnlessAlreadyAdded
+(
+  'C:\\Program\ Files\\RebeccaAIML\\aiml\\annotated_alice'
+);
+builder.createGraph();
+</pre></blockquote>
+                </div>
+			    <div class="post">
+			    <h2><a id="any_programming"></a>How to use <b><i>any</i></b> programming language or 
+                seperate process with RebeccAIML</h2>
+                <p>
+                The anwser to this is really short and simple.  You can always use the 
+                <a href="#rs_admin">rs-admin</a> tool for any programming language or 
+                running process which can call to the operating system shell.  You can do 
+                everything a supported programming language can do <i>except</i> for recieving 
+                callbacks.  So, why not for a programming or web language not officially supported 
+                make a system call to rs-admin?  Give it a try.  I'm sure 
+                you'll find rs-admin operates better than most AIML supported languages from 
+                other platforms not as robust as RebeccaAIML.
+                </p>
+                </div>
+			    <div class="post">
+			    <h2><a id="install_eclipse"></a>Installing the Eclipse Plugin for AIML editing with RebeccaAIML</h2>
+                <p>
+                Before you do anything, ensure you have downloaded and installed RebeccaAIML.  The plugin will not
+                operate or do anything without first downloading and installing RebeccaAIML.<br/><br/></p>
+                <p>
+                To install the eclipse plugin, <a href="download.htm">download</a> the RebeccaAIML 
+                eclipse plugin from the downloads section.  Next, download eclipse from Eclipse's 
+                <a href="http://www.eclipse.org/downloads/">download site</a>.  Download the 
+                eclipse IDE for Java Developers.  I know, I know, you're a AIML developer not a Java Devloper!  However,
+                the java developer version has all the XML tools you will want and need.<br/><br/></p>
+                <p>
+                Unzip the downloaded eclipse IDE for Java developers to a suitable location.  I prefer to just use my
+                root directory of "C:\" under Windows.<br/><br/></p>
+                <p>
+                Unzip the downloaded AIML plugin and read the README included with the zip.  It should tell you
+                how to install the plugin into your eclipse enviornment.  To uninstall, follow the same README
+                instructions.  To remove eclipse, just delete your entire elcipse folder you unzipped.
+                </p>
+                </div>
+			    <div class="post">
+			    <h2><a id="use_eclipse"></a>Using Eclipse with RebeccaAIML for AIML editing</h2>
+                <p>
+                Start eclipse by double clicking the eclipse.exe in the eclipse folder.  It will first ask you for 
+                your workspace and give you a default location for your workspace.  Take the default 
+                (or choose something else -- it's your preference).  Click OK.  Now eclipse should 
+                bring you to a welcome screen that has several clickable items.  It'll be worth your time at 
+                some point to read all about the workbench and the basics of eclipse.  For now, just close 
+                that screen and let's continue.<br/><br/></p>
+                <p>
+                We will bring up the RebeccaAIML console view by clicking Window->Show View->Other...
+                </p>
+                <br/><p>
+                <img src="home_files/eclipse_1.png" alt="eclipse_1"/>
+                </p>
+                <br/><p>
+                Within the show view dialog, locate AIML console, click it to highlight and then press
+                OK.
+                <br/></p>
+                <br/><p>
+                <img src="home_files/eclipse_2.png" alt="eclipse_2"/>
+                </p>
+                <br/>
+                <p>
+                Now you should see something similar to this somewhere in Eclipse.  This will be where we 
+                will chat with our bot once we have loaded some AIML files into Eclipse 
+                and have begun editing them.
+                <br/><br/></p>
+                <p>
+                <img src="home_files/eclipse_3.png" alt="eclipse_3"/>
+                </p>
+                <br/>
+                <p>
+                Let's create a new AIML project and then import some AIML files.  To create a AIML project 
+                click File->New->Project...
+                <br/><br/></p>
+                <p>
+                <img src="home_files/eclipse_4.png" alt="eclipse_4"/>
+                </p>
+                <br/>
+                <p>
+                Now find and highlight RebeccaAIML Project and click next
+                <br/><br/></p>
+                <p>
+                <img src="home_files/eclipse_5.png" alt="eclipse_5"/>
+                </p>
+                <br/>
+                <p>
+                Give your project any name you want and click finish
+                <br/><br/></p>
+                <p>
+                <img src="home_files/eclipse_6.png" alt="eclipse_6"/>
+                </p>
+                <br/>
+                <p>
+                Now let us import some AIML files.  We'll use the annotated 
+                alice AIML set from RebeccaAIML's installation.  Click 
+                File->import
+                <br/><br/></p>
+                <p>
+                <img src="home_files/eclipse_7.png" alt="eclipse_7"/>
+                </p>
+                <br/>
+                <p>
+                Highlight FileSystem and click next
+                <br/><br/></p>
+                <p>
+                <img src="home_files/eclipse_8.png" alt="eclipse_8"/>
+                </p>
+                <br/>
+                <p>
+                Browse to your RebeccaAIML installation and click the 
+                annotated_alice folder.  Put your base project name for the
+                folder you want to import into.  Click finish
+                <br/><br/></p>
+                <p>
+                <img src="home_files/eclipse_9.png" alt="eclipse_9"/>
+                </p>
+                <br/>
+                <p>
+                Once your files are moved over by Eclipse you should see the 
+                workspace rebuilding its self in the lower right 
+                hand of eclipse.  This might take a while for the first time.
+                <br/><br/></p>
+                <p>
+                <img src="home_files/eclipse_10.png" alt="eclipse_10"/>
+                </p>
+                <br/>
+                <p>
+                Now if you want you can chat using the AIML console
+                and it should chat back.  The files imported into your 
+                workspace are now added to the bot brain.  Notice below that 
+                the bot doesn't know your name or any information.  You can
+                always use the <a href="#rs_admin">rs-admin command line tool</a>
+                to add predicates and tweek the bot if you want.  Just don't 
+                use rs-admin to add or remove AIML files.  Eclipse will handle 
+                that from here on out.  The user id, bot id, and end user id
+                in which Eclipse uses is "eclipse" for all three in the embedded
+                database.
+                <br/><br/></p>
+                <p>
+                <img src="home_files/eclipse_11.png" alt="eclipse_11"/>
+                </p>
+                <br/>
+                <p>
+                Let's click one of the AIML files on the left hand side of 
+                the project Explorer.  Choose Politics.aiml
+                <br/><br/></p>
+                <p>
+                <img src="home_files/eclipse_12.png" alt="eclipse_12"/>
+                </p>
+                <br/>
+                <p>
+                Type into your eclipse text editor
+                </p>
+<blockquote><pre>
+&lt;category&gt;
+   &lt;pattern>DO YOU LIKE FIREARMS&lt;/pattern&gt;
+   &lt;template&gt;Not all all!&lt;/template&gt;
+&lt;/category&gt;
+</pre></blockquote>
+                <br/><p>
+                If you press cntrl-space you should see auto complete come up with suggetions.
+                <br/><br/></p>
+                <p>
+                <img src="home_files/eclipse_13.png" alt="eclipse_13"/>
+                </p>
+                <br/>
+                <p>
+                After you finish your line of AIML, click save or press cntrl-s 
+                to save your document.  You should briefly see the message 
+                "building workspace" in the lower right hand corner of Eclipse.                
+                Every time you save an AIML document the brain is reloaded with the 
+                changed document.  In the AIML console type "do you like firearms"
+                and press enter.  You should see the new response.
+                <br/><br/></p>
+                <p>
+                <img src="home_files/eclipse_14.png" alt="eclipse_14"/>
+                </p>
+                <br/>
+                <p>
+                Eclipse offers such a rich built in XML editing enviornment 
+                that I've only scratched the surface here.  Explor on your own
+                and learn all the great things it offers such as spelling and 
+                XML templates and anything else you could ever want.  If you 
+                haven't noticed by now, you should have seen several spelling 
+                mistakes highlighted in yellow like so below.  Feel free to 
+                correct them if you want.  You might not want to, if you want an 
+                extra human element of Annotated Alice being a so-so speller 
+                like myself.
+                <br/><br/></p>
+                <p>
+                <img src="home_files/eclipse_15.png" alt="eclipse_15"/>
+                </p>
+                <p><br/><br/>
+					<a href="http://sourceforge.net/">
+					    <img src="home_files/sflogo.png" alt="SourceForge Logo"/>
+					</a>
+                </p>
+                </div>
+                </div>
+			</div>
+		</div> 
+        
+		<div id="footer">
+	<p>&copy; 2006 Frank Hassanabad | Web Design by <a href="http://www.mikeyarmish.com/">Mike Yarmish</a></p>
+</div>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,815 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<title>RebeccaAIML</title>
+<meta http-equiv="content-type" content="application/xhtml+xml; charset=iso-8859-1" />
+<meta name="author" content="Frank Hassanabad" />
+<meta name="description" content="RebeccaAIML is a Windows/Linux Object Oriented C++ chatter bot api/interpreter for AIML (Artificial Intelligence Markup Language) from the ALICE project." />
+<meta name="keywords" content="aiml,C++,bot,chatterbot,interpreter" />
+<link rel="stylesheet" href="mike02.css" type="text/css" />
+</head>
+
+<body>
+<div id="container" >
+		<div id="headerWrap">
+			<div id="header">
+				<h1><a href="index.htm">RebeccaAIML</a></h1>
+				<ul id="navigation">
+					<li><a href="contact.htm">Contact</a></li>
+					<li><a href="links.htm">Links</a></li>
+					<li><a href="lists.htm">Lists</a></li>
+					<li><a href="development.htm">Development</a></li>
+					<li><a href="users.htm">Users</a></li>
+					<li><a href="documentation.htm">Documentation</a></li>
+					<li><a href="download.htm">Download</a></li>
+					<li><a href="index.htm">Home</a></li>
+				</ul>
+			</div>
+		</div>
+		<div id="content">
+			<div id="documentHeader">
+				 <div id="siteDescription"><p>Regression test against RebeccaAIML to ensure Quality</p></div> 
+			</div>
+				<div id="secondary">
+				    <h2>Quality Assurance</h2>
+				    <p>
+					When a bug is reported against RebeccaAIML on output, I generate
+					a new test case and add it to the regression suite.  This ensures
+					that no newer release can break backwards AIML outputing compatibility.
+					</p>
+					<h2>SourceForge</h2>
+					<a href="http://sourceforge.net/">
+					    <img src="home_files/sflogo.png" alt="SourceForge Logo"/>
+					</a>
+				</div>
+<h1>
+Regression Tests</h1><br/>
+
+<h3>Foreword</h3>
+<p>
+Most of these failures are from lack of correct spacing.  So you have to 
+look very closely to see if it is more serious.  I will not discuss the problems
+involving spaces.  The condition failures such as "simple condition (07)" are 
+very serious in this release.  You should update to the latest and greatest.
+
+</p>
+<br/>
+<p>
+The failure of "that (15)", multisentence that array (16), are very real 
+and are highest on my priority.  I will fix them both in the next release.
+The failure of "return name when set (40)" has a lower priority but is something I am 
+looking into.  The gender failures also are of a concern but since they are not widely 
+used AIML tags I also have them at a lower priorty.  Satisfying the gender requirements
+of AIML is very difficut and particular.  The lack of javascript in my interpreter is 
+of the lowest priority and will be added last.
+
+</p>
+<br/>
+<p>
+False positives are "infinite loop (41)" and "system (19a)".  I just terminate infinite
+loops and I cannot retrieve the output from a system call at this time.  However, they 
+will print a failure when in fact they have passed the test.
+<br/><br/><br/>
+</p>
+
+
+Test Case name: connect<br/>
+Input: CONNECT<br/>
+Expected Answer:Connected to test case AIML set.<br/>
+Response:       Connected to test case AIML set.<br/>
+<p style="color:green">[OK]</p><br/>
+<br/>
+Test Case name: simple (01)<br/>
+Description:Tests the ability to output a simple statement.<br/>
+Input: testatomic<br/>
+Expected Answer:Test case #01. Test passed.<br/>
+Response:       Test case #01.Test passed.<br/>
+<p style="color:red">[FAILED]</p><br/>
+<br/>
+Test Case name: display set (02)<br/>
+Description:Tests the ability to display a variable while setting it.<br/>
+Input: testdisplayset<br/>
+Expected Answer:Test case #02. Test passed.<br/>
+Response:       Test case #02. Test passed.<br/>
+<p style="color:green">[OK]</p><br/>
+<br/>
+Test Case name: think (03)<br/>
+Description:Tests the ability to hide a function using the think element.<br/>
+Input: testhide<br/>
+Expected Answer:Test case #03. Test passed.<br/>
+Response:       Test case #03. Test passed.<br/>
+<p style="color:green">[OK]</p><br/>
+<br/>
+Test Case name: get (04)<br/>
+Description:Tests the ability to display a variable with the get element.<br/>
+Input: testget<br/>
+Expected Answer:Test case #04. Test passed.<br/>
+Response:       Test case #04.  Test passed.<br/>
+<p style="color:red">[FAILED]</p><br/>
+<br/>
+Test Case name: alter (05)<br/>
+Description:Tests the ability to set a predicate value, display a predicate value with the
+            get element and then change the variable.<br/>
+Input: testalter<br/>
+Expected Answer:Test case #05. Test passed.<br/>
+Response:       Test case #05.  Test passed.<br/>
+<p style="color:red">[FAILED]</p><br/>
+<br/>
+Test Case name: set topic (06)<br/>
+Description:Tests the ability to set the topic, display the topic with get, and then use
+            two same-pattern categories within the topic, one with a that and one without.<br/>
+Input: testsettopic<br/>
+Expected Answer:Test case #06. Test passed topic.<br/>
+Response:       Test case #06.  Test passed topic.<br/>
+<p style="color:red">[FAILED]</p><br/>
+<br/>
+Test Case name: set topic (06a)<br/>
+Description:<br/>
+Input: test6a<br/>
+Expected Answer:Test case #06a. Test with THAT passed.<br/>
+Response:       Test case #06a.Test with THAT passed.<br/>
+<p style="color:red">[FAILED]</p><br/>
+<br/>
+Test Case name: set topic (06b)<br/>
+Description:<br/>
+Input: test6b<br/>
+Expected Answer:Test case #06b. Test without THAT passed.<br/>
+Response:       Test case #06b.Test without THAT passed.<br/>
+<p style="color:red">[FAILED]</p><br/>
+<br/>
+Test Case name: simple condition (07)<br/>
+Description:Tests the ability to use the simplest form of the condition element.<br/>
+Input: testsimplecondition<br/>
+Expected Answer:Test case #07. Test passed.<br/>
+Response:       Test case #07.<br/>
+<p style="color:red">[FAILED]</p><br/>
+<br/>
+Test Case name: simple condition (07a)<br/>
+Description:<br/>
+Input: testsimpleconditiona<br/>
+Expected Answer:Test case #07a. Test passed.<br/>
+Response:       Test case #07a.<br/>
+<p style="color:red">[FAILED]</p><br/>
+<br/>
+Test Case name: simple condition match (07b)<br/>
+Description:Tests the ability to match the value associated with the name attribute of a
+            condition with a pattern in the value attribute.<br/>
+Input: testsimpleconditionmatch<br/>
+Expected Answer:Test case #07b. Test passed.<br/>
+Response:       Test case #07b.<br/>
+<p style="color:red">[FAILED]</p><br/>
+<br/>
+Test Case name: condition list (08)<br/>
+Description:Tests the ability to use the list form of the condition element.<br/>
+Input: testconditionlist<br/>
+Expected Answer:Test case #08. Test passed.<br/>
+Response:       Test case #08.  Test passed.<br/>
+<p style="color:red">[FAILED]</p><br/>
+<br/>
+Test Case name: condition list match (08a)<br/>
+Description:Tests the ability to match the value associated with the name attribute of one
+            of a condition's listitems with a pattern in the value attribute of the condition.<br/>
+Input: testconditionlistmatch<br/>
+Expected Answer:Test case #08a. Test passed.<br/>
+Response:       Test case #08a.  Test passed.<br/>
+<p style="color:red">[FAILED]</p><br/>
+<br/>
+Test Case name: condition list default (09)<br/>
+Description:Tests the ability to use the condition element with the list format and fall
+            through to the default list entry when no other list items have a match.<br/>
+Input: testconditionlistdefault<br/>
+Expected Answer:Test case #09. Test passed.<br/>
+Response:       Test case #09.  Test passed.<br/>
+<p style="color:red">[FAILED]</p><br/>
+<br/>
+Test Case name: condition list name (10)<br/>
+Description:Tests the ability to use the condition element with the list format of both
+            name and value.<br/>
+Input: testconditionlistname<br/>
+Expected Answer:Test case #10. Test passed.<br/>
+Response:       Test case #10.  Test passed.<br/>
+<p style="color:red">[FAILED]</p><br/>
+<br/>
+Test Case name: condition list name (10a)<br/>
+Description:Tests the ability to match the value associated with the name attribute of one
+            of a condition's listitems with a pattern in the value attribute of the listitem.<br/>
+Input: testconditionlistnamematch<br/>
+Expected Answer:Test case #10a. Test passed.<br/>
+Response:       Test case #10a.  Test passed.<br/>
+<p style="color:red">[FAILED]</p><br/>
+<br/>
+Test Case name: star (11)<br/>
+Description:Tests the ability to use the star element both with and without the index
+            attribute.<br/>
+Input: teststar Test passed<br/>
+Expected Answer:Test case #11. Test passed 1. Test passed 2.<br/>
+Response:       Test case #11. Test passed 1. Test passed 2.<br/>
+<p style="color:green">[OK]</p><br/>
+<br/>
+Test Case name: star * (11a)<br/>
+Description:Tests the ability to return the values captured by indexed * (asterisk)
+            wildcards.<br/>
+Input: teststar Test passed one and Test passed two and Test passed three and Test passed four<br/>
+Expected Answer:Test case #11a. star index 1: Test passed one. star index 2: Test passed two. star index 3: Test passed three. star index 4: Test passed four.<br/>
+Response:       Test case #11a.star index 1: Test passed one.star index 2: Test passed two.star index 3: Test passed three.star index 4: Test passed four.<br/>
+<p style="color:red">[FAILED]</p><br/>
+<br/>
+Test Case name: star _ (11b)<br/>
+Description:Tests the ability to return the values captured by indexed _ (underscore)
+            wildcards.<br/>
+Input: testunderscore Test passed one and Test passed two and Test passed three and Test passed four<br/>
+Expected Answer:Test case #11b. star index 1: Test passed one. star index 2: Test passed two. star index 3: Test passed three. star index 4: Test passed four.<br/>
+Response:       Test case #11b.star index 1: Test passed one.star index 2: Test passed two.star index 3: Test passed three.star index 4: Test passed four.<br/>
+<p style="color:red">[FAILED]</p><br/>
+<br/>
+Test Case name: random (12)<br/>
+Description:Tests the ability to use the random function.<br/>
+Input: testrandom<br/>
+Expected keywords: Test case #12.<br/>
+Expected keywords: 1,2,3,4,5<br/>
+Response:       Test case #12. Test passed 2.<br/>
+<p style="color:green">[OK]</p><br/>
+<br/>
+Test Case name: word format (13)<br/>
+Description:Tests the ability to adjust the word case based on the four format elements:
+            uppercase, lowercase, sentence, and formal.<br/>
+Input: testwordformat<br/>
+Expected Answer:Test case #13. Test passed if UPPERCASE. Test passed if lowercase. Test passed if Proper Name. Test passed if This is a sentence.<br/>
+Response:       Test case #13.Test passed if UPPERCASE.Test passed if lowercase.Test passed if Proper Name.Test passed if This is a sentence.<br/>
+<p style="color:red">[FAILED]</p><br/>
+<br/>
+Test Case name: nested word format (14)<br/>
+Description:Tests the ability to use nested word format elements.<br/>
+Input: testnestedwordformat<br/>
+Expected Answer:Test case #14. Test passed if THIS IS UPPER CASE, and this is a Proper Name.<br/>
+Response:       Test case #14. Test passed if THIS IS UPPER CASE, and this is a Proper Name.<br/>
+<p style="color:green">[OK]</p><br/>
+<br/>
+Test Case name: simple multisentence that (15)<br/>
+Description:Tests the ability to properly set the bot's last response into the proper THAT
+            value holders. It issues a multi sentence response, which should result in the bot's
+            setting the THAT stack to each sentence.<br/>
+Input: testsimplemultisentencethat<br/>
+Expected Answer:Test case #15 setup. THAT plus two. THAT plus one. THAT.<br/>
+Response:       Test case #15 setup. THAT plus two. THAT plus one. THAT.<br/>
+<p style="color:green">[OK]</p><br/>
+<br/>
+Test Case name: that (15)<br/>
+Description:<br/>
+Input: testthat<br/>
+Expected Answer:Test case #15. THAT: Old form: THAT. New form: THAT. THAT+1: THAT plus one. THAT+2: THAT plus two.<br/>
+Response:       Test case #15.THAT: Old form: Test case #15 setup. THAT plus two. THAT plus one. THAT.New form: Test case #15 setup. THAT plus two. THAT plus one. THAT.THAT+1: Test case #15 setup. THAT plus two. THAT plus one. THAT.THAT+2: Test case #15 setup. THAT plus two. THAT plus one. THAT.<br/>
+<p style="color:red">[FAILED]</p><br/>
+<br/>
+Test Case name: multisentence that array (16) setup a<br/>
+Description:Tests the ability to properly set the bot's last response into the proper THAT
+            value holders. It specifically tests a 3X4 deep array of the last four bot responses. It
+            has a setup phase, and a test phase.<br/>
+Input: testarray4multisentencethat<br/>
+Expected Answer:Test case #16 setup a. THAT array4 response three. THAT array4 response two. THAT array4 response one.<br/>
+Response:       Test case #16 setup a.THAT array4 response three.THAT array4 response two.THAT array4 response one.<br/>
+<p style="color:red">[FAILED]</p><br/>
+<br/>
+Test Case name: multisentence that array (16) setup b<br/>
+Description:<br/>
+Input: testarray3multisentencethat<br/>
+Expected Answer:Test case #16 setup b. THAT array3 response three. THAT array3 response two. THAT array3 response one.<br/>
+Response:       Test case #16 setup b.THAT array3 response three.THAT array3 response two.THAT array3 response one.<br/>
+<p style="color:red">[FAILED]</p><br/>
+<br/>
+Test Case name: multisentence that array (16) setup c<br/>
+Description:<br/>
+Input: testarray2multisentencethat<br/>
+Expected Answer:Test case #16 setup c. THAT array2 response three. THAT array2 response two. THAT array2 response one.<br/>
+Response:       Test case #16 setup c.THAT array2 response three.THAT array2 response two.THAT array2 response one.<br/>
+<p style="color:red">[FAILED]</p><br/>
+<br/>
+Test Case name: multisentence that array (16) setup d<br/>
+Description:<br/>
+Input: testarray1multisentencethat<br/>
+Expected Answer:Test case #16 setup d. THAT array1 response three. THAT array1 response two. THAT array1 response one.<br/>
+Response:       Test case #16 setup d.THAT array1 response three.THAT array1 response two.THAT array1 response one.<br/>
+<p style="color:red">[FAILED]</p><br/>
+<br/>
+Test Case name: multisentence that array (16)<br/>
+Description:<br/>
+Input: testthatarray<br/>
+Expected Answer:Test case #16. Array 1 THAT: THAT array1 response one. THAT+1: THAT array1 response two. THAT+2: THAT array1 response three. Array 2 THAT: THAT array2 response one. THAT+1: THAT array2 response two. THAT+2: THAT array2 response three. Array 3 THAT: THAT array3 response one. THAT+1: THAT array3 response two. THAT+2: THAT array3 response three. Array 4 THAT: THAT array4 response one. THAT+1: THAT array4 response two. THAT+2: THAT array4 response three.<br/>
+Response:       Test case #16.Array 1THAT: Test case #16 setup d.THAT array1 response three.THAT array1 response two.THAT array1 response one.THAT+1: Test case #16 setup d.THAT array1 response three.THAT array1 response two.THAT array1 response one.THAT+2: Test case #16 setup d.THAT array1 response three.THAT array1 response two.THAT array1 response one.Array 2THAT: Test case #16 setup c.THAT array2 response three.THAT array2 response two.THAT array2 response one.THAT+1: Test case #16 setup c.THAT array2 response three.THAT array2 response two.THAT array2 response one.THAT+2: Test case #16 setup c.THAT array2 response three.THAT array2 response two.THAT array2 response one.Array 3THAT: Test case #16 setup b.THAT array3 response three.THAT array3 response two.THAT array3 response one.THAT+1: Test case #16 setup b.THAT array3 response three.THAT array3 response two.THAT array3 response one.THAT+2: Test case #16 setup b.THAT array3 response three.THAT array3 response two.THAT array3 response one.Array 4THAT: Test case #16 setup a.THAT array4 response three.THAT array4 response two.THAT array4 response one.THAT+1: Test case #16 setup a.THAT array4 response three.THAT array4 response two.THAT array4 response one.THAT+2: Test case #16 setup a.THAT array4 response three.THAT array4 response two.THAT array4 response one.<br/>
+<p style="color:red">[FAILED]</p><br/>
+<br/>
+Test Case name: bot properties (17)<br/>
+Description:Tests the ability to list some bot properties.<br/>
+Input: testbotproperties<br/>
+Expected keywords: Test case #17.<br/>
+Expected keywords: Name:<br/>
+Expected keywords: Birthday:<br/>
+Expected keywords: BirthPlace:<br/>
+Expected keywords: BoyFriend:<br/>
+Expected keywords: Favorite:<br/>
+Expected keywords: Favorite:<br/>
+Expected keywords: Favorite Color:<br/>
+Expected keywords: Favorite Food:<br/>
+Expected keywords: Favorite Song:<br/>
+Expected keywords: Favorite Movie:<br/>
+Expected keywords: For Fun:<br/>
+Expected keywords: Friends:<br/>
+Expected keywords: Gender:<br/>
+Expected keywords: GirlFriend:<br/>
+Expected keywords: Kind of Music:<br/>
+Expected keywords: Location:<br/>
+Expected keywords: Look Like:<br/>
+Expected keywords: Botmaster:<br/>
+Expected keywords: Question:<br/>
+Expected keywords: Sign:<br/>
+Expected keywords: Talk About:<br/>
+Expected keywords: Wear old:<br/>
+Response:       Test case #17. Name: Rebecca.Birthday: November 30, 1979.BirthPlace: Jefferson City.BoyFriend: Frank.Favorite: Nirvana.Favorite: The good Earth, by Perl Buck.Favorite Color: Purple.Favorite Food: Pizza.Favorite Song: Redemention by Bob Marley.Favorite Movie: Train Spotting.For Fun: Read.Friends: Carly and Joey.Gender: female.GirlFriend: none.Kind of Music: okay.Location:Colorado Springs.Look Like: Blond.Botmaster: Frank.Question: How you liking me.Sign: Sagatarius.Talk About: Books.Wear old: Jeans and a T-Shirt.<br/>
+<p style="color:green">[OK]</p><br/>
+<br/>
+Test Case name: condition set value (18)<br/>
+Description:Tests the ability to use a set within a condition and then display the new
+            value of that set using the value attribute.<br/>
+Input: testconditionsetvalue<br/>
+Expected Answer:Test case #18. Test passed.<br/>
+Response:       Test case #18.   Test passed.<br/>
+<p style="color:red">[FAILED]</p><br/>
+<br/>
+Test Case name: javascript (19)<br/>
+Description:Tests the javascript element.<br/>
+Input: testjavascript<br/>
+Expected Answer:Test case #19. Test passed.<br/>
+Response:       Test case #19. "T" + "est pa" + "ssed."<br/>
+<p style="color:red">[FAILED]</p><br/>
+<br/>
+Test Case name: system (19a)<br/>
+Description:Tests the system element.<br/>
+Input: testsystem<br/>
+Expected Answer:Test case #19a. Test passed.<br/>
+Response:       Test case #19a.<br/>
+<p style="color:red">[FAILED]</p><br/>
+<br/>
+Test Case name: nested condition (20a)<br/>
+Description:Tests the ability to process nested conditions.<br/>
+Input: testnestedcondition<br/>
+Expected Answer:Test case #20a. Test passed.<br/>
+Response:       Test case #20a.   Test passed.<br/>
+<p style="color:red">[FAILED]</p><br/>
+<br/>
+Test Case name: nested condition (20b)<br/>
+Description:<br/>
+Input: testnestedcondition1<br/>
+Expected Answer:Test case #20b. Test passed.<br/>
+Response:       Test case #20b.   Test passed.<br/>
+<p style="color:red">[FAILED]</p><br/>
+<br/>
+Test Case name: nested condition (20c)<br/>
+Description:<br/>
+Input: testnestedcondition2<br/>
+Expected Answer:Test case #20c. Test passed.<br/>
+Response:       Test case #20c.   Test passed.<br/>
+<p style="color:red">[FAILED]</p><br/>
+<br/>
+Test Case name: set condition (21)<br/>
+Description:ests the ability to process a condition element within a set element.<br/>
+Input: testsetcondition<br/>
+Expected Answer:Test case #21. Test passed.<br/>
+Response:       Test case #21.  Test passed.<br/>
+<p style="color:red">[FAILED]</p><br/>
+<br/>
+Test Case name: version (22)<br/>
+Description:Tests the version element.<br/>
+Input: testversion<br/>
+Expected keywords: Test case #22.<br/>
+Expected keywords: Test of "version":<br/>
+Response:       Test case #22.Test of "version": .96<br/>
+<p style="color:green">[OK]</p><br/>
+<br/>
+Test Case name: srai (23)<br/>
+Description:Tests the ability to process a simple srai.<br/>
+Input: testsrai<br/>
+Expected Answer:Test case #23. Test passed.<br/>
+Response:       Test case #23. Test passed.<br/>
+<p style="color:green">[OK]</p><br/>
+<br/>
+Test Case name: sr (23a)<br/>
+Description:Tests the sr element.<br/>
+Input: testsr sraisucceeded<br/>
+Expected Answer:Test case #23a. Test passed.<br/>
+Response:       Test case #23a. Test passed.<br/>
+<p style="color:green">[OK]</p><br/>
+<br/>
+Test Case name: nested srai (24)<br/>
+Description:Tests the ability to process a nested srai.<br/>
+Input: testnestedsrai<br/>
+Expected Answer:Test case #24. Test passed.<br/>
+Response:       Test case #24. Test passed.<br/>
+<p style="color:green">[OK]</p><br/>
+<br/>
+Test Case name: think srai (25)<br/>
+Description:Tests the ability to<think> a srai. Because the srai is called
+            within a think element, its output should be supressed.<br/>
+Input: testthinksrai<br/>
+Expected Answer:Test case #25. Test passed, IF NO OTHER MESSAGE.<br/>
+Response:       Test case #25.Test passed, IF NO OTHER MESSAGE.<br/>
+<p style="color:red">[FAILED]</p><br/>
+<br/>
+Test Case name: star set (26)<br/>
+Description:Tests the ability to set the value of a predicate from inside a think element
+            and then display the value.<br/>
+Input: teststarset Test passed<br/>
+Expected Answer:Test case #26. Test passed.<br/>
+Response:       Test case #26.  Test passed.<br/>
+<p style="color:red">[FAILED]</p><br/>
+<br/>
+Test Case name: id, size, date (27)<br/>
+Description:Tests the id, size and date elements.<br/>
+Input: testidsizedate<br/>
+Expected keywords: Test case #27.<br/>
+Expected keywords: Result of Test ID =<br/>
+Expected keywords: Result of Test SIZE =<br/>
+Expected keywords: Result of Test DATE =<br/>
+Response:       Test case #27.Result of Test ID = Result of Test SIZE = 91Result of Test DATE = 2005-Nov-06 22:41:48<br/>
+<p style="color:green">[OK]</p><br/>
+<br/>
+Test Case name: gossip (28)<br/>
+Description:Tests the gossip element.<br/>
+Input: testgossip<br/>
+Expected Answer:Test case #28. Test complete. Check the gossip log.<br/>
+Response:       Test case #28. Test complete. Check the gossip log.<br/>
+<p style="color:green">[OK]</p><br/>
+<br/>
+Test Case name: get, set (29)<br/>
+Description:Tests the get and set elements.<br/>
+Input: testname<br/>
+Expected Answer:Test case #29. Test passed.<br/>
+Response:       Test case #29.  Test passed.<br/>
+<p style="color:red">[FAILED]</p><br/>
+<br/>
+Test Case name: input (30) setup a<br/>
+Description:Tests the input element.<br/>
+Input: testinput<br/>
+Expected Answer:Test case #30 setup a okay.<br/>
+Response:       Test case #30 setup a okay.<br/>
+<p style="color:green">[OK]</p><br/>
+<br/>
+Test Case name: input (30) setup b<br/>
+Description:<br/>
+Input: testinput1<br/>
+Expected Answer:Test case #30 setup b okay.<br/>
+Response:       Test case #30 setup b okay.<br/>
+<p style="color:green">[OK]</p><br/>
+<br/>
+Test Case name: input (30) setup c<br/>
+Description:<br/>
+Input: testinput2<br/>
+Expected Answer:Test case #30 setup c okay.<br/>
+Response:       Test case #30 setup c okay.<br/>
+<p style="color:green">[OK]</p><br/>
+<br/>
+Test Case name: input (30)<br/>
+Description:<br/>
+Input: testinput3<br/>
+Expected Answer:Test case #30. Test (input) passed if this says testinput3: testinput3. Test (input index 1) passed if this says testinput3: testinput3. Test (input index 2) passed if this says testinput2: testinput2. Test (input index 3) passed if this says testinput1: testinput1. Test (input index 4) passed if this says testinput: testinput.<br/>
+Response:       Test case #30.Test (input) passed if this says testinput3:  testinput3.Test (input index 1) passed if this says testinput3:  testinput3.Test (input index 2) passed if this says testinput2:  testinput2.Test (input index 3) passed if this says testinput1:  testinput1.Test (input index 4) passed if this says testinput:  testinput.<br/>
+<p style="color:red">[FAILED]</p><br/>
+<br/>
+Test Case name: gender (31) [000]<br/>
+Input: testgender he<br/>
+Expected Answer:Test case #31. he becomes she<br/>
+Response:       Test case #31. he becomes she<br/>
+<p style="color:green">[OK]</p><br/>
+<br/>
+Test Case name: gender (31) [001]<br/>
+Input: testgender she<br/>
+Expected Answer:Test case #31. she becomes he<br/>
+Response:       Test case #31. she becomes he<br/>
+<p style="color:green">[OK]</p><br/>
+<br/>
+Test Case name: gender (31) [002]<br/>
+Input: testgender to him<br/>
+Expected Answer:Test case #31. to him becomes to her<br/>
+Response:       Test case #31. to him becomes to her<br/>
+<p style="color:green">[OK]</p><br/>
+<br/>
+Test Case name: gender (31) [003]<br/>
+Input: testgender for him<br/>
+Expected Answer:Test case #31. for him becomes for her<br/>
+Response:       Test case #31. for him becomes for her<br/>
+<p style="color:green">[OK]</p><br/>
+<br/>
+Test Case name: gender (31) [004]<br/>
+Input: testgender with him<br/>
+Expected Answer:Test case #31. with him becomes with her<br/>
+Response:       Test case #31. with him becomes with her<br/>
+<p style="color:green">[OK]</p><br/>
+<br/>
+Test Case name: gender (31) [005]<br/>
+Input: testgender on him<br/>
+Expected Answer:Test case #31. on him becomes on her<br/>
+Response:       Test case #31. on him becomes on her<br/>
+<p style="color:green">[OK]</p><br/>
+<br/>
+Test Case name: gender (31) [006]<br/>
+Input: testgender in him<br/>
+Expected Answer:Test case #31. in him becomes in her<br/>
+Response:       Test case #31. in him becomes in her<br/>
+<p style="color:green">[OK]</p><br/>
+<br/>
+Test Case name: gender (31) [007]<br/>
+Input: testgender to her<br/>
+Expected Answer:Test case #31. to her becomes to him<br/>
+Response:       Test case #31. to her becomes to his<br/>
+<p style="color:red">[FAILED]</p><br/>
+<br/>
+Test Case name: gender (31) [008]<br/>
+Input: testgender for her<br/>
+Expected Answer:Test case #31. for her becomes for him<br/>
+Response:       Test case #31. for her becomes for his<br/>
+<p style="color:red">[FAILED]</p><br/>
+<br/>
+Test Case name: gender (31) [009]<br/>
+Input: testgender with her<br/>
+Expected Answer:Test case #31. with her becomes with him<br/>
+Response:       Test case #31. with her becomes with his<br/>
+<p style="color:red">[FAILED]</p><br/>
+<br/>
+Test Case name: gender (31) [010]<br/>
+Input: testgender on her<br/>
+Expected Answer:Test case #31. on her becomes on him<br/>
+Response:       Test case #31. on her becomes on his<br/>
+<p style="color:red">[FAILED]</p><br/>
+<br/>
+Test Case name: gender (31) [011]<br/>
+Input: testgender in her<br/>
+Expected Answer:Test case #31. in her becomes in him<br/>
+Response:       Test case #31. in her becomes in his<br/>
+<p style="color:red">[FAILED]</p><br/>
+<br/>
+Test Case name: gender (31) [012]<br/>
+Input: testgender his<br/>
+Expected Answer:Test case #31. his becomes her<br/>
+Response:       Test case #31. his becomes her<br/>
+<p style="color:green">[OK]</p><br/>
+<br/>
+Test Case name: gender (31) [013]<br/>
+Input: testgender her<br/>
+Expected Answer:Test case #31. her becomes his<br/>
+Response:       Test case #31. her becomes his<br/>
+<p style="color:green">[OK]</p><br/>
+<br/>
+Test Case name: gender (31) [014]<br/>
+Input: testgender him<br/>
+Expected Answer:Test case #31. him becomes her<br/>
+Response:       Test case #31. him becomes her<br/>
+<p style="color:green">[OK]</p><br/>
+<br/>
+Test Case name: thatstar (32) setup<br/>
+Description:Tests the thatstar element.<br/>
+Input: testthatstar<br/>
+Expected Answer:Test case #32 setup. Check next to see if Test passed.<br/>
+Response:       Test case #32 setup.Check next to see if Test passed.<br/>
+<p style="color:red">[FAILED]</p><br/>
+<br/>
+Test Case name: thatstar (32)<br/>
+Description:<br/>
+Input: testthatstar1<br/>
+Expected Answer:Test case #32. THATSTAR: Test passed THATSTAR INDEX="1": Test passed<br/>
+Response:       Test case #32.THATSTAR: Test passedTHATSTAR INDEX="1": Test passed<br/>
+<p style="color:red">[FAILED]</p><br/>
+<br/>
+Test Case name: indexed star (33) setup<br/>
+Description:Tests the indexed thatstar element.<br/>
+Input: testmultithatstar<br/>
+Expected Answer:Test case #33 setup. See whether thatstar test passed and whether index two test passed and whether index three test passed next.<br/>
+Response:       Test case #33 setup.See whether thatstar test passed and whether index two test passed and whether index three test passed next.<br/>
+<p style="color:red">[FAILED]</p><br/>
+<br/>
+Test Case name: indexed star (33)<br/>
+Description:<br/>
+Input: testmultithatstar1<br/>
+Expected Answer:Test case #33. THATSTAR: thatstar test passed THATSTAR INDEX="1": thatstar test passed THATSTAR INDEX="2": index two test passed THATSTAR INDEX="3": index three test passed<br/>
+Response:       Test case #33.THATSTAR: thatstar test passedTHATSTAR INDEX="1": thatstar test passedTHATSTAR INDEX="2": index two test passedTHATSTAR INDEX="3": index three test passed<br/>
+<p style="color:red">[FAILED]</p><br/>
+<br/>
+Test Case name: topicstar (34) setup<br/>
+Description:Tests the topicstar element.<br/>
+Input: testtopicstar<br/>
+Expected Answer:Test case #34 setup okay.<br/>
+Response:       Test case #34 setup okay.<br/>
+<p style="color:green">[OK]</p><br/>
+<br/>
+Test Case name: topicstar (34)<br/>
+Description:<br/>
+Input: test34<br/>
+Expected Answer:Test case #34. TOPICSTAR: Test passed TOPICSTAR INDEX="1": Test passed<br/>
+Response:       Test case #34.TOPICSTAR: Test passedTOPICSTAR INDEX="1": Test passed<br/>
+<p style="color:red">[FAILED]</p><br/>
+<br/>
+Test Case name: indexed topicstar (35) setup<br/>
+Description:Tests the indexed topicstar element.<br/>
+Input: testmultitopicstar<br/>
+Expected Answer:Test case #35 setup okay.<br/>
+Response:       Test case #35 setup okay.<br/>
+<p style="color:green">[OK]</p><br/>
+<br/>
+Test Case name: indexed topicstar<br/>
+Description:<br/>
+Input: test35<br/>
+Expected Answer:Test case #35. TOPICSTAR: Test passed 1 TOPICSTAR INDEX="1": Test passed 1 TOPICSTAR INDEX="2": Test passed 2 TOPICSTAR INDEX="3": Test passed 3<br/>
+Response:       Test case #35.TOPICSTAR: Test passed 1TOPICSTAR INDEX="1": Test passed 1TOPICSTAR INDEX="2": Test passed 2TOPICSTAR INDEX="3": Test passed 3<br/>
+<p style="color:red">[FAILED]</p><br/>
+<br/>
+Test Case name: extreme srai (37)<br/>
+Description:Tests an extremely deeply nested (20 levels) srai.<br/>
+Input: testextremesrai<br/>
+Expected Answer:Test case #37. Test passed.<br/>
+Response:       Test case #37. Test passed.<br/>
+<p style="color:green">[OK]</p><br/>
+<br/>
+Test Case name: person (38) [000]<br/>
+Input: testperson i was there<br/>
+Expected Answer:Test case #38. i was there becomes he or she was there<br/>
+Response:       Test case #38. i was there becomes he or she was there<br/>
+<p style="color:green">[OK]</p><br/>
+<br/>
+Test Case name: person (38) [001]<br/>
+Input: testperson he was away<br/>
+Expected Answer:Test case #38. he was away becomes I was away<br/>
+Response:       Test case #38. he was away becomes he was away<br/>
+<p style="color:red">[FAILED]</p><br/>
+<br/>
+Test Case name: person (38) [002]<br/>
+Input: testperson she was kind<br/>
+Expected Answer:Test case #38. she was kind becomes I was kind<br/>
+Response:       Test case #38. she was kind becomes she was kind<br/>
+<p style="color:red">[FAILED]</p><br/>
+<br/>
+Test Case name: person (38) [003]<br/>
+Input: testperson i am sleepy<br/>
+Expected Answer:Test case #38. i am sleepy becomes he or she is sleepy<br/>
+Response:       Test case #38. i am sleepy becomes he or she am sleepy<br/>
+<p style="color:red">[FAILED]</p><br/>
+<br/>
+Test Case name: person (38) [004]<br/>
+Input: testperson i will<br/>
+Expected Answer:Test case #38. i will becomes he or she will<br/>
+Response:       Test case #38. i will becomes he or she will<br/>
+<p style="color:green">[OK]</p><br/>
+<br/>
+Test Case name: person (38) [005]<br/>
+Input: testperson for me<br/>
+Expected Answer:Test case #38. for me becomes for him or her<br/>
+Response:       Test case #38. for me becomes for him or her<br/>
+<p style="color:green">[OK]</p><br/>
+<br/>
+Test Case name: person (38) [006]<br/>
+Input: testperson my bot<br/>
+Expected Answer:Test case #38. my bot becomes his or her bot<br/>
+Response:       Test case #38. my bot becomes his or her bot<br/>
+<p style="color:green">[OK]</p><br/>
+<br/>
+Test Case name: person (38) [007]<br/>
+Input: testperson beside myself<br/>
+Expected Answer:Test case #38. beside myself becomes beside him or herself<br/>
+Response:       Test case #38. beside myself becomes beside him or herself<br/>
+<p style="color:green">[OK]</p><br/>
+<br/>
+Test Case name: person (38) [008]<br/>
+Input: testperson is mine<br/>
+Expected Answer:Test case #38. is mine becomes is his or hers<br/>
+Response:       Test case #38. is mine becomes is his or hers<br/>
+<p style="color:green">[OK]</p><br/>
+<br/>
+Test Case name: person2 (39) [000]<br/>
+Input: testperson2 along with you<br/>
+Expected Answer:Test case #39. along with you becomes along with me<br/>
+Response:       Test case #39. along with you becomes along with me<br/>
+<p style="color:green">[OK]</p><br/>
+<br/>
+Test Case name: person2 (39) [001]<br/>
+Input: testperson2 something is with me<br/>
+Expected Answer:Test case #39. something is with me becomes something is with you<br/>
+Response:       Test case #39. something is with me becomes something is with you<br/>
+<p style="color:green">[OK]</p><br/>
+<br/>
+Test Case name: person2 (39) [002]<br/>
+Input: testperson2 send to you<br/>
+Expected Answer:Test case #39. send to you becomes send to me<br/>
+Response:       Test case #39. send to you becomes send to me<br/>
+<p style="color:green">[OK]</p><br/>
+<br/>
+Test Case name: person2 (39) [003]<br/>
+Input: testperson2 present to me<br/>
+Expected Answer:Test case #39. present to me becomes present to you<br/>
+Response:       Test case #39. present to me becomes present to you<br/>
+<p style="color:green">[OK]</p><br/>
+<br/>
+Test Case name: person2 (39) [004]<br/>
+Input: testperson2 picture of you<br/>
+Expected Answer:Test case #39. picture of you becomes picture of me<br/>
+Response:       Test case #39. picture of you becomes picture of me<br/>
+<p style="color:green">[OK]</p><br/>
+<br/>
+Test Case name: person2 (39) [005]<br/>
+Input: testperson2 reminder of me<br/>
+Expected Answer:Test case #39. reminder of me becomes reminder of you<br/>
+Response:       Test case #39. reminder of me becomes reminder of you<br/>
+<p style="color:green">[OK]</p><br/>
+<br/>
+Test Case name: person2 (39) [006]<br/>
+Input: testperson2 best wishes for you<br/>
+Expected Answer:Test case #39. best wishes for you becomes best wishes for me<br/>
+Response:       Test case #39. best wishes for you becomes best wishes for me<br/>
+<p style="color:green">[OK]</p><br/>
+<br/>
+Test Case name: person2 (39) [007]<br/>
+Input: testperson2 for me this is<br/>
+Expected Answer:Test case #39. for me this is becomes for you this is<br/>
+Response:       Test case #39. for me this is becomes for you this is<br/>
+<p style="color:green">[OK]</p><br/>
+<br/>
+Test Case name: person2 (39) [008]<br/>
+Input: testperson2 give you something<br/>
+Expected Answer:Test case #39. give you something becomes give me something<br/>
+Response:       Test case #39. give you something becomes give me something<br/>
+<p style="color:green">[OK]</p><br/>
+<br/>
+Test Case name: person2 (39) [009]<br/>
+Input: testperson2 give me that<br/>
+Expected Answer:Test case #39. give me that becomes give you that<br/>
+Response:       Test case #39. give me that becomes give you that<br/>
+<p style="color:green">[OK]</p><br/>
+<br/>
+Test Case name: person2 (39) [010]<br/>
+Input: testperson2 giving you a hand<br/>
+Expected Answer:Test case #39. giving you a hand becomes giving me a hand<br/>
+Response:       Test case #39. giving you a hand becomes giving me a hand<br/>
+<p style="color:green">[OK]</p><br/>
+<br/>
+Test Case name: person2 (39) [011]<br/>
+Input: testperson2 giving me a lift<br/>
+Expected Answer:Test case #39. giving me a lift becomes giving you a lift<br/>
+Response:       Test case #39. giving me a lift becomes giving you a lift<br/>
+<p style="color:green">[OK]</p><br/>
+<br/>
+Test Case name: person2 (39) [012]<br/>
+Input: testperson2 gave you a fork<br/>
+Expected Answer:Test case #39. gave you a fork becomes gave me a fork<br/>
+Response:       Test case #39. gave you a fork becomes gave me a fork<br/>
+<p style="color:green">[OK]</p><br/>
+<br/>
+Test Case name: person2 (39) [013]<br/>
+Input: testperson2 gave me an idea<br/>
+Expected Answer:Test case #39. gave me an idea becomes gave you an idea<br/>
+Response:       Test case #39. gave me an idea becomes gave you an idea<br/>
+<p style="color:green">[OK]</p><br/>
+<br/>
+Test Case name: person2 (39) [014]<br/>
+Input: testperson2 make you happy<br/>
+Expected Answer:Test case #39. make you happy becomes make me happy<br/>
+Response:       Test case #39. make you happy becomes make me happy<br/>
+<p style="color:green">[OK]</p><br/>
+<br/>
+Test Case name: person2 (39) [015]<br/>
+Input: testperson2 make me sad<br/>
+Expected Answer:Test case #39. make me sad becomes make you sad<br/>
+Response:       Test case #39. make me sad becomes make you sad<br/>
+<p style="color:green">[OK]</p><br/>
+<br/>
+Test Case name: person2 (39) [016]<br/>
+Input: testperson2 made you aware<br/>
+Expected Answer:Test case #39. made you aware becomes made me aware<br/>
+Response:       Test case #39. made you aware becomes made me aware<br/>
+<p style="color:green">[OK]</p><br/>
+<br/>
+Test Case name: person2 (39) [017]<br/>
+Input: testperson2 made me cognizant<br/>
+Expected Answer:Test case #39. made me cognizant becomes made you cognizant<br/>
+Response:       Test case #39. made me cognizant becomes made you cognizant<br/>
+<p style="color:green">[OK]</p><br/>
+<br/>
+Test Case name: return name when set (40)<br/>
+Description:Tests the ability to return the name of a return-name-when-set predicate when
+            it is set, and to return the value when a non-return-name-when-set predicate is set. It
+            depends on the proper definition of the "passed" and "failed" predicates in
+            predicates.xml.<br/>
+Input: testreturnnamewhenset<br/>
+Expected Answer:Test case #40. Test passed 1. Test passed 2.<br/>
+Response:       Test case #40.Test failed 1.Test passed 2.<br/>
+<p style="color:red">[FAILED]</p><br/>
+<br/>
+Test Case name: infinite loop (41)<br/>
+Description:ests the ability to detect a simple kind of infinite loop, and avoid it by
+            substituting the phrase "INFINITE LOOP" (or whatever is configured).<br/>
+Input: testinfiniteloop<br/>
+Expected Answer:Test case #41. Test passed.<br/>
+Response:       Test case #41. Test case #41.<br/>
+<p style="color:red">[FAILED]</p><br/>
+<br/>
+</div>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<title>RebeccaAIML</title>
+<meta http-equiv="content-type" content="application/xhtml+xml; charset=iso-8859-1" />
+<meta name="author" content="Frank Hassanabad" />
+<meta name="description" content="RebeccaAIML is a Windows/Linux Object Oriented C++ chatter bot api/interpreter for AIML (Artificial Intelligence Markup Language) from the ALICE project." />
+<meta name="keywords" content="aiml,C++,bot,chatterbot,interpreter" />
+<link rel="stylesheet" href="mike02.css" type="text/css" />
+</head>
+
+<body>
+<div id="container" >
+		<div id="headerWrap">
+			<div id="header">
+				<h1><a href="index.htm">RebeccaAIML</a></h1>
+				<ul id="navigation">
+					<li><a href="contact.htm">Contact</a></li>
+					<li><a href="links.htm">Links</a></li>
+					<li><a href="lists.htm">Lists</a></li>
+					<li><a href="development.htm">Development</a></li>
+					<li><a href="users.htm">Users</a></li>
+					<li><a href="documentation.htm">Documentation</a></li>
+					<li><a href="download.htm">Download</a></li>
+					<li><a href="index.htm">Home</a></li>
+				</ul>
+			</div>
+		</div>
+		<div id="content">
+			<div id="developmentHeader">
+				 <div id="siteDescription"><p>Wrap up from the year 2005 and my thoughts<br/>
+				                              for 2006.  This thinking is from versions<br/>
+											  0.972, 0.971, 0.97, 0.96, 0.951, 0.95 (Edmondson series)
+									      </p></div> 
+			</div>
+				<div id="secondary">
+					<h2>SourceForge</h2>
+					<a href="http://sourceforge.net/">
+					    <img src="home_files/sflogo.png" alt="SourceForge Logo"/>
+					</a>
+				</div>
+				
+			<div id="main">
+			<div class="post">
+<h2>Deficiencies in the core RebeccaAIML dll</h2>
+<ul>
+
+<li>No multiuser enviornment<br/><br/>
+<p>
+Which means, once the aiml brain is loaded, it does not allow multiple connections to the brain in which each connection is a seperate and distinct person talking to the bot.  It's single user for the entire brain.  In the future multiple connections should be allowed in which each connection is disinct but the <i>entire</i> brain is not loaded again.  It just makes distinct the neccessary portions of the brain required for this.  On the surface this enginering feat looks like adding simple distinguishing id in the core api in which to have certain AIML tags such as set and get based upon that id.
+<br/><br/>
+</p>
+</li>
+
+<li>Support of only English<br/><br/> 
+<p>
+I have to bite the bullet and have her able to load files with more than plain ASCII.
+<br/><br/>  
+</p>
+</li>
+
+<li>Lack of multithreading.<br/><br/>
+<p>
+Currently all inputs have to be seralized into her one input at a time.  
+
+After some thought, probably the best and first threading step would be to put the constraint that her AIML brain has to be <i>fully</i> loaded before allowing multiple threads to access the brain.
+
+This would require very, <i>very</i> few mutex'es (which are expensive) since I'd only have a few locks on a few set'ers which occur when you query her brain for a response to an input.  Plus this would make the threading model super simple and easy to somewhat test (you can't fully test threads since they are indeterminstic).
+<br/><br/> 
+</p>
+<p>
+Going down this route would also make it easy to write a custom AIML program with a configurable amount of threads.  After, all, RebeccAIML is just an api and AIML engine.  It's up to someone else to write her main().
+<br/><br/> 
+For a quick example, if someone wrote a main program that uses a configuration file to dictate how many threads to use and let us say they chose to use 2 threads.  The main program could create two threads and take two incomming requests at a time and put them on each thread.  
+<br/><br/> 
+That'd be one queue for each thread and each thread would work to simply ask the already loaded brain for the response to the input they each have.
+<br/><br/> 
+This would make it easy for configuration when you begin stacking hardware which has several processors.  One thread per processor is usually the ideal configuration.  If you add more processors to your server, you simply up the number of threads in the configuration file and restart the brain.
+<br/><br/> 
+</p>
+</li>
+
+<li>Finish complete AIML 1.0.1 conformance<br/><br/> 
+<p>
+I still need to match up the correct behavior of the gender tags ws well as add a java script engine. See regression tests in <a href="documentation.htm">documentation</a> for further information on this. 
+<br/><br/> 
+</p>
+</li>
+
+<li>The internal portions of RebeccaAIML are not documented at all.<br/><br/> 
+<p>
+I will doxgenate this after I finish the framework.  See below.
+<br/><br/> 
+</p>
+</li>
+</ul>
+
+<h2>
+Currently what I am working on for the RebeccaAIML engine 
+</h2>
+
+<ul>
+
+<li>Framework in which you can extend and add your own custom tags as well as override the current behavior of tags.<br/><br/> 
+
+<p>
+This will be through custom dll's under windows and .so's under Linux.  You'll inherit from the framework I expose to create your own custom dll or shared object to add new AIML tags or override current AIML tags.  After which you register it with RebeccAIML's dll/.so and it will use your custom layer.  This will be bundled with the next major release of .98.  Once it's out the door people can, for a quick example, write their own custom layer to override the AIML set and get tag to store predicates in a database.  Likewise, it will also make it easier to write custom non-AIML tags as well as write compatibility layers to other extended-AIML text files from other AIML engines.
+<br/><br/> 
+</p>
+
+<p>
+Take notice that with this feature you should be able to completely make RebeccaAIML react in any way you want her to react.  Your layers will be licensed the way you want them licensed.  This also opens the door to having proprietary layers if you choose and to extend and make RebeccaAIML yours without having to directly alter her core.
+</p>
+ </li>
+</ul>
+
+<h2>The roadmap after the framework</h2>
+
+<p>
+It's open.  Open to ideas and whatever I ultimately feel like.
+</p>
+<p>
+I'll probably work on the multiuser portion, then the multilingual portion, and perhaps the first steps for multithreading.  It all depends on what I feel like people need and people ask for and what people want.  <a href="contact.htm">So drop me a line with what you do like, don't like, and what new features you want! </a></p>
+
+
+<h2>Other samples I might add or full blown applications for showcasing what RebeccaAIML can be used to do</h2>
+
+
+<p>
+Short answer -- Undecided.  That's usually left to the user of the api.  After all, the core engine its self from above requires a lot of attention.  I'm fine with minimalistic examples and waiting to see what others come up with.  
+<br/><br/>
+</p>
+
+<p>
+Long answer -- I might write a series of networking applications for fun.  Here are some possiblities and their consequences I toyed with. 
+<br/><br/></p>
+<ul>
+<li><p>I could add a web service to her.  Web services is the lastest en vogue network communcation.  In short to run the service you need a web server since all communcations will be over http.  Kind of heavy weight since it is xml wrapped in a http header packet wrapped in tcp sent over the wire.  Good news is that anyone will be able to write in their language of choice to communicate with it.  Although you can do that with any protocol these days anyways ;-)</p><br/><br/></li>
+
+<li><p>I could just write a simple cgi interface to her.  Still requires a web server to run her but is a touch more light weight since it's just http and not wrapped up with any inner xml message</p><br/><br/></li>
+<li><p>Okay, straight tcp.  I just make up some binary or xml protocol and use it out of the blue for an example.  A ton faster then the other two options but requires more work.  Good news is now you're skipping the part of the full blown http server.  Bad news is you have to pretty much write how you're going to handle the requests comming in and out.  I would have to write my own custom AIML server to handle the incomming requests and dish it right back out with an example client.</p><br/><br/></li>
+<li><p>Last one, and the fastest for last.  Straight UDP. Almost same as above but with a kick.  First, yes it can be a LOT faster.  But you'd have to alter your client to send the request once.  No response after a short delay?  Resend again.  Keep this up until you get back what you asked for.  UDP is not reliable but it can be faster as long as your packets are somewhat small.  Oh and your packets could be out of order too.  So, a lot more code to write on this one.  Might not be feasible if the hand tailored protocol is somewhat large.  Might be better off with just TCP.</p><br/><br/>
+</li>
+</ul>
+
+<h4>
+Once the framework is completed and released, there's a lot I might do with it also.  Or I just might do nothing, you never know.  Some ideas I have been tossing around. 
+<br/>
+</h4>
+
+<ul>
+<li><p>Custom IRC chat tags just as J-ALICE has done along with a C++ api to access IRC channels to put RebeccAIML on IRC.  Perhaps....A compatibility J-ALICE layer too ;-)</p><br/><br/></li>
+<li><p>Completely alter every single tag in a custom layer to show AIML brains in something graphical.  I might use another tool like graphviz.</p></li>
+</ul>
+		<div id="footer">
+	<p>&copy; 2006 Frank Hassanabad | Web Design by <a href="http://www.mikeyarmish.com/">Mike Yarmish</a></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</body>
+</html>

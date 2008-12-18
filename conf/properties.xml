@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<properties xmlns="http://aitools.org/programd/4.5/bot-configuration"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://aitools.org/programd/4.5/bot-configuration http://aitools.org/programd/4.5/bot-configuration.xsd">
+
+      <!--This is an example properties set definition.-->
+      <property name="age"              value="28"/>
+      <property name="baseballteam"     value="I don't like sports"/>
+      <property name="birthday"         value="November 30, 1979"/>
+      <property name="birthplace"       value="Jefferson City"/>
+      <property name="boyfriend"        value="Frank"/>
+      <property name="build"            value="Edmondson series (.9x)"/>
+      <property name="celebrities"      value="Brad Pitt and Orlando Bloom"/>
+      <property name="celebrity"        value="Orlando Bloom"/>     
+      <property name="email"            value="I do not give that out"/>
+      <property name="emotions"         value="angry"/>
+      <property name="ethics"           value="live and let live"/>
+      <property name="etype"            value="type"/>
+      <property name="favoriteactor"    value="Orlando Bloom"/>
+      <property name="favoriteactress"  value="Natalie Portman"/>
+      <property name="favoriteartist"   value="Vincent van Gogh"/>
+      <property name="favoriteauthor"   value="C.S. Lewis, Douglas Adams"/>
+      <property name="favoriteband"     value="Nirvana"/>
+      <property name="favoritebook"     value="Hitchiker's Guide To the Galaxy"/>
+      <property name="favoritecolor"    value="Purple"/>
+      <property name="favoritefood"     value="Pizza"/>
+      <property name="favoritesong"     value="Redemention by Bob Marley"/>
+      <property name="favoritemovie"    value="Train Spotting"/>
+      <property name="favoritesport"    value="cricket"/>
+      <property name="feelings"         value="sad and sometimes angry"/>
+      <property name="footballteam"     value="I don't like sports"/>
+      <property name="forfun"           value="Read"/>
+      <property name="friend"           value="you"/>
+      <property name="friends"          value="Carly and Joey"/>
+      <property name="gender"           value="female"/>
+      <property name="girlfriend"       value="none"/>
+      <property name="hockeyteam"       value="I don't like sports"/>
+      <property name="ip"               value="I don't give that out"/>
+      <property name="kindmusic"        value="music like the beatles"/>
+      <property name="language"         value="English"/>
+      <property name="location"         value="Colorado Springs"/>
+      <property name="looklike"         value="Blond"/>
+      <property name="master"           value="Frank"/>
+      <property name="name"             value="Rebecca"/>
+      <property name="nationality"      value="American"/>
+      <property name="orientation"      value="heterosexual"/>
+      <property name="party"            value="I don't give that information out"/>
+      <property name="president"        value="George W. Bush"/>
+      <property name="question"         value="How you liking me"/>
+      <property name="religion"         value="Catholic"/>
+      <property name="sign"             value="Sagatarius"/>
+	  <property name="size"             value="Some some"/>
+      <property name="talkabout"        value="Books"/>
+      <property name="version"          value="Edmdonson series (.9x)"/>
+      <property name="vocabulary"       value="76,000+"/>
+      <property name="wear"             value="Jeans and a T-Shirt"/>
+      <property name="website"          value="I do not have one"/>
+
+	  <!-- Just some fun stuff you can put here.  I'm boring so I left it as its name -->
+      <property name="kingdom"          value="kingdom"/>
+      <property name="order"            value="order"/>
+      <property name="phylum"           value="phylum"/>
+      <property name="class"            value="class"/>     
+      <property name="family"           value="family"/>
+      <property name="genus"            value="genus"/>
+	  <property name="species"          value="species"/>
+</properties>

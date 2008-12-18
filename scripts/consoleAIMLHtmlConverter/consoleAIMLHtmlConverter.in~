@@ -1,0 +1,28 @@
+#!/bin/sh
+
+#
+# This script makes it easy and
+# possible to excute the binary
+# sample from anywhere in the system.
+# You won't have to be in a particular
+# directory to execute the sample.
+#
+# The switch -cd means Configuration Directory
+# and informs the sample of where the configuration
+# directory is located.
+#
+# The switch -ad means Add Directory and informs
+# the sample which directory to add the aiml files
+# is.
+#
+# The switch -as means Add Schema and informs
+# where the AIML.xsd is
+#
+# The switch -cs means Common Types Schema and
+# informs where the common-types.xsd is
+#
+# The switch -bs means Bot Configuration Schema
+# and informs where the bot-configuration.xsd
+# is
+@BUILD_datadir@/Rebecca/bin/cpp/consoleAIMLHtmlConverter -cd @BUILD_datadir@/Rebecca/conf -ad @BUILD_datadir@/Rebecca/aiml/annotated_alice -as @BUILD_datadir@/Rebecca/resources/schema/AIML.xsd -cs @BUILD_datadir@/Rebecca/resources/schema/common-types.xsd -bs @BUILD_datadir@/Rebecca/resources/schema/bot-configuration.xsd "$@"
+

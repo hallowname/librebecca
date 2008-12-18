@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<properties xmlns="http://aitools.org/programd/4.5/bot-configuration"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://aitools.org/programd/4.5/bot-configuration http://aitools.org/programd/4.5/bot-configuration.xsd">
+
+      <!--This is an example properties set definition.-->
+      <property name="age"              value=""/>
+      <property name="baseballteam"     value=""/>
+      <property name="birthday"         value=""/>
+      <property name="birthplace"       value=""/>
+      <property name="boyfriend"        value=""/>
+      <property name="build"            value=""/>
+      <property name="celebrities"      value=""/>
+      <property name="celebrity"        value=""/>     
+      <property name="email"            value=""/>
+      <property name="emotions"         value=""/>
+      <property name="ethics"           value=""/>
+      <property name="etype"            value=""/>
+      <property name="favoriteactor"    value=""/>
+      <property name="favoriteactress"  value=""/>
+      <property name="favoriteartist"   value=""/>
+      <property name="favoriteauthor"   value=""/>
+      <property name="favoriteband"     value=""/>
+      <property name="favoritebook"     value=""/>
+      <property name="favoritecolor"    value=""/>
+      <property name="favoritefood"     value=""/>
+      <property name="favoritesong"     value=""/>
+      <property name="favoritemovie"    value=""/>
+      <property name="favoritesport"    value=""/>
+      <property name="feelings"         value=""/>
+      <property name="footballteam"     value=""/>
+      <property name="forfun"           value=""/>
+      <property name="friend"           value=""/>
+      <property name="friends"          value=""/>
+      <property name="gender"           value=""/>
+      <property name="girlfriend"       value=""/>
+      <property name="hockeyteam"       value=""/>
+      <property name="ip"               value=""/>
+      <property name="kindmusic"        value=""/>
+      <property name="language"         value=""/>
+      <property name="location"         value=""/>
+      <property name="looklike"         value=""/>
+      <property name="master"           value=""/>
+      <property name="name"             value=""/>
+      <property name="nationality"      value=""/>
+      <property name="orientation"      value=""/>
+      <property name="party"            value=""/>
+      <property name="president"        value=""/>
+      <property name="question"         value=""/>
+      <property name="religion"         value=""/>
+      <property name="sign"             value=""/>
+	  <property name="size"             value=""/>
+      <property name="talkabout"        value=""/>
+      <property name="version"          value=""/>
+      <property name="vocabulary"       value=""/>
+      <property name="wear"             value=""/>
+      <property name="website"          value=""/>
+
+	  <!-- Just some fun stuff you can put here.  I'm boring so I left it as its name -->
+      <property name="kingdom"          value=""/>
+      <property name="order"            value=""/>
+      <property name="phylum"           value=""/>
+      <property name="class"            value=""/>
+      <property name="family"           value=""/>
+      <property name="genus"            value=""/>
+	  <property name="species"          value=""/>
+</properties>

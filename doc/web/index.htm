@@ -1,0 +1,606 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<title>RebeccaAIML</title>
+<meta http-equiv="content-type" content="application/xhtml+xml; charset=iso-8859-1" />
+<meta name="author" content="Frank Hassanabad" />
+<meta name="description" content="RebeccaAIML is a Windows/Linux Object Oriented C++ chatter bot api/interpreter for AIML (Artificial Intelligence Markup Language) from the ALICE project." />
+<meta name="keywords" content="aiml,C++,bot,chatterbot,interpreter" />
+<link rel="stylesheet" href="mike02.css" type="text/css" />
+</head>
+
+<body>
+<div id="container" >
+		<div id="headerWrap">
+			<div id="header">
+				<h1><a href="index.htm">RebeccaAIML</a></h1>
+				<ul id="navigation">
+					<li><a href="contact.htm">Contact</a></li>
+					<li><a href="links.htm">Links</a></li>
+					<li><a href="lists.htm">Lists</a></li>
+					<li><a href="development.htm">Development</a></li>
+					<li><a href="users.htm">Users</a></li>
+					<li><a href="documentation.htm">Documentation</a></li>
+					<li><a href="download.htm">Download</a></li>
+					<li><a href="index.htm">Home</a></li>
+				</ul>
+			</div>
+		</div>
+		<div id="content">
+			<div id="contentHeader">
+				 <div id="siteDescription"><p>RebeccaAIML is an enterprise cross platform open source <br/>
+                                              AIML development platform. RebeccaAIML supports C++, Java,<br/>
+                                              C#, and Python as well as many other programming languages<br/>
+                                              and AIML development out of the box.  RebeccaAIML also <br/>
+                                              comes with an array of AIML administration tools, great <br/>
+                                              documentation, and an eclipse AIML editor plugin. </p></div> 
+			</div>
+				<div id="secondary">
+					<h2>Get lastest Version</h2>
+					<p><a href="download.htm">1.1tp3 (Slatter)</a></p>
+					<h2>About</h2>
+	                <p>Rebecca is dual licensed as commercial and <a href="http://opensource.org/">open source</a> 
+					   under the <a href="http://www.gnu.org/licenses/gpl-3.0.txt">GPLv3 license</a>.
+                       For a commercial license contact <a href="mailto:foreverlinux@yahoo.com">me</a>.
+	                </p><br/>
+	                <p>Except for tech previews, RebeccaAIML has been compiled and tested underneath Windows XP as well as
+	                   Linux Fedora Core 5, 4, and 3.  However, it should be easily moveable 
+					   to other flavours of Linux or other Unixes easily.  If you have problems, 
+					   <a href="mailto:foreverlinux@yahoo.com">PLEASE DROP ME A LINE</a>, 
+					   so I can fix 'em.
+					</p>
+					<h2>SourceForge</h2>
+					<a href="http://sourceforge.net/">
+					    <img src="home_files/sflogo.png" alt="SourceForge Logo"/>
+					</a>
+				</div>
+			<div id="main"> 
+               <div class="post">
+               <h2>1.1tp3(Slatter) Released</h2>
+                   <p>2007.09.16 - RebeccaAIML 1.1tp3 (Slatter) Released.</p><br/>
+                   <p>
+                   This is a bug fix version with improved internationalization support.
+                   See the <a href="userGuide.htm#upgrading">userGuide</a> for instructions 
+                   on upgrading.  The bug fixes are
+                   </p>
+                   <ul>
+                   <li>Fixed a bug where escaped XML elements such as &lt; &gt; were 
+                   not operating correctly.  This effected reversed aiml.</li>
+                   <li>Enhanced empty conditionals where they will now correctly 
+                   allow you to use an empty string for a condition and it will 
+                   return true if the predicate does not exist.</li>
+                   <li>Fixed a nasty bug where if you have multiple star's and multiple
+                   users it would return an empty false positive string.
+                   </ul>
+                   <p>
+                   For international support, it has been improved upon within the 
+                   core engine and with the various programming languages that RebeccaAIML
+                   supports.  The fixes are
+                   </p>
+                   <ul>
+                   <li>Dialects will work with the eclipse plugin now.  The fix was within 
+                   the core engine, so you only need to update RebeccaAIML and you won't 
+                   need to update your eclipse plugin</li>
+                   <li>The command line rs-admin tool now supports recieving dialects as 
+                   well as correctly processing and outputing dialects.</li>
+                   <li>Lastly, upper casing, lower casing, and formal'izing dialects will 
+                   work correctly</li>
+                   </ul>
+                   
+               </div>            
+               <div class="post">
+               <h2>1.1tp2(Slatter) Released</h2>
+					<p>2007.09.03 - RebeccaAIML 1.1tp2 (Slatter) Released.</p><br/>
+                    <p>
+                    Hot on the heels of the first tech preview, this tech preview brings
+                    3rd party upgrades and two bug fixes.  See the <a href="userGuide.htm#upgrading">userGuide</a> for 
+                    instructions on upgrading.
+                    The 3rd party upgrades are
+                    </p>
+                    <ul>
+    			    <li>Xerces 2.8.0</li>
+                    <li>Berkeley DB 4.6.19</li>
+                    <li>ICE 3.2.1</li>
+                    </ul>
+                    <p>
+                    The two bugs fixed are
+                    </p>
+                    <ul>
+                    <li>Fixed a bug with the networking C++ api where
+                        addDirectoryUnlessAlreadyAdded was calling the wrong
+                        order of arguments
+                    </li>
+                    <li>Fixed a bug where the directory containing the 
+                        embedded database would not create its self if it was 
+                        on version of Windows XP which was not English based.
+                    </li>
+                    </ul>
+               </div>
+ 			   <div class="post">
+			        <h2>1.1tp1(Slatter) Released</h2>
+					<p>2007.08.27 - RebeccaAIML 1.1tp1 (Slatter) Released.</p><br/>
+                    <p>
+                    This is a tech preview release to the upcomming (Slatter) series.
+                    The Edmondson series has come to an end as well as some old mentalities
+                    about AIML development as we know it.<br/><br/>
+                    </p>
+                    <p>
+                    This first tech preview release is only available underneath Windows.  
+                    However, I promise before the full release of 1.1, a Linux version 
+                    will be available.<br/><br/>
+                    </p>
+                    <p>
+                    Also, starting with this release RebeccaAIML will be 
+                    available with a dual licensing scheme.  If you are developing 
+                    commercial applications based off of RebeccaAIML you will need 
+                    to purchase a commercial license.  However, if you are 
+                    releasing your code underneath the GPL version 3 you can 
+                    use RebeccaAIML underneath that license.<br/><br/>
+                    </p>
+                    <p>
+                    Now that is out of the way, what does this new version 1.1tp1 
+                    offer everyone?<br/><br/>
+                    </p>
+                    <p>
+                    Well, just check out the <a href="userGuide.htm">userGuide</a> for 1.1tp1 
+                    which describes each feature in great length with plenty of great 
+                    screen shots.  Briefly though,
+                    </p>
+    			    <ul>
+    			    <li>A windows installer</li>
+    			    <li>An Eclipse plugin for using Eclipse as an AIML editor</li>
+    			    <li>An embedded database engine for all AIML processing</li>
+    			    <li>Support for a multitude of programming languages such as 
+                        C++, C#, Java, and Python</li>
+                    <li>Excellent, fully documented, and easy to use 
+                        APIs for various programming languages</li>
+    			    <li>Support for safe and concurrent multi-process access to AIML</li>
+    			    <li>Support for safe and concurrent multi-threading access to AIML</li>
+    			    <li>Includes command line tools to access and manipulate the AIML 
+                        embedded database</li>
+                    <li>Support for multiple users, multiple bots the users
+                        can have, and multiple end users accessing the users' bots</li>
+                    <li>Scalability.  RebeccaAIML can support an infinite number of users,
+                        bots, and, end users as long as you have hard drive space for 
+                        more.</li>
+                    <li>Near zero start times.  Regardless of your number of users,
+                        bots, end users, RebeccAIML will restart in ~ 1 second.</li>
+                    <li>A configurable amount of memory.  Utilizing the embedded database 
+                        tools you can configure how much memory RebeccaAIML will use for 
+                        caching as well as fine tune her from a small machine to a large 
+                        rack server.</li>
+                    <li>Server and client model included.  RebeccaAIML starts as a service
+                        and runs as a server in the background waiting for queries</li>
+    			    </ul>
+               </div>            
+ 			   <div class="post">
+			        <h2>0.9871 (Edmondson) Released</h2>
+					<p>2006.09.07 - RebeccaAIML 0.9871 (Edmondson) Released.</p><br/>
+					<p>
+					I now include the executable, regression, in both the Windows 
+					and Linux prebuilt packages.  This is for downloaders to be 
+					able to verify the quality of Rebecca for the version they 
+					download.<br/><br/>
+					
+					If you are not interested in the regression test suite then 
+					you do not have to worry about updating to this version.  Other
+					than including the regression suite, this version is identical to
+					0.987.<br/><br/>
+
+					I also added the regression test suite to the autoconf build system
+					where it builds it by default.  This is for those who port RebeccaAIML 
+					to another platform to be able to run regression tests to ensure the 
+					quality of the port.  Use </p>
+					<blockquote><p>./configure --help</p></blockquote> to see all the autoconf
+					options available.<br/><br/>
+
+					Updated the code for the regression testing.  It now uses header and 
+					footer html files in resources/testing instead of having the html 
+					hard coded.  Fixed the html page breaks.  I also improved it to be 
+					dll boundary safe by having it use
+					<blockquote><p>Tag::instanceOf()</p></blockquote>
+					instead of dynamically casting through <blockquote><p>dynamic_cast&lt;&gt;()</p></blockquote>
+
+					I also added an Arguments class to regression to enable a smooth
+					transition over to autoconf
+               </div>
+ 			   <div class="post">
+					<h2>0.987 (Edmondson) Released</h2>
+					<p>2006.09.01 - RebeccaAIML 0.987 (Edmondson) Released.</p><br/>
+					<p>
+                       Condition and Li were not handling empty string cases 
+                       correctly.  See the latest 
+					   <a href="regressionTest-0987.htm">regression tests</a> 
+					   in the documentation for the exact case (It's SETUP AND 
+					   TEST CONDITION PREDICATE test case at the bottom).
+					</p>  
+                       <blockquote><p>Li::getPredicateName() and Li::getAimlPattern()</p></blockquote> 
+					<p>
+					   are now const methods.  This change will break abi compatiblity with anyone 
+					   using the framework but not api compatibility with the framework.  
+					   Those using the framework will have to recompile and relink 
+					   against this new version.<br/><br/>
+
+                       Added these methods to the framework on the class Li:
+                    </p>
+                       <blockquote><p>bool Li::isDefaultListItem()</p></blockquote>
+					<p>
+                       It returns true if the Li is a default list item or not.<br/><br/>
+                    </p>
+                       <blockquote><p>bool Li::isValueOnlyListItem()</p></blockquote>
+					<p>
+                       It returns true if the Li is a value only list item.<br/><br/>
+                    </p>
+                       <blockquote><p>bool Li::isNameAndValueListItem()</p></blockquote>
+					<p>
+                       It returns true if the Li is a name and value list.<br/><br/>
+                       Added these methods to the framework on the class Condition:
+                    </p>
+                       <blockquote><p>bool Condition::isBlockCondition()</p></blockquote>
+					<p>
+                       Returns true if this Condition is a block condition 
+                       otherwise it will return false.<br/><br/>
+                    </p>
+                       <blockquote><p>bool Condition::isSinglePredicateCondition()</p></blockquote>
+					<p>
+                       Returns true if this Condition is a single predicate
+                       condition otherwise it will return false.<br/><br/>
+                    </p>
+                       <blockquote><p>bool Condition::isMutliPredicateCondition()</p></blockquote>
+                       Returns true if this Condition is a multi-predicate
+                       condition otherwise it will return false.
+                    <p><br/>
+                       Updated documentation for 
+					</p>
+					   <blockquote><p>GraphBuilder::callSystemCommand()</p></blockquote>
+                    <p><br/>
+                       Removed the documentation about the bug aboug xsd not being validated.  
+                       I really should have removed this a <b>long</b> time ago, but it's 
+                       removed now.<br/><br/>
+ 
+                       See the doxygen See the <a href="documentation.htm">documentation </a> 
+                       for more details of these new methods and updates.
+			    </p>
+				</div>
+				<div class="post">
+					<h2>0.9861 (Edmondson) Released</h2>
+					<p>2006.08.06 - RebeccaAIML 0.9861 (Edmondson) Released</p><br/>
+					<p>
+                       Whenever topic was being set it was not calling srai's correctly.
+                       This was due to a bad logging call.
+                    </p>
+				</div>
+				<div class="post">
+					<h2>0.986 (Edmondson) Released</h2>
+					<p>2006.07.26 - RebeccaAIML 0.986 (Edmondson) Released</p><br/>
+					<p>
+                       Fixed bug with 
+					</p>
+					   <blockquote><p>PlainWordImpl::trimToOneSpace()</p></blockquote>
+					<p><br/>
+					   where I was not checking if the size of a string was greater
+                       than zero before using it.<br/><br/>
+
+                       Fixed a bug with srai where the star indexes were not being
+                       calculated right during srai.<br/><br/>
+
+                       Fixed a bug where rebecca would not let go of her internal 
+                       AIML file and string caching system.<br/><br/>
+
+                       Upgraded the qtgui and tested it underneath QT 4.1.4<br/><br/>
+
+                       Added the Callback method 
+					 </p>
+					   <blockquote><p>Callbacks::learnTagFileNotFound()</p></blockquote>
+					 <p><br/>
+                       for when the AIML XML learn tag cannot find a file it will 
+                       call this callback.  This will allow the programmer to handle
+                       file not founds for AIML XML programmatically.<br/><br/>
+
+                       Added a new method 
+					 </p>
+					   <blockquote><p>GraphBuilder::callSystemCommand()</p></blockquote>
+					 <p><br/>
+					   which acts the same as calling the AIML XML tag "System" by sending the 
+                       command to the operating system and returning the output of 
+                       the command.<br/>
+                    </p>
+				</div>
+				<div class="post">
+					<h2>0.985 (Edmondson) Released</h2>
+					<p>2006.05.07 - RebeccaAIML 0.985 (Edmondson) Released</p><br/>
+					<p>
+                       Added autoconf support for Unix'es and Linux.  Now
+                       you can compile using 
+					</p>
+					   <blockquote><p>configure; make; make install</p></blockquote>
+					<p><br/>
+                       See the doc/linuxINSTALL.txt in the distribution for 
+                       information on how to utilize this.<br/><br/>
+
+                       Added an Arguments class to each sample.  The purpose
+                       of this is two fold.  One is to show how you could 
+                       parse arguments when utilizing RebeccaAIML api and the 
+                       second is to make the installers of the samples 
+                       easier to write in the future.<br/><br/>
+
+                       The Arguments class now gives a few switches with each sample.  
+                       See the source code of each sample for the list of available switches.
+                       However, you can type 
+					 </p>
+					   <blockquote><p>console.exe -help</p></blockquote> 
+					 <p><br/>
+					   or
+                     </p>					   
+                       <blockquote><p>consoleAIMLHtmlConverter.exe -help</p></blockquote> 
+					 <p><br/>
+					   to get a list of the switches too.<br/><br/>
+
+                       Tweaked the source files to work with gcc 4.1.0<br/><br/>
+
+                       Added RPM support to the build.  In the download section you should now
+                       be able to download RPM's for Rebecca for several flavors of Fedora Core.<br/>
+                    </p>
+				</div>
+				<div class="post">
+					<h2>0.984 (Edmondson) Released</h2>
+					<p>2006.04.10 - RebeccaAIML 0.984 (Edmondson) Released</p><br/>
+					<p>
+                       Feature enhancement and bug fix release.<br/><br/>
+
+                       Added the feature of being able to add AIML strings to 
+                       Rebecca on the fly through the method 
+					</p>
+                       <blockquote><p>GraphBuilder.addString("aiml string")</p></blockquote>  
+					<p><br/>
+					   You can add a whole category programatically as easily as:<br/>
+					</p>
+<blockquote><pre>
+builder.addString
+(
+    "&lt;category&gt;"
+    "&lt;pattern&gt;test aiml string&lt;/pattern&gt;"
+    "&lt;template&gt;it simply works!&lt;/template&gt;"
+    "&lt;/category&gt;"
+);			
+</pre></blockquote>
+                     <p>
+                      Added the learn tag per AIML 1.0.1 specification.<br/><br/>
+
+                      Fixed the gender, person, and person2 tag implementations 
+                      to pass all of the regression tests.<br/><br/>
+
+                      Fixed the addFile and addDirectory to be tolerant of adding
+                      files which are native to the file system.  Before you could
+                      at best portably use relative strings.  Now you can use just
+                      about any file system string for 
+					  </p>
+					  <blockquote><p>GraphBuilder.addFile()</p></blockquote>
+					  <p>
+					  and 
+					  </p>
+					  <blockquote><p>GraphBuilder.addDirectory()</p></blockquote>  
+					  <p>
+					  As a result of this I was able to simply part of the qtGUI core to using 
+					  whichever native absolute paths that came from Windows or Unix.<br/><br/>
+
+                      See the <a href="documentation.htm">documentation </a>of these methods 
+					  for more details.
+                    </p>
+				</div>
+				<div class="post">
+					<h2>Charlix released</h2>
+					<p>2006.04.04 - Charlix released</p><br/>
+					<p>
+                      Charles Chevallier has released Charlix, a desktop assistant which has been tested 
+                      with RebeccaAIML.  It is now added to the <a href="links.htm">links</a> 
+                      and <a href="users.htm">users</a> sections.<br/><br/>
+                      Check it out <a href="http://charlix.sourceforge.net/">here</a>					
+                    </p>
+				</div>
+				<div class="post">
+					<h2>0.983 (Edmondson) Released</h2>
+					<p>2006.04.04 - RebeccaAIML 0.983 (Edmondson) Released</p><br/>
+					<p>
+                       Bug fix release.<br/><br/>
+
+                       I fixed a bug reported by Charles Chevallier where
+                       when srai is called the input AIML tags behaved 
+                       incorrectly. To fix this bug I had to alter the signature 
+                       of 
+					   </p>
+					   <blockquote><p>GraphBuilderFramework.checkedInfiniteLoopGetResponse()</p></blockquote>
+					   <p>
+                       It now has a new boolean argument variable 
+                       "keepPreviousUserInput".  You set this to false if you 
+                       do not want the previous user input stored internally.  
+                       Usually you only want to set this to false when you call 
+                       this from implementations of the Srai AIML tag.<br/><br/>
+
+                       I fixed a bug reported by Charles Chaevallier where
+                       when punctuation is at the begining of a Rebecca 
+                       Response it would cause her to crash.<br/><br/>
+
+                       I fixed a one-off error where I incorrectly indexed 
+                       some of the internal data structures and this would
+                       cause a crash.<br/><br/>
+
+                       Made the stack operational thanks to a missing predicate
+                       found by Ryan Neill.<br/><br/>
+
+                       Put in more bot properties (the most common ones), thanks 
+                       to Ryan Neill for pointing this out to me.
+                    </p>
+				</div>
+				<div class="post">
+					<h2>0.982 (Edmondson) Released</h2>
+					<p>2006.03.19 - RebeccaAIML 0.982 (Edmondson) Released</p><br/>
+					<p>
+					   I fixed a bug under Linux for the
+					</p>
+					   <blockquote>
+					   <p>GraphBuilder::addCustomTagLibrary</p>
+					   </blockquote>
+					<p>
+					   method.  It would load the string given as soname.so when it 
+					   should have loaded it as libsoname.so.<br/><br/>
+
+					   I also fixed a bug reported by Charles Chevallier where 
+					   Rebecca was not erasing commas before storing strings into 
+					   her internal "that" variable.  I added a regression test 
+					   case for it so the bug will not reappear.<br/><br/>
+
+					   I also fixed the "System" AIML tag to be able to return 
+					   the string now under both Windows and Linux.  Now the 
+					   regression test for the "System" tag works!
+                    </p>
+				</div>
+				<div class="post">
+					<h2>0.981 (Edmondson) Released</h2>
+					<p>2006.03.04 - RebeccaAIML 0.981 (Edmondson) Released</p><br/>
+					<p>
+					   Added a new cross platform simple QT GUI to the samples
+					   section to showcase how you would program a GUI with
+					   the RebeccaAIML engine.  You should be able to see
+					   the screen shot at the top of the web page now.<br/><br/>
+
+					   Fixed a bug where when you call new and delete on
+					   AIMLFacade or StringPimpl it would crash under Windows
+					   if you were mixing and matching Debug and Release.  Now,
+					   new and delete are dll boundary safe.<br/><br/>
+
+					   Forgot to put .98 in VERSION .98 for the 
+					   </p>
+					   <blockquote>
+					   <p>
+					   GraphBuilderAIML::getVersion()
+					   </p>
+					   </blockquote>
+					   <p>
+					   So, all resulting programs built using .98 will report 
+					   they are version .972 when they encounter the AIML XML Tag 
+					   "version". Fixed that in this version, it will say .981 when 
+					   the "version" tag is encountered.
+                    </p>
+				</div>
+				<div class="post">
+					<h2>0.98 (Edmondson) Released</h2>
+					<p>2006.02.14 - RebeccaAIML 0.98 (Edmondson) Released</p><br/>
+					<p>
+                       I opened up the RebeccaAIML framework in which you can
+					   inherit from AIML XML Tag classes to add or modify the
+					   current working set.  You will need Boost C++ library
+					   to use the framework.  With the release of the framework
+					   you can now add your own custom AIML XML Tag dll or shared
+					   object in which you can change the functionality of the 
+					   engine.  The framework is fully documented and I provide
+					   a sample which overrides all the AIML XML Tags to provide
+					   a html converter.  It converts AIML XML files into html pages 
+					   with links.  The html pages provide a way to "cruise" 
+					   through the AIML brain and see how the brain would look like 
+					   in memory.<br/><br/>
+
+					   You can see a sample of how the converter works by first 
+					   looking at this basic AIML file 
+					   <a href="samples/consoleHtmlConverter/aimlFile.xml">aiml file</a>
+					   and the resulting html files from the converter, 
+					   <a href="samples/consoleHtmlConverter/htmlAiml/%5Broot%5D.html">html convertered</a> 
+                    </p>
+				</div>
+				<div class="post">
+					<h2>0.972 (Edmondson) Released</h2>
+					<p>2005.11.27 - RebeccaAIML 0.972 (Edmondson) Released</p><br/>
+					<p>
+					   Copy constructor of StringPimpl was not setting its 
+					   private implementation handle to 0 and when it was 
+					   called it would try to delete and in turn crash 
+					   RebeccaAIML.<br/><br/>
+					   I also changed the default precompiled windows 
+					   binary to be multithreaded dll instead of just 
+					   multithreaded.
+					</p>
+				</div>
+				<div class="post">
+					<h2>0.971 (Edmondson) Released</h2>
+					<p>2005.11.20 - RebeccaAIML 0.971 (Edmondson) Released</p><br/>
+					<p>
+					   Enabled true multi-lined that's.  Now Rebecca can pass
+					   another regression test involving multi-lined that's.  See
+					   documentation for the regression test results.
+					   Also now the "That" index's involving previous input's and
+					   previous sentences works correctly.
+                    </p>
+				</div>
+				<div class="post">
+					<h2>0.97 (Edmondson) Released</h2>
+					<p>2005.11.06 - RebeccaAIML 0.97 (Edmondson) Released</p><br/>
+					<p>
+					   A new regression testing system has been put into place.
+					   The regression test suite is that of ProgramD's.  However,
+					   in the future I will add more test cases which should work
+					   for both the test regression suite here and for ProgramD's.
+					   How that is accomplished is through the use of xml to define
+					   the test cases.  This is all from the work of Joel on ProgramD.
+					   From the regression testing, I have found bugs and made more 
+					   fixes to this release.  I also have found a few bugs which I will 
+					   fix in an upcomming release.
+
+					   This release fixes yet another bug with the condition 
+					   tag.  The condition tag before only accepted AIML tags 
+					   for the result of a succesful condition.  Now regular text 
+					   can be added as well to the condition tag as it should be.  I also 
+					   fixed up white space problems with this release as well as made
+					   the exceptions of FileNotFound and DirectoryNotFound more verbose.
+                    </p>
+				</div>
+				<div class="post">
+					<h2>RebeccaAIML 0.96 (Edmondson) Released</h2>
+					<p>2005.10.20 - RebeccaAIML 0.96 (Edmondson) Released</p><br/>
+					<p>
+					   This release fixes a bug in which the AIML tag "Condition" 
+					   did not work at all.  Also this release fixes the AIML.xsd.
+					   Therefore, I have enabled Schema validation in this release.
+
+					   With schema validation enabled, bad AIML tags will be reported 
+					   to their respective callbacks and the XML parser automatically
+					   handles not adding bad AIML to the graph builder.  Thus your 
+					   callbacks will alert you to bad AIML tags, and your graph builder
+					   should still remain bullet proof. See the 
+					   <a href="documentation.htm">documentation</a> for 
+					   more details on XML callbacks through the class CallBacks. 
+                    </p>
+				</div>
+				<div class="post">
+					<h2>0.951 (Edmondson) Released</h2>
+					<p>2005.10.18 - RebeccAIML 0.951 (Edmondson) Released</p><br/>
+					<p>
+					   A minor bug fix version.<br/><br/>
+
+					   Fixed the "muliti-lined that" bug.  This bug was minor 
+					   but an annoyance.  Whenver a "that" has more than one line
+					   the last line should be choosen as the that.
+                    </p>
+				</div>
+				<div class="post">
+					<h2>0.95 (Edmondson) Released</h2>
+					<p>2005.10.12 - RebeccaAIML 0.95 (Edmondson) Released</p><br/>
+					<p>
+					   Initial release.  All AIML tags are implemented except 
+					   for the "learn" Tag and the java script.<br/><br/>
+
+					   There is currently a bug with the AIML.xsd that does 
+					   not allow the AIML tag "Set" to validate correctly.  So
+					   for the time being I have removed the AIML.xsd validation
+					   but will put it back as soon as that is fixed.
+                    </p>
+				</div>
+			</div>
+		</div> 
+		<div id="footer">
+	<p>&copy; 2006 Frank Hassanabad | Web Design by <a href="http://www.mikeyarmish.com/">Mike Yarmish</a></p>
+</div>
+</div>
+
+
+</body>
+</html>

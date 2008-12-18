@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<aiml version="1.0.1" xmlns="http://alicebot.org/2001/AIML-1.0.1"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://alicebot.org/2001/AIML-1.0.1 http://aitools.org/aiml/schema/AIML.xsd">
+<!-- Free software Copyright &copy; ALICE A.I. Foundation. -->
+<!-- This program is open source code released under -->
+<!-- the terms of the GNU General Public License     -->
+<!-- as published by the Free Software Foundation.   -->
+<!-- Complies with AIML 1.01 Tag Set Specification -->
+<!-- as adopted by the ALICE A.I. Foundation.  -->
+<!-- Revision Pickup-1.06 -->
+<!-- Last Modified Jan 29 2005 -->
+
+<category>
+<pattern>TEST2
+</pattern>
+<template>
+a &lt;category&gt; a
+test
+</template>
+</category>
+
+<category>
+<pattern>TEST</pattern>
+<template>
+
+<condition name="unknown">
+    <li value="*">no</li>
+    <li value="  ">yes</li> 
+</condition>
+
+TEST
+</template>
+</category> 
+
+
+<category>
+<pattern>*</pattern>
+<template>
+¿En qué le puedo ayudar y serle útil?
+</template>
+</category>
+
+
+<category>
+<pattern>upper case</pattern>
+<template>
+<uppercase>éabcdefg</uppercase>é
+</template>
+</category>
+
+
+<category>
+<pattern>becouse</pattern>
+<template>
+becouse
+</template>
+</category>
+
+<category>
+<pattern>how are you doing</pattern>
+<template>
+I am doing okay
+</template>
+</category>
+
+<category>
+<pattern>system</pattern>
+<template>
+<system>dir</system>
+</template>
+</category>
+
+
+</aiml>
+

@@ -1,0 +1,6 @@
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/include/rebecca/GraphBuilder.h:1053: Warning: Unsupported xml/html tag </aiml> found
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/include/rebecca/GraphBuilder.h:994: Warning: Unsupported xml/html tag </aiml> found
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/include/rebecca/GraphBuilder.h:1185: Warning: Unsupported xml/html tag </aiml> found
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/include/rebecca/GraphBuilder.h:1122: Warning: Unsupported xml/html tag </aiml> found
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/include/rebecca/GraphBuilder.h:1245: Warning: Unsupported xml/html tag </aiml> found
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/include/rebecca/GraphBuilder.h:2637: Error: Unexpected character `1'

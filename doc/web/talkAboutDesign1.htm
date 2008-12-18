@@ -1,0 +1,339 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<title>RebeccaAIML</title>
+<meta http-equiv="content-type" content="application/xhtml+xml; charset=iso-8859-1" />
+<meta name="author" content="Frank Hassanabad" />
+<meta name="description" content="RebeccaAIML is a Windows/Linux Object Oriented C++ chatter bot api/interpreter for AIML (Artificial Intelligence Markup Language) from the ALICE project." />
+<meta name="keywords" content="aiml,C++,bot,chatterbot,interpreter" />
+<link rel="stylesheet" href="mike02.css" type="text/css" />
+</head>
+
+<body>
+<div id="container" >
+		<div id="headerWrap">
+			<div id="header">
+				<h1><a href="index.htm">RebeccaAIML</a></h1>
+				<ul id="navigation">
+					<li><a href="contact.htm">Contact</a></li>
+					<li><a href="links.htm">Links</a></li>
+					<li><a href="lists.htm">Lists</a></li>
+					<li><a href="development.htm">Development</a></li>
+					<li><a href="users.htm">Users</a></li>
+					<li><a href="documentation.htm">Documentation</a></li>
+					<li><a href="download.htm">Download</a></li>
+					<li><a href="index.htm">Home</a></li>
+				</ul>
+			</div>
+		</div>
+		<div id="content">
+			<div id="developmentHeader">
+				 <div id="siteDescription"><p>Design discussion about integrating RebeccaAIML<br/>
+				                              with other AIML technologies as well as what's in<br/>
+											  store with her new network interfaces.
+									      </p></div> 
+			</div>
+				<div id="secondary">
+					<h2>SourceForge</h2>
+					<a href="http://sourceforge.net/">
+					    <img src="home_files/sflogo.png" alt="SourceForge Logo"/>
+					</a>
+				</div>
+				
+			<div id="main">
+			<div class="post">
+<h2>The new Network capabilities</h2>
+<p>
+Recently I have used a program to help create network capabilites in RebeccAIML.  
+The program I used is called <a href="http://www.zeroc.com/ice.html">ICE</a>.  ICE
+is a middleware to help build robust server applications from your prexisting code.  
+Your server application can be installed under Windows as a service and under Linux as a dameon.  
+Once you have used ICE to create your server you can use any of these programming languages
+to connect to the server:
+</p>
+<ul>
+<li>C++</li>
+<li>C#</li>
+<li>Java</li>
+<li>Visual Basic .NET</li>
+<li>python</li>
+<li>php</li>
+</ul>   
+The steps you use to write an ICE server with your prexisting code is: 
+<ul>
+<li>Create an ICE <a href="http://en.wikipedia.org/wiki/Interface_description_language">IDL</a></li>
+<li>Use that IDL to create the stub in your programming language </li>
+<li>Use the stubs to write your server implementation using ICE.</li>
+<li>Use the same <a href="http://en.wikipedia.org/wiki/Method_stub">stubs</a> to create your 
+clients to contact the server in any of the languages mentioned above.</li>
+</ul>
+<p>
+You write an IDL in order to do all of this.  Then you use that same IDL to 
+create your "stubs" in those above languages.  Stubs are generated code in a 
+particular language that can access the network and invoke remote procedure calls 
+<a href="http://en.wikipedia.org/wiki/Remote_procedure_call">RPC</a>.
+<br/><br/>
+</p>
+
+<p>
+Since you use the same stubs ICE generates for both server side and client side, a person 
+can write a server in C++, C#, Java, VB.NET, or python (but not php).  This means more 
+than one implementation of a  server can be created.  Which also means a person who used a set 
+of client side stubs to write client side code can communicate with different implementation 
+servers if they exist.  For example, I could use the same ICE IDL I created to generate stubs 
+in Java and write a server from programD.  I could also write a server implementation using the 
+C++ stubs and QAIML, libaiml or any others that I have source to.  I already wrote a server 
+to RebeccaAIML of course :-)  
+<br/><br/>
+</p>
+
+<p>
+Now any client side code written with these stubs will work 
+with any of the server implementations in any of those languages mentioned.  
+Yes, C#, Java, VB.NET, python, and php client side support are comming to RebeccaAIML as well 
+as possibly other interpreters.  Yes, if you write a server implementation using the ICE Java stubs 
+and programD my client side code would work with programD and/or RebeccaAIML.  Think about the 
+ramifications for a second here.
+<br/><br/>
+</p>
+
+<p>
+Of course this is nothing new to anyone who has done web services, CORBA, XML-RPC, etc.  These network 
+technologies are all competitors to ICE and all involve RPC's in some fashion.  Regardless of RPC 
+technology a common programmer mistake is to take any stubs of any RPC technology and begin using them 
+directly.  This is typically referred to as marrying your product to a particular technology.  You still 
+want your product to date around and possibly see other technologies as well don't you :-).  Here is where 
+things get interesting with RebeccaAIML.
+<br/><br/>
+</p>
+
+<p>
+At the heart of RebeccaAIML are a small set of public interfaces which have operations.  The responsbility 
+of these interfaces is to communicate with the interpreter as well as recieve call backs from the the engine 
+interpreter during runtime.  You don't get a handle to any of these concrete classes.  You always just get a 
+facade or factory class which gives you access to the interfaces.  I've effectively forced myself and 
+others writing client code with RebeccaAIML to have to use the interfaces.
+<br/><br/>
+</p>
+
+<p>
+One such interface is GraphBuilder which has the majority of the operations to operate on the interpreter engine.  
+For example, you'd write these three lines of code in C++ using the GraphBuilder interface to add a directory, 
+create the internal data structure, and finally query it for a response to "hi":
+<br/><br/>
+</p>
+
+<blockquote>
+<pre>
+graphBuilder->addDirectory("c:\annoated_alice");
+graphBuilder->createGraph();
+graphBuilder->getResponse("hi");
+</pre>
+</blockquote>
+<p style="text-align: center">(Fig 1)</p>
+
+<p>
+<br/>
+When I started using the ICE stubs on the client side I decided I didn't want to marry my product only to ICE for network 
+communications.  I still wanted to be able to use webservices latter as well as whatever the xyz RPC fad is in the future.  
+I also didn't want to force the future RebeccaAIML developers as well as myself to have to rewrite code to have to use all new api's 
+when I add webservices, XML-RPC, etc.  Lastly, I've already written a lot of code using the GraphBuilder 
+interface that I did not want to have to rewrite just to be able to use this new networking capability. 
+<br/><br/>
+</p>
+
+<p>
+So I created a new interface that inherited from GraphBuilder called NetworkGraphBuilder.  It has a few extra methods that 
+are network centric and can apply to any network technology.  One such method for example is 
+<br/><br/>
+</p>
+
+<blockquote>
+<pre>
+//Add a directory local to the server side computer
+graphBuilder->addDirectoryOnServer("c:\aiml");
+</pre>
+</blockquote>
+
+<p><br/>
+Since I used only interfaces and inheritance this means you can cast NetworkGraphBuilder to GraphBuilder which means those 
+lines of code I wrote above in Fig 1 will all still work!  As a matter of face if you've written any methods of the form 
+<br/><br/>
+</p>
+
+<blockquote>
+<pre>
+void foo(GraphBuilder &amp;builder) 
+</pre>
+</blockquote>
+
+<p>
+<br/>
+you only have to pass in the NetworkGraphBuilder (it'll automatically upcast) and you 
+will not change a line of code.  It uses the ICE networking stubs behind the scenes.  
+Also, since I hid the ICE implementation behind scense there is no having to 
+include any of the ICE stubs or worrying about that networking technology bleeding over to your 
+client code.
+<br/><br/>
+</p>
+
+<p>
+So what happens when I add a different network capability?  I would simply write another implementation of NetworkGraphBuilder.  
+Currently you get a handle to it through:
+<br/><br/>
+</p>
+
+<blockquote>
+<pre>
+NetworkGraphBuilder &amp;graphBuilder = 
+    NetworkAimlFacade.getGraphBuilder()
+</pre>
+</blockquote>
+
+<p><br/>
+If I added XML-RPC support in the future I might open up a new method through NetworkAimlFacade such as
+<br/><br/>
+</p>
+
+<blockquote>
+<pre>
+NetworkGraphBuilder &amp;graphBuilder = 
+    NetworkAimlFacade.getGraphBuilder("XML-RPC");
+</pre>
+</blockquote>
+<p style="text-align: center">(Fig 2)</p>
+<p><br/>
+Now, about those other programming langugae ICE client side stubs.  What did I do about those?  I wrote the same interfaces I had in C++ into
+the equivalant C#, Java, and python langauges and hid the ICE stubs/implementation behind them too.  
+<br/><br/>
+</p>
+
+<p>
+Here is a java snippet that now works with the RebeccaAIML server checked into CVS:
+<br/><br/>
+</p>
+
+<blockquote>
+<pre>
+//Get the builder through the facade
+NetworkAimlFacade aiml =
+    new NetworkAimlFacade(args);
+GraphBuilder graphBulder = 
+    aiml.getNetworkGraphBuilder();
+
+//Add a local client directory and get a response
+graphBuilder.addDirectory("c:\annoated_alice");
+graphBuilder.createGraph();
+graphBuilder.getResponse("hi");
+</pre>
+</blockquote>
+<p style="text-align: center">(Fig 3)</p>
+
+<p>
+<br/>
+Looks kind of the same as the C++ version doesn't it?  It should since I made the equivalent Java interfaces.  Here is 
+the C# version checked into CVS:
+<br/><br/>
+</p>
+
+<blockquote>
+<pre>
+//Get the builder through the facade
+NetworkAimlFacade aiml =
+    new NetworkAimlFacade(args);
+GraphBuilder graphBulder = 
+    aiml.GetNetworkGraphBuilder();
+
+//Add a local client directory and get a response
+graphBuilder.AddDirectory("c:\annoated_alice");
+graphBuilder.CreateGraph();
+graphBuilder.GetResponse("hi");
+</pre>
+</blockquote>
+<p style="text-align: center">(Fig 4)</p>
+
+<p>
+<br/>
+Now what if I wanted to perhaps implement the XML-RPC protocol to access pandora bots?  I would implement the 
+NetworkGraphBuilder for each of the programming languages and instantiate the NetworkGraphBuilder similar to 
+that of Fig 2, 3, and 4.  Again very litte prewritten RebeccaAIML development code would have to change.  
+Most would run out of the box with just a one line code change.  If coded correctly, some client side software 
+could even work without changes.  They'd just have a configuration file updated and their respective jars/dll's 
+etc updated with the new client side code to support the XML-RPC.
+<br/><br/>
+</p>
+
+<p>
+You should see where this is going now.  Using these common set of interfaces for each of the client side 
+programming languages I can implement whichever network communication I want and not have to change that much
+if any code at all.  Technically, I could even implement non AIML communications to another bot.  If that were
+to happen I would be able to use the same prewritten RebeccAIML tools, gui's etc... with little or no change at 
+all.
+<br/>
+</p>
+
+<p>
+One last thing to ponder.  Since I have created the same <b>non</b> network interfaces for the client side 
+languages I have also opened myself up to integration with other AIML interpreters written in different 
+programming languages altogether directly without using an RPC'ed interface.  For example, I could write 
+an adapter to programD in which I instantiate a regular graphBuilder to programD as such
+<br/><br/>
+</p>
+
+<blockquote>
+<pre>
+AimlFacade aiml = 
+    new AimlFacade("programD");
+GraphBuilder graphBuilder = 
+    aiml.getNetworkGraphBuilder();
+graphBuilder.addDirectory("c:\annoated_alice");
+graphBuilder.createGraph();
+graphBuilder.getResponse("hi");
+</pre>
+</blockquote>
+
+<p>
+<br/>
+Notice though how I put in the string "programD" to say 'Yes use programD instead of the default'?  What if latter I had 
+implemented an interpreter in Java that talks to bot xyz?  I just want to drop in my updated jar and run my prexisting 
+code with the new bot.  Or I could have just changed my mind and decided I didn't want to use programD but the default. 
+It might be better to add an args variable to AimlFacade in this case where you're forcing 
+users of the api to either accept the default by giving no command line options or they can add a switch to use a 
+different bot implementation for their client side code.  For example,
+<br/><br/>
+</p>
+
+<blockquote>
+<pre>
+AimlFacade aiml = 
+    new AimlFacade(args);
+GraphBuilder graphBuilder = 
+    aiml.getNetworkGraphBuilder();
+graphBuilder.addDirectory("c:\annoated_alice");
+graphBuilder.createGraph();
+graphBuilder.getResponse("hi");
+</pre>
+</blockquote>
+
+<p><br/>
+Although I am opening things up to be able to integrate directly with interpreters the preferred method is almost 
+always going to be through an RPC method such as ICE, webservices, etc... to an interpreter on the server side.  
+This makes it easier to be language and platform independent.  However for the future expect that RebeccaAIML 
+will be able to run as a server through ICE and all those client side languages will be available for users to 
+develop with.
+This will hopefully mean more tools will be developed for both the server and client side.  Also, expect that
+other interpreters could be integrated along side with RebeccaAIML.  This integration would mean that prexisting 
+client side code will either change a little bit or not at all!  These interpreters could be integrated directly 
+or they could be integrated as server side pieces.  Also, don't be surprised if in the future you don't see more 
+bot interpreter to bot interpreter communications.
+</p>
+<div id="footer">
+	<p>&copy; 2006 Frank Hassanabad | Web Design by <a href="http://www.mikeyarmish.com/">Mike Yarmish</a></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</body>
+</html>

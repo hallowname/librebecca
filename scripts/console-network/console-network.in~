@@ -1,0 +1,15 @@
+#!/bin/sh
+
+#
+# This script makes it easy and
+# possible to excute the binary
+# sample from anywhere in the system.
+# You won't have to be in a particular
+# directory to execute the sample.
+
+#
+# We don't have any arguments so it 
+# is a direct call to the executable
+#
+
+@BUILD_datadir@/Rebecca/bin/cpp/console-network

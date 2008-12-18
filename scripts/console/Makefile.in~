@@ -1,0 +1,43 @@
+#
+# Simple makefile to illustrate 
+# how to build a project using RebeccaAIML
+#
+
+#
+# Where you installed the distribution
+#
+prefix=@BUILD_prefix@ 
+
+#
+# Where you wanted the the lib
+# to be located.  This is usually
+# the same place as the prefix.
+#
+exec_prefix=@BUILD_exec_prefix@
+
+#
+# Where the rebecca includes are
+#
+REBECCA_INCLUDES=@BUILD_includedir@
+
+#
+# Where the rebecca shared object is 
+#
+REBECCA_LIB=@BUILD_libdir@
+
+#
+# Where to output the sample
+#
+REBECCA_OUTPUT=@BUILD_datadir@/Rebecca/bin/cpp
+
+
+${REBECCA_OUTPUT}/console: console.o
+	${CXX} -o ${REBECCA_OUTPUT}/console console.o -L${REBECCA_LIB} -lrebecca-mt -Wl,-rpath=${REBECCA_LIB}
+
+console.o: console.cpp
+	${CXX} -I${REBECCA_INCLUDES} -c console.cpp
+
+
+clean:
+	-rm console.o	
+	-rm ${REBECCA_OUTPUT}/console

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<aiml version="1.0.1" xmlns="http://alicebot.org/2001/AIML-1.0.1"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://alicebot.org/2001/AIML-1.0.1 http://aitools.org/aiml/schema/AIML.xsd">
+<!-- Free software Copyright &copy; ALICE A.I. Foundation. -->
+<!-- This program is open source code released under -->
+<!-- the terms of the GNU General Public License     -->
+<!-- as published by the Free Software Foundation.   -->
+<!-- Complies with AIML 1.01 Tag Set Specification -->
+<!-- as adopted by the ALICE A.I. Foundation.  -->
+<!-- Revision Pickup-1.06 -->
+<!-- Last Modified Jan 29 2005 -->
+
+<category>
+<pattern>CONNECT</pattern>
+<template>
+Hi you just activated me.  Type reverse to see what this custom tag can really do.
+</template>
+</category>
+
+<category>
+<pattern>reverse</pattern>
+<template>
+Here is a sentence in forward.  <reverse>Here it is in reverse</reverse>
+</template>
+</category>
+
+
+
+</aiml>
+

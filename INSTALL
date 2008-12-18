@@ -1,0 +1,13 @@
+cmake/automake
+
+cmake .
+make
+sudo make install (or sudo checkinstall)
+
+-------------------------------------
+
+debian source
+
+dpkg-buildpackage -rfakeroot
+sudo dpkg -i ./librebecca*.deb
+

@@ -1,0 +1,434 @@
+VERSION 1.1tp3
+
+Vastly improved international support across 
+all programming languages and tools.  Dialects
+will work with the eclipse plugin now.  It will
+also work correctly with the rs-admin tool.  Also,
+directories with dialects will work correctly.  
+Lastly, upper casing, lower casing, and formal 
+casing will work correctly with dialects.
+
+Fixed a bug where escaped XML elements such as 
+&lt; &gt; were not operating correctly.  This 
+effected reversed aiml.
+
+Enhanced empty conditionals where they will now
+correctly allow you to use an empty string for 
+a condition and it will return true if the predicate
+does not exist.
+
+Fixed a nasty bug where if you have multiple star's 
+and multiple users it would return an empty false 
+positive string.
+
+VERSION 1.1tp2
+
+Upgrade to Berkeley DB 4.6.19
+
+Upgraded to ICE 3.2.1
+
+Upgraded to xerces 2.8.0
+
+Fixed a bug with the networking C++ api where
+addDirectoryUnlessAlreadyAdded was calling the wrong
+order of arguments
+
+Fixed a bug where the directory containing the 
+embedded database would not create its self if it was 
+on version of Windows XP which was not English based.
+
+VERSION 1.1tp1
+
+A windows installer
+
+An Eclipse plugin for using Eclipse as an AIML editor
+
+An embedded database engine for all AIML processing
+
+Support for a multitude of programming languages such
+as C++, C#, Java, and Python
+
+Excellent, fully documented, and easy to use APIs for 
+various programming languages
+
+Support for safe and concurrent multi-process access to AIML
+
+Support for safe and concurrent multi-threading access to AIML
+
+Includes command line tools to access and manipulate the 
+AIML embedded database
+
+Support for multiple users, multiple bots the users can have, 
+and multiple end users accessing the users' bots
+
+Scalability. RebeccaAIML can support an infinite number of users, 
+bots, and, end users as long as you have hard drive space for more.
+
+Near zero start times. Regardless of your number of users, bots, 
+end users, RebeccAIML will restart in ~ 1 second.
+
+A configurable amount of memory. Utilizing the embedded database tools 
+you can configure how much memory RebeccaAIML will use for caching 
+as well as fine tune her from a small machine to a large rack server.
+
+Server and client model included. RebeccaAIML starts as a service and 
+runs as a server in the background waiting for queries
+
+Fixed random where it was not all that random.  Before it was 
+seeding the same time for every call to its getString().  Now, 
+it is more randomized as the seeding occurs only in its 
+constructor.
+
+The framework no longer requires boost.  You can extend and use
+the framework without having boost as a preqrequiste.  This will
+help those who have downloaded a binary version but do not have
+the boost libary to develop against the framework version.
+
+Fixed a bug with the parsing config files from xerces.  I now use 
+full paths when passing XML files to xerces.
+
+Fixed a bug where the <set> could not set empty strings.  Now, 
+when you hand set an empty string it will unset the AIML variable.
+
+I removed the call to createGraph() from within getResponse().  
+I fixed the learn tag to not have to use that hack anymore.
+
+I Fixed the way that you used to have to use a screwy relative path to the 
+.xsd's in some of the api's.  Now you use either a relative path from the 
+executable or an absolute path to the xsd's.
+
+Removed the Dialog.aiml file since that file was Pandora bot specific.
+
+Thread safe but it's at the top most method level for right now.  Latter 
+it'll be refined at lower levels.
+
+Sweeping change of eliminating as many const * char * const's as possible 
+and instead having StringPimpl as the replacement.  This will cause some 
+api's to break and abi to break completely.  The adjustment is not that 
+horrible though and usually a simple recompilation is all that is needed.
+
+Rewrote the handle responses mechanism.  It's now documented within 
+GraphBuilder as well as its an improved version both in correctness 
+as well as speed.
+
+Removed the internal class PrototypeFactory and made Factory abstract 
+instead of an interface.  The extra class PrototypeFactory was a bit of 
+overkill.  Now, the internal GraphBuilder's all come from Factory.
+
+Removed clone() from the GraphBuilderAIML implementation.  It's no longer
+needed since I removed PrototypeFactory.
+
+
+VERSION .9871
+
+I now include the executable, regression, in both the Windows 
+and Linux prebuilt packages.  This is for downloaders to be 
+able to verify the quality of Rebecca for the version they 
+download.
+
+I also added the regression test suite to the autoconf build system
+where it builds it by default.  This is for those who port RebeccaAIML 
+to another platform to be able to run regression tests to ensure the 
+quality of the port.  Use "./configure --help" to see all the autoconf
+options available.
+
+Updated the code for the regression testing.  It now uses header and 
+footer html files in resources/testing instead of having the html 
+hard coded.  Fixed it to output <br/> instead of the incorrect <br> 
+for html page breaks.  I also improved it to be dll boundary safe by 
+having it use Tag::instanceOf() instead of dynamically casting through
+dynamic_cast<>().
+
+I also added an Arguments class to regression to enable a smooth
+transition over to autoconf
+
+VERSION .987
+
+Condition and Li were not handling empty string cases 
+correctly.  See the latest regression tests in the 
+documentation for the exact case.
+
+Li::getPredicateName() and Li::getAimlPattern() are 
+now const methods.  This change will break abi compatiblity 
+with anyone using the framework but not api compatibility
+with the framework.  Those using the framework will have to 
+recompile and relink against this new version.  
+
+Added these methods to the framework on the class Li:
+
+bool Li::isDefaultListItem() 
+ It returns true if the Li is a default list item or not.
+
+bool Li::isValueOnlyListItem() 
+ It returns true if the Li is a value only list item.
+
+bool Li::isNameAndValueListItem() 
+ It returns true if the Li is a name and value list.
+
+Added these methods to the framework on the class Condition:
+
+bool Condition::isBlockCondition()
+ Returns true if this Condition is a block condition 
+ otherwise it will return false.
+
+bool Condition::isSinglePredicateCondition()
+ Returns true if this Condition is a single predicate
+ condition otherwise it will return false.
+
+bool Condition::isMutliPredicateCondition()
+ Returns true if this Condition is a multi-predicate
+ condition otherwise it will return false.
+
+Updated documentation for GraphBuilder::callSystemCommand()
+
+Removed the documentation about the bug aboug xsd not being validated.  
+I really should have removed this a *long* time ago, but it's 
+removed now.
+ 
+See the doxygen documentation for more details of these 
+new methods and updates.
+
+VERSION .9861
+
+Whenever topic was being set it was not calling srai's correctly.
+This was due to a bad logging call.
+
+VERSION .986
+
+Fixed bug with PlainWordImpl::trimToOneSpace where
+I was not checking if the size of a string was greater
+than zero before using it.
+
+Fixed a bug with srai where the star indexes were not being
+calculated right during srai.
+
+Fixed a bug where rebecca would not let go of her internal 
+AIML file and string caching system.
+
+Upgraded the qtgui and tested it underneath QT 4.1.4 
+
+Added the Callback method Callbacks::learnTagFileNotFound()
+for when the AIML XML learn tag cannot find a file it will 
+call this callback.  This will allow the programmer to handle
+file not founds for AIML XML programmatically.
+
+Added a new method GraphBuilder::callSystemCommand() which acts 
+the same as calling the AIML XML tag "System" by sending the 
+command to the operating system and returning the output of 
+the command.
+
+VERSION .985
+
+Added autoconf support for Unix'es and Linux.  Now
+you can compile using, "configure; make; make install".
+See the doc/linuxINSTALL.txt in the distribution for 
+information on how to utilize this.  
+
+Added an Arguments class to each sample.  The purpose
+of this is two fold.  One is to show how you could 
+parse arguments when utilizing RebeccaAIML api and the 
+second is to make the installers of the samples 
+easier to write in the future.  
+
+The Arguments class now gives a few switches with each sample.  
+See the source code of each sample for the list of available switches.
+However, you can type "console.exe -help" or 
+"consoleAIMLHtmlConverter.exe -help" to get a list of the switches too.  
+
+Added RPM support to the build.  In the download section you should now
+be able to download RPM's for Rebecca for several flavors of Fedora Core.
+
+Tweaked the source files to work with gcc 4.1.0
+
+VERSION .984
+
+Added the feature of being able to add AIML strings to 
+Rebecca on the fly through the method 
+GraphBuilder.addString("aiml string").  You can add a whole
+category programatically as easily as:
+
+builder.addString
+	(
+	   "<category>"
+	   "<pattern>test aiml string</pattern>"
+	   "<template>it simply works!</template>"
+	   "</category>"
+	);			
+
+Added the learn tag per AIML 1.0.1 specification.
+
+Fixed the gender, person, and person2 tag implementations 
+to pass all of the regression tests.
+
+Fixed the addFile and addDirectory to be tolerant of adding
+files which are native to the file system.  Before you could
+at best portably use relative strings.  Now you can use just
+about any file system string for GraphBuilder.addFile() and
+GraphBuilder.addDirectory().  As a result of this I was able
+to simply part of the qtGUI core to using whichever native 
+absolute paths that came from Windows or Unix.
+
+See the documentation of these methods for more details:
+http://rebecca-aiml.sourceforge.net/documentation.htm
+
+
+Under the covers updated and changed the Transcode to translate 
+both from xerces xml strings and to xerces xml strings.  
+
+
+VERSION .983
+
+Bug fix release.
+
+I fixed a bug reported by Charles Chevallier where
+when srai is called the input AIML tags behaved 
+incorrectly. To fix this bug I had to alter the signature 
+of GraphBuilderFramework.checkedInfiniteLoopGetResponse().
+It now has a new boolean argument variable 
+"keepPreviousUserInput".  You set this to false if you 
+do not want the previous user input stored internally.  
+Usually you only want to set this to false when you call 
+this from implementations of the Srai AIML tag.
+
+I fixed a bug reported by Charles Chaevallier where
+when punctuation is at the begining of a Rebecca 
+Response it would cause her to crash.
+
+I fixed a one-off error where I incorrectly indexed 
+some of the internal data structures and this would
+cause a crash.
+
+Made the stack operational thanks to a missing predicate
+found by Ryan Neill
+
+Put in more bot properties (the most common ones), thanks 
+to Ryan Neill for pointing this out to me.
+
+
+VERSION .982
+
+Bug fix release.  
+
+I fixed a bug under Linux for the 
+GraphBuilder::addCustomTagLibrary method.  It would load 
+the string given as soname.so when it should have loaded 
+it as libsoname.so.  
+
+I also fixed a bug reported by Charles Chevallier where 
+Rebecca was not erasing commas before storing strings into 
+her internal "that" variable.  I added a regression test 
+case for it so the bug will not reappear.
+
+I also fixed the "System" AIML tag to be able to return 
+the string now under both Windows and Linux.  Now the 
+regression test for the "System" tag works!
+
+
+VERSION .981
+
+Added a new cross platform simple QT GUI to the samples
+section to showcase how you would program a GUI with
+the RebeccaAIML engine.
+
+Fixed a bug where when you call new and delete on
+AIMLFacade or StringPimpl it would crash under Windows
+if you were mixing and matching Debug and Release.  Now,
+new and delete are dll boundary safe.   
+
+Forgot to put .98 in VERSION .98 for the 
+GraphBuilderAIML::getVersion().  So, all resulting programs 
+built using .98 will report they are version .972 when they 
+encounter the AIML XML Tag <version>. Fixed that in this version, 
+it will say .981 when the <version> tag is encountered.
+
+
+VERSION .98
+
+I opened up the RebeccaAIML framework in which you can
+inherit from AIML XML Tag classes to add or modify the
+current working set.  You will need Boost C++ library
+to use the framework.  With the release of the framework
+you can now add your own custom AIML XML Tag dll or shared
+object in which you can change the functionality of the 
+engine.  The framework is fully documented and I provide
+a sample which overrides all the AIML XML Tags to provide
+a Html converter.  It converts AIML XML files into html pages 
+with links.  The html pages provide a way to "cruise" 
+through the AIML brain and see how the brain would look like 
+in memory.
+
+
+VERSION .972
+
+Copy constructor of StringPimpl was not setting its 
+private implementation handle to 0 and when it was 
+called it would try to delete and in turn crash 
+RebeccaAIML. 
+
+I also changed the default precompiled windows 
+binary to be multithreaded dll instead of just 
+multithreaded.
+
+
+VERSION 0.971
+
+Enabled true multi-lined that's.  Now Rebecca can pass
+another regression test involving multi-lined that's.  
+Also now the that index's involving previous input's and
+previous sentences works correctly.
+
+
+VERSION 0.97
+
+
+A new regression testing system has been put into place.
+The regression test suite is that of ProgramD's.  However,
+in the future I will add more test cases which should work
+for both the test regression suite here and for ProgramD's.
+How that is accomplished is through the use of xml to define
+the test cases.  This is all from the work of Joel on ProgramD.
+From the regression testing, I have found bugs and made more 
+fixes to this release.  I also have found a few bugs which I will 
+fix in an upcomming release.
+
+This release fixes yet another bug with the condition 
+tag.  The condition tag before only accepted AIML tags 
+for the result of a succesful condition.  Now regular text 
+can be added as well to the condition tag as it should be.  I also 
+fixed up white space problems with this release as well as made
+the exceptions of FileNotFound and DirectoryNotFound more verbose.
+
+
+VERSION 0.96
+
+
+This release fixes a bug in which the AIML tag "Condition" 
+did not work at all.  Also this release fixes the AIML.xsd.
+Therefore, I have enabled Schema validation in this release.
+
+With schema validation enabled, bad AIML tags will be reported 
+to their respective callbacks and the XML parser automatically
+handles not adding bad AIML to the graph builder.  Thus your 
+callbacks will alert you to bad AIML tags, and your graph builder
+should still remain bullet proof. See the documentation for 
+more details on XML callbacks through the class CallBacks. 
+
+
+VERSION 0.951
+
+
+Fixed the "muliti-lined that" bug.  This bug was minor 
+but an annoyance.  Whenver a "that" has more than one line
+the last line should be choosen as a that.
+
+VERSION 0.95
+
+
+Initial release.  All AIML tags are implemented except 
+for <learn> and the java script.
+
+There is currently a bug with the AIML.xsd that does 
+not allow the AIML tag <set> to validate correctly.  So
+for the time being I have removed the AIML.xsd validation
+but will put it back as soon as that is fixed.
+

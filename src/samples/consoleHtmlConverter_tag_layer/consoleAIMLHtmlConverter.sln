@@ -1,0 +1,25 @@
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "consoleAIMLHtmlConverter", "consoleAIMLHtmlConverter.vcproj", "{A981A53F-F70F-499A-8000-B1979550481E}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "customHtmlTagLayer", "customHtmlTagLayer.vcproj", "{ED78D986-F2D6-4255-A0EE-5B6C8C9A97B1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A981A53F-F70F-499A-8000-B1979550481E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{A981A53F-F70F-499A-8000-B1979550481E}.Debug|Win32.Build.0 = Debug|Win32
+		{A981A53F-F70F-499A-8000-B1979550481E}.Release|Win32.ActiveCfg = Release|Win32
+		{A981A53F-F70F-499A-8000-B1979550481E}.Release|Win32.Build.0 = Release|Win32
+		{ED78D986-F2D6-4255-A0EE-5B6C8C9A97B1}.Debug|Win32.ActiveCfg = Debug|Win32
+		{ED78D986-F2D6-4255-A0EE-5B6C8C9A97B1}.Debug|Win32.Build.0 = Debug|Win32
+		{ED78D986-F2D6-4255-A0EE-5B6C8C9A97B1}.Release|Win32.ActiveCfg = Release|Win32
+		{ED78D986-F2D6-4255-A0EE-5B6C8C9A97B1}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

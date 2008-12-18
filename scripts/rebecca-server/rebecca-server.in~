@@ -1,0 +1,17 @@
+#!/bin/sh
+
+#
+# This script makes it easy and
+# possible to excute the binary
+# sample from anywhere in the system.
+# You won't have to be in a particular
+# directory to execute the sample.
+
+#
+# Give the server the argument of 
+# the path to the serverconfig.properties
+# file 
+#
+
+@BUILD_datadir@/Rebecca/bin/cpp/rebecca-server --Ice.Config=@BUILD_datadir@/Rebecca/conf/serverconfig.properties
+

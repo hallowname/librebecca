@@ -1,0 +1,266 @@
+TODO ICE:
+- Check that everything calls aiml.destroy() and use an integer status such as python, java, and C#
+- The client side(s) all have to be able to set by default ACM disabled for bidirectional
+  communication to work effectively. 
+- Thread safety of setUserId, and getUserId, and setBotId, getBotId, and the other methods?
+  Should they be thread safe?  Or should there just be a disclaimer that they're not thread 
+  safe.
+- Change the default Exceptions of python, java, C# to have some message in them like in C++
+  so that whenever one is thrown with no message a default message is used
+- Fix the exceptions in the java, c#, etc... to only catch what they need to catch which is
+  networkException and exception
+- There's a lot of files being hand copied into the bin\release directory 
+  right now.  There has to be an easier way to setup to pull those files 
+  over.  Otherwise the developer documentation for building RebeccaAIML is 
+  going to be dreadful.
+- Fix the problem with rs-admin not taking too kindly to --Ice.Config, it crashes.
+- Test all the networked programs to see if they can work with --Ice.Config's on Becky's computer
+- For C++ add a #include <rebecca_network_all.h>
+- Add network specific commands to read from the remote computer the files.  Change the 
+  regular addDirectory, addFile to actually send the file(s) as strings over the wire.
+- Double check the comments for the public api's on the client sides
+- Make precompilation steps check for ICE variables and if they exist
+- Make precompilation steps for boost in the server side project and any others if they need it
+
+TODO DB:
+- Document the enviornment variable DB_INCLUDES, DB_LIB, etc...  Put checks for those 
+  enviornment variables into Visual Studio
+
+TODO First: 
+- Remove the horrible arguments class from everything but the 
+     regression test sample 
+     This is the qtgui
+- Update regression to output useful information and not just technical 
+  information
+- Update all the README's in the distro
+- removeDirectoryWithFilesEndingInRegularExpression method does not exit in python?
+- removeDirectoryWithFilesEndingInRegularExpression method does not exist in C#?
+- Figure out way to put the setDatabaseEnviornment back so that its possible to set it before
+  starting the engine.  Perhaps as a static on AimlFacade and AimlNetworkFacade.
+- In the QT GUI, add a delete file list, delete directory.  Also add a "setUserId/setBotId/setEndUserId"
+  in it.  
+- Fix the background within QT.  Right now it is scrolling the background and looks ugly
+- Add a convience constructor to networkaimlfacade that doesn't tag args.  It just 
+  in turn calls ice with no args
+- Update vs8_build_bin_dist to do a full up build and then build the installer
+- In DBManager, I commented out the deletion of the database and database environment objects.  It 
+  was crashing on the delete.  Figure out why.
+- improve the server startup properties file.  It's pretty bad having "--" for everything.  Instead
+  it should use a sepearate module.  Pull out the argument parsing from rs-admin.exe and put that 
+  as a seperate project.  Link that to the server side.  Have the seperate argument parsing boot
+  strap a "admin" user and "admin" bot and have the english natural parsed.
+- update all the callbacks to use GraphBuilder.getSize() instead of the looping i in categories loaded
+- Have a versioning set on the DB.  Something that we can use to test forward versioning and backwards
+  versioning.  Need to have a string such as "_@reserved_@version_@1.1TP1"  Have it check for a record
+  list of: "_@reserved_@versionInCompatible".  Have it compare it to its current version number.  If 
+  it finds its version in that list have it exit with an error of incompatible database format.
+- When the Factory is deleted have it in its destructor delete each
+  of the things it has in the correct order.
+- Add guards on C# and Java for null entries 
+- Make a way to be able to unset the CallBacks.  Make the destroy() method of the 
+  aimlFacade automatically unset the CallBacks and the server side be able to 
+  remove it from the set.
+- Make the server check that the config file is found and give an 
+  error if it is not found instead of just checking that the number
+  of arguments is non zero.
+- Make rs-admin's command line more robust and useful
+- Check out and fix the 64 bit problem by including the #include <stddef.h>
+  Right now it won't compile on 64 bit platforms because of this.
+  * Fix the whole 64 bit issue with the unsigned int's that being put into 
+    the new and delete's.  This causes things to not compile underneath a 
+    mac.
+- Create test case for the bug where the <set> could not set empty strings
+- Upgrade to the latest Java 6 version
+- Upgrade to the latest QT 4.2
+- Upgrade to the latest ICE version
+- Upgrade to the latest Oracle DB version
+
+autoconf TODO:
+- Make autoconf work with all the latest 
+- Check for the additional boost header file recursive_mutex.hpp in the autoconf files as 
+  well as any other files that I might have added.
+- Copy more README's to the rebecca/share directory and below.
+- Fix the relative paths to the xsd's to be correct
+- Change the location of the files to now become:
+  bin\cpp
+  bin\java
+  bin\python
+  bin\csharp
+
+TODO installer:
+- In the Admin->Services, RebeccaAIML does not have any description for her service
+- Add the ice binary tools to the build.  I need to have included the tools that 
+  do things like recover the database and what not.
+- Make the core engine optional.  There's the case where they want to install clients but not server.
+  Ensure though that it actually works and they are able to install just a slimmed down client side.
+- Add text to make the begining cooler
+- Add all the licenses and explanations of each.  Should be GPL for core, GPL for Qt and GPL for ICE and network'ed programs.  
+- Add the option to install the server or not to install the server.  Sometimes they'll want to only install client side pieces 
+  and not server side pieces.
+- Finish up documenting all the individual install pieces
+- Add the regression test suite as a section
+
+Documentation:
+- Update the framework documentation about how you don't need boost.  Right now it has directions to how you 
+  need boost when you really don't need it anymore
+- Document rs-admin.exe's ability to have -suids, and the ability to change userId, botId, endUserId.  
+- Document the new methods in Graphbuilder
+- Document the FrameworkFactory
+- Document the IdentificationManager
+- Document the StringPimpl with all the new added changes to it in the header file
+- Update qtgui's README with the instructions for the new installer as well as for QMAKESPEC = "win32-msvc2005"
+  since we're using all microsoft visual studio 2005
+- Add credits for the icon to tango desktop
+- Update the readme.txt specifically in the rebecca\conf directory.
+  It should have more info on what exactly all the files are for.  Specifically 
+  the files for the server startup and the client startup
+- Add license information for ICE
+- Add a ReadMe.txt to each of the projects folders as well as to them individually inside of visual studio.
+  This will make it easier for the developer to Understand things if they see a ReadMe.txt in each of their 
+  visual studio projects.
+- Add a ReadMe.txt to each of the rebecca\bin\<language> directories.  This will describe how to run each 
+  project as well as about each of the projects and directions on where the sample source code to each one 
+  is located.  
+- Flush out the README.txt's in the java, c#, python, etc... in each of the rebecca\bin\<language>
+  Also flush out a README.txt in each of the rebecca\src\samples\<language> directory
+- Finish documenting the c++ network section, as well as the java, c#, and python versions
+- Fix the documentation for the xsd's.  Now they *don't* take that 
+  screwed up relative path'ing to them.  Now they *DO* take direct 
+  relative paths from either where the executable is executed or 
+  they can take an absolute path
+- Document these server side properties
+	* Rebecca.Server.Config.AimlSchema
+	* Rebecca.Server.Config.CommonTypesSchema
+	* Rebecca.Server.Config.BotConfigurationSchema
+	* Rebecca.Server.Config.SubstitutionFile
+	* Rebecca.Server.Config.SentenceSplitterFile
+	* Rebecca.Server.Config.PropertiesFile
+	* Rebecca.Server.Config.PortNumber
+	* Rebecca.Server.Config.HostName
+	* Rebecca.Server.Config.Name
+- Document these client side properties
+	* Rebecca.Client.Config.HostName
+	* Rebecca.Client.Config.portNumber
+- Document all the networked options for ICE and provide commented out
+  samples for them.
+- Add a user manual
+  * Should have server setup for services and Unix dameon and what not
+    trouble shooting the server and what not.
+  * Documentation about rs-admin.
+  * Quick start guide for building C++, C#, Java, etc... language 
+    based clients  
+  
+- Create a properties configuration file for an example for the server
+- Create a properties configuration file for an example for the client
+- Document the samples, java csharp, python, etc...
+- Document the network.ice file
+- Document in the developer build documents how they have to add the ICE binaries
+  to their path
+- Document how to run the ICE commands for developers.  Also document how to build
+  everything from scratch.
+- Add the Copyright and GNU license to all the header files
+- Update the createGraph() documentation to include that structures can be added 
+  through the "addString" method
+- Create a User's guide to Rebecca for the various configuration and scenario's.
+
+Future:
+- Readd the reverse tag and expose it for others to see an easy way to use the framework.
+- Do a partial transaction for safety.  Do transaction on the list of files that are about to be 
+  added that are added to the internal DB list of files to add.  Then do another transaction on 
+  the files that have just been added to the DB.  But DO NOT do a transaction on adding files into
+  the brain.
+- Make AimlFacade reference counted.  Once there's no more AimlFacade's left have it delete the 
+  Factory.  Otherwise, right now you could have multiple AimlFacades accross Threads and what not 
+  and the first to leave scope would crash the system.
+- Check all the m_userId, m_botId, m_endUserId in networkGraphBuilder, java, C#, python.  Is this 
+  what we want with the setUserIdBotIdEndUserId?  Set locally?  No thread safety either with this?
+- Make the GraphBuilder::addAIMLString and GraphBuilder::removeString keep track of categories by setSize
+  and getSize
+- Add to GraphBuilder::addToDB(String, String), String getFromDB(String), String existsInDB(String)
+  for admin purposes and what not.
+- Should NodeMapper be a singleton?  A NodeManager class?  How many instances of it are in the system?
+  I think only one instance is now created.  It probably should be a singelton.
+- Add a DB keys class and put all the keys into that as StringPimpl const.  
+  Make it a ton easier for debugging and adjusting.
+- Fix previousSrai to use the recordCount instead of hand written counting and deleting
+- Fix PreviousResponseManager to use the recordCount instead of hand written counting and deleting
+- In ConfigurationHandler, ConfigurationHandlerError, and GraphHandler, GraphHandlerError
+  I overuse the GraphBuilderAIML::getInstance().
+  Should I be using this?  More than likely it should be an instance variable.  
+- Finish the NodeMapper::remove() to remove all the other parts of the bot brain and not just the 
+  last node.
+- Fix crash on the server where if more than one callback enbabled program is running and one
+  shuts down an iterator error occurs.  This is due to the iterator being invalidated by the 
+  broken connection.
+- Add aysnch methods so that you can do certain operations like addDirectoryAsynch() and it will
+  return immediately.  Don't have one on things that return back values obviously.
+- Create sample applications in batch file(s) under dos and bash scripts under Linux
+- Check out the email from Daniel Piñol, "[Rebecca-aiml-general] memory leaks" it's about
+  memory leaks in Rebecca
+- Split out the StringPimpl and others into another .dll.  We don't 
+  want a dependency on Xercesc when just using the client.  Let's 
+  name this .dll rebecca-utils-mt.dll
+- Memory management rules for the previous user responses, previous 
+  bot responses.  Ways to store those out along side the predicates 
+  perhaps too.
+- Make methods on the builder for policies based on what to do when hitting 
+    identical "PATTERN <that> THAT <topic> TOPIC"  They would be:
+        * skip
+        * append
+        * overwrite
+        * combine
+- Fix the html generator to have a CustomLearn tag
+- Make a callback for when an identical "PATTERN <that> THAT <topic> TOPIC" is
+    encountered it will call the callback.
+- Problem with Category.  It gives incorrect number whenever it hasn't technically 
+  loaded anything.  This happens when duplicate categories are loaded.  Need a way 
+  to be able to distinguish what's a unique category loaded versus a non unique category.
+- Simplify the current C++ server/client mixed versions more.  Split out the 
+  arguments into other classes so people don't have to deal with their implementation
+  and can just look at the main() of them instead.
+- Add the ability to parse one category at a time and return.  This will be a semi-blocking 
+  createGraph() and will improve the responsiveness.  Might want to just add multi-threading
+  and skip this one.
+- Add ability to save out predicates on the server end.
+  * Add the api to get the predicates period.  Then use the api on the server end
+    to optionally save the predicates.
+- Add a clear() method to the ice server that clears out all the aiml files.
+  * Also add this clear to the rs-admin too.
+  * Add a remove() method api and the internals to remove AIML
+- Create the Visual Basic version
+- Add a QtGui program to the network version as QtGUINetwork
+- Make pattern side <bot's> work within pattern and then create a test case for it.  For example, 
+  <pattern>hi <bot name="name"/></pattern> should work.
+- From Pippijn, add a callback for <set> and provide the key/value pair to the user.
+  Also add api's so the user can get all the currently set values in some type of 
+  list so that they can save them out if they want to.
+- Make the xml engine pluggable so that something such as libexpat could be used in place of xerces
+- Add api for return name when set
+- Make rebecca be able to use the <learn> tag from pandora bots as a layer
+- Make Rebecca parse predicates.xml so that she can set predicates as well as the "return name when set".
+- Make Rebecca set the predicate top in the predicates.xml to OM and 
+     remove the top being set in the Predicates.aiml file.
+- Should we perhaps make a utility dll/so?  At the least should we make a
+  Prediacates class that encompasses the read/write predicates with a factory
+  that can be set in the builder class.  That way the user can define their
+  behvaoir of what to do with reading and writing the predicates 
+- Support mulituser enviornment.  You can switch users through a "id"
+- Add the Javascript engine
+- Should this even be added?  Transactions is slow and locks the entire DB to make 
+  it almost entirely serialized.
+  Add static methods so the user can configure DB.  Right now as defaults add:
+          set_cachesize 0 152428800 3
+          set_lg_regionmax 4194304
+          set_lg_bsize 4194304
+          set_lg_max 4194304
+          set_lk_max_lockers 40000
+          set_lk_max_locks 40000
+          set_lk_max_objects 40000
+
+Far Future:
+- Create a string wrapper header file for the GraphBuilder and others if possible.  This wrapper would 
+  allow the developer to use straight strings instead of the StringPimpl class.  This might/might not 
+  be feasible.  If feasible, the wrapper would be in a header file and not compiled.
+- Document and release doxygen of the internal api
+- Open up and document how others can make their own releases using the batch files.
+

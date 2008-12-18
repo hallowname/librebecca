@@ -1,0 +1,129 @@
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/src/samples/consoleHtmlConverter_tag_layer/consoleAIMLHtmlConverter.cpp:104: Warning: parameters of member consoleAIMLHtmlConverterCallBacks::categoryLoaded are not (all) documented
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/src/samples/consoleHtmlConverter_tag_layer/consoleAIMLHtmlConverter.cpp:146: Warning: The following parameters of consoleAIMLHtmlConverterCallBacks::filePostLoad(const StringPimpl &fileName, const StringPimpl &userId, const StringPimpl &botId, const StringPimpl &endUserId) are not documented:
+  parameter userId
+  parameter botId
+  parameter endUserId
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/src/samples/consoleHtmlConverter_tag_layer/consoleAIMLHtmlConverter.cpp:133: Warning: The following parameters of consoleAIMLHtmlConverterCallBacks::filePreLoad(const StringPimpl &fileName, const StringPimpl &userId, const StringPimpl &botId, const StringPimpl &endUserId) are not documented:
+  parameter userId
+  parameter botId
+  parameter endUserId
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/src/samples/consoleHtmlConverter_tag_layer/consoleAIMLHtmlConverter.cpp:178: Warning: parameters of member consoleAIMLHtmlConverterCallBacks::infiniteSymbolicReduction are not (all) documented
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/src/samples/consoleHtmlConverter_tag_layer/consoleAIMLHtmlConverter.cpp:280: Warning: The following parameters of consoleAIMLHtmlConverterCallBacks::inputTagNumericConversionError(const StringPimpl &message, const StringPimpl &userId, const StringPimpl &botId, const StringPimpl &endUserId) are not documented:
+  parameter userId
+  parameter botId
+  parameter endUserId
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/src/samples/consoleHtmlConverter_tag_layer/consoleAIMLHtmlConverter.cpp:295: Warning: parameters of member consoleAIMLHtmlConverterCallBacks::inputTagSizeExceeded are not (all) documented
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/src/samples/consoleHtmlConverter_tag_layer/consoleAIMLHtmlConverter.cpp:308: Warning: The following parameters of consoleAIMLHtmlConverterCallBacks::starTagNumericConversionError(const StringPimpl &message, const StringPimpl &userId, const StringPimpl &botId, const StringPimpl &endUserId) are not documented:
+  parameter userId
+  parameter botId
+  parameter endUserId
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/src/samples/consoleHtmlConverter_tag_layer/consoleAIMLHtmlConverter.cpp:267: Warning: parameters of member consoleAIMLHtmlConverterCallBacks::starTagSizeExceeded are not (all) documented
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/src/samples/consoleHtmlConverter_tag_layer/consoleAIMLHtmlConverter.cpp:87: Warning: parameters of member consoleAIMLHtmlConverterCallBacks::storeGossip are not (all) documented
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/src/samples/consoleHtmlConverter_tag_layer/consoleAIMLHtmlConverter.cpp:159: Warning: The following parameters of consoleAIMLHtmlConverterCallBacks::symbolicReduction(const StringPimpl &symbol, const StringPimpl &userId, const StringPimpl &botId, const StringPimpl &endUserId) are not documented:
+  parameter userId
+  parameter botId
+  parameter endUserId
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/src/samples/consoleHtmlConverter_tag_layer/consoleAIMLHtmlConverter.cpp:366: Warning: The following parameters of consoleAIMLHtmlConverterCallBacks::thatStarTagNumericConversionError(const StringPimpl &message, const StringPimpl &userId, const StringPimpl &botId, const StringPimpl &endUserId) are not documented:
+  parameter userId
+  parameter botId
+  parameter endUserId
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/src/samples/consoleHtmlConverter_tag_layer/consoleAIMLHtmlConverter.cpp:241: Warning: parameters of member consoleAIMLHtmlConverterCallBacks::thatStarTagSizeExceeded are not (all) documented
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/src/samples/consoleHtmlConverter_tag_layer/consoleAIMLHtmlConverter.cpp:336: Warning: The following parameters of consoleAIMLHtmlConverterCallBacks::thatTagNumericConversionError(const StringPimpl &message, const StringPimpl &userId, const StringPimpl &botId, const StringPimpl &endUserId) are not documented:
+  parameter userId
+  parameter botId
+  parameter endUserId
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/src/samples/consoleHtmlConverter_tag_layer/consoleAIMLHtmlConverter.cpp:323: Warning: parameters of member consoleAIMLHtmlConverterCallBacks::thatTagSizeExceeded are not (all) documented
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/src/samples/consoleHtmlConverter_tag_layer/consoleAIMLHtmlConverter.cpp:351: Warning: The following parameters of consoleAIMLHtmlConverterCallBacks::topicStarTagNumericConversionError(const StringPimpl &message, const StringPimpl &userId, const StringPimpl &botId, const StringPimpl &endUserId) are not documented:
+  parameter userId
+  parameter botId
+  parameter endUserId
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/src/samples/consoleHtmlConverter_tag_layer/consoleAIMLHtmlConverter.cpp:254: Warning: parameters of member consoleAIMLHtmlConverterCallBacks::topicStarTagSizeExceeded are not (all) documented
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/src/samples/consoleHtmlConverter_tag_layer/consoleAIMLHtmlConverter.cpp:193: Warning: The following parameters of consoleAIMLHtmlConverterCallBacks::XMLParseError(const StringPimpl &message, const StringPimpl &userId, const StringPimpl &botId, const StringPimpl &endUserId) are not documented:
+  parameter userId
+  parameter botId
+  parameter endUserId
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/src/samples/consoleHtmlConverter_tag_layer/consoleAIMLHtmlConverter.cpp:225: Warning: The following parameters of consoleAIMLHtmlConverterCallBacks::XMLParseFatalError(const StringPimpl &message, const StringPimpl &userId, const StringPimpl &botId, const StringPimpl &endUserId) are not documented:
+  parameter userId
+  parameter botId
+  parameter endUserId
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/src/samples/consoleHtmlConverter_tag_layer/consoleAIMLHtmlConverter.cpp:209: Warning: The following parameters of consoleAIMLHtmlConverterCallBacks::XMLParseWarning(const StringPimpl &message, const StringPimpl &userId, const StringPimpl &botId, const StringPimpl &endUserId) are not documented:
+  parameter userId
+  parameter botId
+  parameter endUserId
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/src/samples/consoleHtmlConverter_tag_layer/CustomAIML.h:77: Warning: argument `builder' of command @param is not found in the argument list of CustomAiml::CustomAiml(Html &htmlPage)
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/src/samples/consoleHtmlConverter_tag_layer/InnerTemplateAIMLTags.h:138: Warning: argument `builder' of command @param is not found in the argument list of CustomBot::CustomBot()
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/src/samples/consoleHtmlConverter_tag_layer/InnerTemplateAIMLTags.h:210: Warning: argument `builder' of command @param is not found in the argument list of CustomCondition::CustomCondition()
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/src/samples/consoleHtmlConverter_tag_layer/InnerTemplateAIMLTags.h:87: Warning: argument `builder' of command @param is not found in the argument list of CustomGender::CustomGender()
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/src/samples/consoleHtmlConverter_tag_layer/InnerTemplateAIMLTags.h:563: Warning: argument `builder' of command @param is not found in the argument list of CustomGet::CustomGet()
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/src/samples/consoleHtmlConverter_tag_layer/InnerTemplateAIMLTags.h:513: Warning: argument `builder' of command @param is not found in the argument list of CustomGossip::CustomGossip()
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/src/samples/consoleHtmlConverter_tag_layer/InnerTemplateAIMLTags.h:640: Warning: argument `builder' of command @param is not found in the argument list of CustomId::CustomId()
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/src/samples/consoleHtmlConverter_tag_layer/InnerTemplateAIMLTags.h:687: Warning: argument `builder' of command @param is not found in the argument list of CustomInput::CustomInput()
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/src/samples/consoleHtmlConverter_tag_layer/InnerTemplateAIMLTags.h:812: Warning: argument `builder' of command @param is not found in the argument list of CustomPerson::CustomPerson()
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/src/samples/consoleHtmlConverter_tag_layer/InnerTemplateAIMLTags.h:862: Warning: argument `builder' of command @param is not found in the argument list of CustomPerson2::CustomPerson2()
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/src/samples/consoleHtmlConverter_tag_layer/InnerTemplateAIMLTags.h:1023: Warning: argument `builder' of command @param is not found in the argument list of CustomSet::CustomSet()
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/src/samples/consoleHtmlConverter_tag_layer/InnerTemplateAIMLTags.h:1099: Warning: argument `builder' of command @param is not found in the argument list of CustomSize::CustomSize()
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/src/samples/consoleHtmlConverter_tag_layer/InnerTemplateAIMLTags.h:1147: Warning: argument `builder' of command @param is not found in the argument list of CustomSrai::CustomSrai()
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/src/samples/consoleHtmlConverter_tag_layer/InnerTemplateAIMLTags.h:1197: Warning: argument `builder' of command @param is not found in the argument list of CustomStar::CustomStar()
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/src/samples/consoleHtmlConverter_tag_layer/CustomTagsImpl.h:76: Warning: Unsupported xml/html tag <think> found
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/src/samples/consoleHtmlConverter_tag_layer/CustomTagsImpl.h:110: Warning: Unsupported xml/html tag <think> found
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/src/samples/consoleHtmlConverter_tag_layer/CustomTagsImpl.h:108: Warning: argument `builder' of command @param is not found in the argument list of CustomTagsImpl::createTagClass(const StringPimpl &className)
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/src/samples/consoleHtmlConverter_tag_layer/InnerTemplateAIMLTags.h:1323: Warning: argument `builder' of command @param is not found in the argument list of CustomTemplateSideThat::CustomTemplateSideThat()
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/src/samples/consoleHtmlConverter_tag_layer/InnerTemplateAIMLTags.h:1406: Warning: argument `builder' of command @param is not found in the argument list of CustomThatStar::CustomThatStar()
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/src/samples/consoleHtmlConverter_tag_layer/CustomTopic.h:89: Warning: argument `builder' of command @param is not found in the argument list of CustomTopic::CustomTopic(Html &htmlPage)
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/src/samples/consoleHtmlConverter_tag_layer/InnerTemplateAIMLTags.h:1533: Warning: argument `builder' of command @param is not found in the argument list of CustomTopicStar::CustomTopicStar()
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/src/samples/consoleHtmlConverter_tag_layer/InnerTemplateAIMLTags.h:1660: Warning: argument `builder' of command @param is not found in the argument list of CustomVersion::CustomVersion()
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/include/rebecca/framework/CustomTags.h:79: Warning: Unsupported xml/html tag <think> found
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/include/rebecca/framework/GraphBuilderFramework.h:109: Warning: Unsupported xml/html tag <star> found
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/include/rebecca/framework/GraphBuilderFramework.h:98: Warning: Unsupported xml/html tag <star> found
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/include/rebecca/framework/GraphBuilderFramework.h:111: Warning: Unsupported xml/html tag <thatstar> found
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/include/rebecca/framework/GraphBuilderFramework.h:159: Warning: Unsupported xml/html tag <thatstar> found
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/include/rebecca/framework/GraphBuilderFramework.h:110: Warning: Unsupported xml/html tag <topicstar> found
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/include/rebecca/framework/GraphBuilderFramework.h:218: Warning: Unsupported xml/html tag <topicstar> found
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/include/rebecca/framework/InnerAIML.h:64: Warning: Unsupported xml/html tag <aiml> found
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/include/rebecca/framework/InnerAIML.h:70: Warning: Unsupported xml/html tag <aiml> found
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/include/rebecca/framework/InnerCategory.h:65: Warning: Unsupported xml/html tag <category> found
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/include/rebecca/framework/InnerTemplate.h:63: Warning: Unsupported xml/html tag <template> found
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/include/rebecca/framework/InnerTemplate.h:67: Warning: Unsupported xml/html tag <InnerTemplate> found
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/include/rebecca/framework/InnerTemplate.h:165: Warning: Unsupported xml/html tag <think> found
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/include/rebecca/framework/InnerTemplate.h:165: Warning: Unsupported xml/html tag <person> found
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/include/rebecca/framework/InnerTemplate.h:165: Warning: Unsupported xml/html tag </person> found
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/include/rebecca/framework/InnerTemplate.h:165: Warning: Unsupported xml/html tag </think> found
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/include/rebecca/framework/InnerTemplate.h:167: Warning: Unsupported xml/html tag </person> found
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/include/rebecca/framework/InnerTemplate.h:95: Warning: Unsupported xml/html tag <formal> found
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/include/rebecca/framework/InnerTemplate.h:95: Warning: Unsupported xml/html tag <person> found
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/include/rebecca/framework/InnerTemplate.h:95: Warning: Unsupported xml/html tag <sentence> found
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/include/rebecca/framework/InnerTemplate.h:95: Warning: Unsupported xml/html tag </sentence> found
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/include/rebecca/framework/InnerTemplate.h:95: Warning: Unsupported xml/html tag </person> found
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/include/rebecca/framework/InnerTemplate.h:95: Warning: Unsupported xml/html tag </formal> found
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/include/rebecca/framework/InnerTemplate.h:96: Warning: Unsupported xml/html tag </sentence> found
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/include/rebecca/framework/InnerTemplate.h:98: Warning: Unsupported xml/html tag </person> found
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/include/rebecca/framework/InnerTemplate.h:165: Warning: Unsupported xml/html tag <formal> found
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/include/rebecca/framework/InnerTemplate.h:165: Warning: Unsupported xml/html tag </formal> found
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/include/rebecca/framework/InnerTopic.h:63: Warning: Unsupported xml/html tag <topic> found
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/include/rebecca/framework/InnerTopic.h:69: Warning: Unsupported xml/html tag <topic> found
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/include/rebecca/framework/Pattern.h:89: Warning: Unsupported xml/html tag <pattern> found
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/include/rebecca/framework/Pattern.h:89: Warning: Unsupported xml/html tag </pattern> found
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/include/rebecca/framework/PatternSideThat.h:94: Warning: Unsupported xml/html tag <that> found
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/include/rebecca/framework/PatternSideThat.h:94: Warning: Unsupported xml/html tag </that> found
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/include/rebecca/framework/PlainWord.h:66: Warning: Unsupported xml/html tag <template> found
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/include/rebecca/framework/PlainWord.h:66: Warning: Unsupported xml/html tag <person> found
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/include/rebecca/framework/PlainWord.h:66: Warning: Unsupported xml/html tag </person> found
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/include/rebecca/framework/PlainWord.h:66: Warning: Unsupported xml/html tag </template> found
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/include/rebecca/framework/Tag.h:94: Warning: Unsupported xml/html tag <srai> found
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/include/rebecca/framework/Tag.h:94: Warning: Unsupported xml/html tag </srai> found
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/include/rebecca/framework/Tag.h:121: Warning: Unsupported xml/html tag <think> found
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/include/rebecca/framework/Tag.h:121: Warning: Unsupported xml/html tag <srai> found
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/include/rebecca/framework/Tag.h:121: Warning: Unsupported xml/html tag </srai> found
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/include/rebecca/framework/Tag.h:121: Warning: Unsupported xml/html tag </think> found
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/include/rebecca/framework/Tag.h:122: Warning: Unsupported xml/html tag </srai> found
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/include/rebecca/framework/Tag.h:144: Warning: Unsupported xml/html tag <get> found
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/include/rebecca/framework/Template.h:139: Warning: Unsupported xml/html tag <template> found
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/include/rebecca/framework/Template.h:139: Warning: Unsupported xml/html tag <formal> found
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/include/rebecca/framework/Template.h:139: Warning: Unsupported xml/html tag </formal> found
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/include/rebecca/framework/Template.h:139: Warning: Unsupported xml/html tag </template> found
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/include/rebecca/GraphBuilder.h:1053: Warning: Unsupported xml/html tag </aiml> found
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/include/rebecca/GraphBuilder.h:994: Warning: Unsupported xml/html tag </aiml> found
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/include/rebecca/GraphBuilder.h:1185: Warning: Unsupported xml/html tag </aiml> found
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/include/rebecca/GraphBuilder.h:1122: Warning: Unsupported xml/html tag </aiml> found
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/include/rebecca/GraphBuilder.h:1245: Warning: Unsupported xml/html tag </aiml> found
+/s/Projects/OpenBrain/librebecca/librebecca-1.1.3/include/rebecca/GraphBuilder.h:2637: Error: Unexpected character `1'
