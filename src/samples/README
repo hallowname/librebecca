@@ -5,8 +5,7 @@ What's this all about?
 
 These are samples in which you should be able to build against the 
 RebeccaAIML engine.  You should be able to go into each directory 
-and build each example with either the provided Linux Makefile or 
-the Windows provided Visual Studio solution file.
+and build each example with either the provided Linux Makefile.
 ------------------------------------------------------------------
 
 * [console] sample
@@ -27,7 +26,7 @@ http://www.trolltech.com/
 A few notes about building this sample for Linux and Windows.  You need 
 at least QT 4.1.x.  For Linux, install this version of QT normally as per 
 their LINUX instructions.  Then build your makefile by calling "qmake" 
-in the directory [src\samples\qtgui].  Finally, call "gmake" and it should 
+in the directory [src\samples\qtgui].  Finally, call "make" and it should 
 build correctly.
 
 For Windows, you have two options.  You can either buy the commercial 
