@@ -1,13 +1,18 @@
+Make sure you have:
+- libdb
+- libdb++
+- Ice (libzeroc-ice33)
+- Xerces-C (libxerces-c)
+- libboost
+- Qt4.3 (or higher)
+- CMake (2.6 or higher)
+
+----- Compilation and Installation under GNU/Linux ------
+
 cmake/automake
 
 cmake .
 make
 sudo make install (or sudo checkinstall)
 
--------------------------------------
-
-debian source
-
-dpkg-buildpackage -rfakeroot
-sudo dpkg -i ./librebecca*.deb
-
+--------------------
